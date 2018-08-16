@@ -10,6 +10,35 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <%= link_to "霧戦争5期データ小屋", root_path, :class => "navbar-brand" %>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">個人データ<span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="themes">
+              <li class="divider"></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <%= yield %>
+        </div>
+      </div><!--/row-->
+      
+      <footer>
+        <p> 制作<%= link_to "@white_mns", "http://twitter.com/white_mns"%></p>
+        <p> ソースコード [<%= link_to "解析部分", "https://github.com/white-mns/mow_parse"%>] [<%= link_to "表示部分", "https://github.com/white-mns/mow_rails"%>]</p>
+      </footer>
+    </div> <!-- /container -->
   </body>
 </html>
