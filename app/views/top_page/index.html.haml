@@ -1,0 +1,27 @@
+%h1 霧戦争5期データ小屋
+%p
+  このサイトでは
+  %a{:href => "http://blacktea.sakura.ne.jp/mistofwar/", :target => "_blank"} MIST OF WAR
+  を解析して得られる情報を扱っています。
+  %br
+  データ更新は本家の圧縮結果が公開されてから行います。
+%br
+%p 
+  第 #{@last_result}回 
+  #{ "再" if @last_generate > 0 }#{ num = 2; text = ""; while num <= @last_generate do num += 1; text += "々" end; text}
+  更新結果まで反映済です。
+
+.col-lg-12
+  .bs-component
+    .well.well-sm
+      %h2 サイトマップ
+      %ul
+        %li 個人データ
+        %ul  
+
+    .well.well-sm
+      %h2 更新履歴
+      %ul
+        %li 2018/-/-
+        %ul
+          %li サイト公開
