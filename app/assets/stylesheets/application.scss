@@ -35,6 +35,11 @@ body { padding-top: 60px; }
     border-style: none none solid none;
     border-width: 0.3em;
 }
+
+.navbar-toggle {
+    border: 0px;
+}
+
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
     color: #fff;
     background-color: #007fff;
