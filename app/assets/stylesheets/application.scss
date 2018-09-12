@@ -19,6 +19,7 @@ $navbar-default-link-hover-color: #222;
 $navbar-default-link-hover-bg: #ccc;
 $navbar-default-brand-hover-color: #222;
 $navbar-default-toggle-icon-bar-bg: #222;
+$navbar-default-toggle-border-color:       transparent !default;
 $well-bg: #fcfcfc;
 
 @import "bootstrap-sprockets";
@@ -34,10 +35,6 @@ body { padding-top: 60px; }
     border-color: #888;
     border-style: none none solid none;
     border-width: 0.3em;
-}
-
-.navbar-toggle {
-    border: 0px;
 }
 
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
