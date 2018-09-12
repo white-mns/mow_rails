@@ -1,4 +1,4 @@
-%h1 Listing proper_names
+%h1 固有名詞一覧
 
 %p.formNum 
   テキストフォームの隣に赤い破線がある項目は数値検索です。
@@ -49,20 +49,11 @@
     %tbody
       %tr
       %tr
-        %td= f.label :result_no_form, '更新回'
-        %td.formNum{:colspan => "3"}= text_field_tag :result_no_form, @result_no_form
-      %tr
-        %td= f.label :e_no_form, 'Eno'
-        %td.formNum= text_field_tag :e_no_form, @e_no_form
-      %tr
-        %td= f.label :p_name_form, 'キャラクター名'
-        %td.formText= text_field_tag :p_name_form, @p_name_form
-      %tr
-        %td= f.label :proper_id_form, 'Proper'
+        %td= f.label :proper_id_form, 'ID'
         %td.formNum= text_field_tag :proper_id_form, @proper_id_form
       %tr
-        %td= f.label :name_form, 'Name'
-        %td.formNum= text_field_tag :name_form, @name_form
+        %td= f.label :name_form, '固有名詞'
+        %td.formText= text_field_tag :name_form, @name_form
       %tr
         %td= hidden_field_tag :is_form, 1
         %td{:colspan => "3"}= f.submit '検索する'
@@ -77,19 +68,11 @@
 %table.table.table-striped.table-bordered.table-hover
   %thead
     %tr
-      %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
-      %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
-      %th= sort_link(@search, :proper_id, 'Proper', default_order: :desc)
-      %th= sort_link(@search, :name, 'Name', default_order: :desc)
-      %th{:colspan =>"2"}
-        結果リンク
+      %th= sort_link(@search, :proper_id, 'ID', default_order: :desc)
+      %th= sort_link(@search, :name, '固有名詞', default_order: :desc)
   %tbody
     - @proper_names.each do |proper_name|
       %tr
-        %td= proper_name.result_no
-        %td= proper_name.p_name.name.html_safe + "(" + sprintf("%d",proper_name.e_no) + ")"
         %td= proper_name.proper_id
         %td= proper_name.name
-        %td= character_link(proper_name.e_no)
-        %td= character_old_link(@last_result, proper_name.e_no, proper_name.result_no, proper_name.generate_no)
 = paginate(@proper_names)
