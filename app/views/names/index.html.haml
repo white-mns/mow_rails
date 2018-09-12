@@ -16,49 +16,41 @@
         %br
         ANDとORを組み合わせた時は、ANDで区切った後にORで区切るという順番になります。
       %p
-        %span#example_open.example_select.pointer{:onclick => "example_open(true)"}
-          入力例（クリックで開きます）
+        %span.example_select.example_toggle.pointer
+          入力例
+          %span.act_desc（クリックで開きます）
+          %span.act_desc.closed（クリックで閉じます）
+      #example{:style => "display:none;"}
+        %p.formNum
+          数値入力で「100/105/110」と入力　→ 入力した項目の数値が100、105、110の結果がヒット
           %br
-        %span#example_close.example_select.pointer{:style => "display:none;", :onclick => "example_open(false)"}
-          入力例（クリックで閉じます）
+          「100~」で100以上、「~100」で100以下、「-200~100」で-200～-100の範囲指定となります。
+        %p.formText
+          「粒子」と入力　→　粒子ブレードA、粒子スピアA、粒子爆雷A……が検索結果にヒット
           %br
-        #example{:style => "display:none;"}
-          %p.formNum
-            数値入力で「100/105/110」と入力　→ 入力した項目の数値が100、105、110の結果がヒット
-            %br
-            「100~」で100以上、「~100」で100以下、「-200~100」で-200～-100の範囲指定となります。
-          %p.formText
-            「粒子」と入力　→　粒子ブレードA、粒子スピアA、粒子爆雷A……が検索結果にヒット
-            %br
-            「"粒子"」　→　完全一致で「粒子」のみ検索結果にヒット
-            %br
-            「-粒子」　→　「粒子」の単語を含まない目的が検索結果にヒット
-            %br
-            「-"粒子"」　→　完全一致で「粒子」以外が検索結果にヒット
-            %br
-            「粒子 ブレード」　→　「粒子」と「ブレード」の2つの単語が含まれるものが検索結果にヒット
-            %br
-            「粒子/ブレード」　→　「粒子」か「ブレード」のどちらかの単語が含まれるものが検索結果にヒット
-            %br
-            「粒子 ブレード/スピア」　→　「粒子」が含まれ、さらに 「ブレード」か「スピア」 が含まれるものが検索結果にヒット
-            %br
-            「-粒子 -ブレード」　→　「粒子」もしくは「ブレード」という単語が含まれるものを検索結果から除外
+          「"粒子"」　→　完全一致で「粒子」のみ検索結果にヒット
+          %br
+          「-粒子」　→　「粒子」の単語を含まない目的が検索結果にヒット
+          %br
+          「-"粒子"」　→　完全一致で「粒子」以外が検索結果にヒット
+          %br
+          「粒子 ブレード」　→　「粒子」と「ブレード」の2つの単語が含まれるものが検索結果にヒット
+          %br
+          「粒子/ブレード」　→　「粒子」か「ブレード」のどちらかの単語が含まれるものが検索結果にヒット
+          %br
+          「粒子 ブレード/スピア」　→　「粒子」が含まれ、さらに 「ブレード」か「スピア」 が含まれるものが検索結果にヒット
+          %br
+          「-粒子 -ブレード」　→　「粒子」もしくは「ブレード」という単語が含まれるものを検索結果から除外
       = search_form_for @search do |f|
-        %table#search_close.table.table-striped.table-bordered.table-hover{:style => "display:none;", :onclick=>"search_open(true);"}
-          %tbody
-          %tr
-            %td{:colspan => "2", :style => "cursor:pointer;"}
-              絞り込み検索
-              %span{:style => "font-size:80%"}
-                (クリックで開きます)
-
-        %table#search_table.table.table-striped.table-bordered.table-hover
+        %table.search_toggle.table.table-striped.table-bordered.table-hover
           %tbody
             %tr
-              %td{:colspan => "2", :style => "cursor:pointer;", :onclick => "search_open(false);"}
+              %td{:colspan => "4"}
                 絞り込み検索
-                %span{:style => "font-size:80%"}
-                  (クリックで閉じます)
+                %span.act_desc (クリックで閉じます)
+                %span.act_desc.closed (クリックで開きます)
+          %tbody
+            %tr
             %tr
               %td= f.label :result_no_form, '更新回'
               %td.formNum= text_field_tag :result_no_form, @result_no_form
