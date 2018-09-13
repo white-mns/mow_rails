@@ -1,4 +1,4 @@
-%h1 Listing specs
+%h1 機体データ一覧
 
 %p.formNum 
   テキストフォームの隣に赤い破線がある項目は数値検索です。
@@ -54,74 +54,56 @@
       %tr
         %td= f.label :e_no_form, 'Eno'
         %td.formNum= text_field_tag :e_no_form, @e_no_form
-      %tr
         %td= f.label :p_name_form, 'キャラクター名'
         %td.formText= text_field_tag :p_name_form, @p_name_form
       %tr
-        %td= f.label :result_no_form, 'Result no'
-        %td.formNum= text_field_tag :result_no_form, @result_no_form
+        %td= f.label :ap_form, 'AP'
+        %td.formNum{:colspan => "3"}= text_field_tag :ap_form, @ap_form
       %tr
-        %td= f.label :generate_no_form, 'Generate no'
-        %td.formNum= text_field_tag :generate_no_form, @generate_no_form
-      %tr
-        %td= f.label :e_no_form, 'E no'
-        %td.formNum= text_field_tag :e_no_form, @e_no_form
-      %tr
-        %td= f.label :ap_form, 'Ap'
-        %td.formNum= text_field_tag :ap_form, @ap_form
-      %tr
-        %td= f.label :en_form, 'En'
+        %td= f.label :en_form, 'EN'
         %td.formNum= text_field_tag :en_form, @en_form
-      %tr
-        %td= f.label :en_recovery_form, 'En recovery'
+        %td= f.label :en_recovery_form, 'En回復量'
         %td.formNum= text_field_tag :en_recovery_form, @en_recovery_form
       %tr
-        %td= f.label :movement_form, 'Movement'
+        %td= f.label :movement_form, '機動力'
         %td.formNum= text_field_tag :movement_form, @movement_form
-      %tr
-        %td= f.label :weight_form, 'Weight'
+        %td= f.label :weight_form, '総重量'
         %td.formNum= text_field_tag :weight_form, @weight_form
       %tr
-        %td= f.label :turning_speed_form, 'Turning speed'
+        %td= f.label :turning_speed_form, '旋回速度'
         %td.formNum= text_field_tag :turning_speed_form, @turning_speed_form
-      %tr
-        %td= f.label :jump_form, 'Jump'
+        %td= f.label :jump_form, '跳躍力'
         %td.formNum= text_field_tag :jump_form, @jump_form
       %tr
-        %td= f.label :max_power_form, 'Max power'
-        %td.formNum= text_field_tag :max_power_form, @max_power_form
+        %td= f.label :max_power_form, '最大火力'
+        %td.formNum{:colspan => "3"}= text_field_tag :max_power_form, @max_power_form
       %tr
-        %td= f.label :search_form, 'Search'
+        %td= f.label :search_form, '索敵範囲'
         %td.formNum= text_field_tag :search_form, @search_form
-      %tr
-        %td= f.label :precision_form, 'Precision'
+        %td= f.label :precision_form, '命中精度'
         %td.formNum= text_field_tag :precision_form, @precision_form
       %tr
-        %td= f.label :punding_form, 'Punding'
+        %td= f.label :punding_form, '貯水量'
         %td.formNum= text_field_tag :punding_form, @punding_form
-      %tr
-        %td= f.label :aerosol_form, 'Aerosol'
+        %td= f.label :aerosol_form, '噴霧量'
         %td.formNum= text_field_tag :aerosol_form, @aerosol_form
       %tr
-        %td= f.label :pysics_form, 'Pysics'
+        %td= f.label :pysics_form, '物理防御'
         %td.formNum= text_field_tag :pysics_form, @pysics_form
-      %tr
-        %td= f.label :spirit_form, 'Spirit'
+        %td= f.label :spirit_form, '霊障防御'
         %td.formNum= text_field_tag :spirit_form, @spirit_form
       %tr
-        %td= f.label :particle_form, 'Particle'
+        %td= f.label :particle_form, '粒子防御'
         %td.formNum= text_field_tag :particle_form, @particle_form
-      %tr
-        %td= f.label :flame_form, 'Flame'
+        %td= f.label :flame_form, '火炎防御'
         %td.formNum= text_field_tag :flame_form, @flame_form
       %tr
-        %td= f.label :electric_form, 'Electric'
-        %td.formNum= text_field_tag :electric_form, @electric_form
+        %td= f.label :electric_form, '電子防御'
+        %td.formNum{:colspan => "3"}= text_field_tag :electric_form, @electric_form
       %tr
-        %td= f.label :loading_form, 'Loading'
+        %td= f.label :loading_form, '積載量'
         %td.formNum= text_field_tag :loading_form, @loading_form
-      %tr
-        %td= f.label :max_loading_form, 'Max loading'
+        %td= f.label :max_loading_form, '最大積載量'
         %td.formNum= text_field_tag :max_loading_form, @max_loading_form
       %tr
         %td= hidden_field_tag :is_form, 1
@@ -139,28 +121,25 @@
     %tr
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
-      %th= sort_link(@search, :result_no, 'Result no', default_order: :desc)
-      %th= sort_link(@search, :generate_no, 'Generate no', default_order: :desc)
-      %th= sort_link(@search, :e_no, 'E no', default_order: :desc)
-      %th= sort_link(@search, :ap, 'Ap', default_order: :desc)
-      %th= sort_link(@search, :en, 'En', default_order: :desc)
-      %th= sort_link(@search, :en_recovery, 'En recovery', default_order: :desc)
-      %th= sort_link(@search, :movement, 'Movement', default_order: :desc)
-      %th= sort_link(@search, :weight, 'Weight', default_order: :desc)
-      %th= sort_link(@search, :turning_speed, 'Turning speed', default_order: :desc)
-      %th= sort_link(@search, :jump, 'Jump', default_order: :desc)
-      %th= sort_link(@search, :max_power, 'Max power', default_order: :desc)
-      %th= sort_link(@search, :search, 'Search', default_order: :desc)
-      %th= sort_link(@search, :precision, 'Precision', default_order: :desc)
-      %th= sort_link(@search, :punding, 'Punding', default_order: :desc)
-      %th= sort_link(@search, :aerosol, 'Aerosol', default_order: :desc)
-      %th= sort_link(@search, :pysics, 'Pysics', default_order: :desc)
-      %th= sort_link(@search, :spirit, 'Spirit', default_order: :desc)
-      %th= sort_link(@search, :particle, 'Particle', default_order: :desc)
-      %th= sort_link(@search, :flame, 'Flame', default_order: :desc)
-      %th= sort_link(@search, :electric, 'Electric', default_order: :desc)
-      %th= sort_link(@search, :loading, 'Loading', default_order: :desc)
-      %th= sort_link(@search, :max_loading, 'Max loading', default_order: :desc)
+      %th= sort_link(@search, :ap, 'AP', default_order: :desc)
+      %th= sort_link(@search, :en, 'EN', default_order: :desc)
+      %th= sort_link(@search, :en_recovery, 'EN回復', default_order: :desc)
+      %th= sort_link(@search, :movement, '機動', default_order: :desc)
+      %th= sort_link(@search, :weight, '総重量', default_order: :desc)
+      %th= sort_link(@search, :turning_speed, '旋回', default_order: :desc)
+      %th= sort_link(@search, :jump, '跳躍', default_order: :desc)
+      %th= sort_link(@search, :max_power, '最大火力', default_order: :desc)
+      %th= sort_link(@search, :search, '索敵', default_order: :desc)
+      %th= sort_link(@search, :precision, '命中', default_order: :desc)
+      %th= sort_link(@search, :punding, '貯水', default_order: :desc)
+      %th= sort_link(@search, :aerosol, '噴霧', default_order: :desc)
+      %th= sort_link(@search, :pysics, '物理', default_order: :desc)
+      %th= sort_link(@search, :spirit, '霊障', default_order: :desc)
+      %th= sort_link(@search, :particle, '粒子', default_order: :desc)
+      %th= sort_link(@search, :flame, '火炎', default_order: :desc)
+      %th= sort_link(@search, :electric, '電子', default_order: :desc)
+      %th= sort_link(@search, :loading, '積載', default_order: :desc)
+      %th= sort_link(@search, :max_loading, '最大積載', default_order: :desc)
       %th{:colspan =>"2"}
         結果リンク
   %tbody
@@ -168,9 +147,6 @@
       %tr
         %td= spec.result_no
         %td= spec.p_name.name.html_safe + "(" + sprintf("%d",spec.e_no) + ")"
-        %td= spec.result_no
-        %td= spec.generate_no
-        %td= spec.e_no
         %td= spec.ap
         %td= spec.en
         %td= spec.en_recovery
