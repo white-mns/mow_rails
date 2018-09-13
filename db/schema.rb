@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_13_003130) do
+ActiveRecord::Schema.define(version: 2018_09_13_010608) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "result_no"
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 2018_09_13_003130) do
     t.integer "control"
     t.integer "preparation"
     t.integer "fitly"
-    t.integer "type"
+    t.integer "type_id"
     t.integer "equip"
     t.integer "fuka_1"
     t.integer "fuka_2"
@@ -150,7 +150,7 @@ ActiveRecord::Schema.define(version: 2018_09_13_003130) do
     t.index ["strength"], name: "index_markets_on_strength"
     t.index ["struggle"], name: "index_markets_on_struggle"
     t.index ["turning_speed"], name: "index_markets_on_turning_speed"
-    t.index ["type"], name: "index_markets_on_type"
+    t.index ["type_id"], name: "index_markets_on_type_id"
     t.index ["unique_1"], name: "index_markets_on_unique_1"
     t.index ["unique_2"], name: "index_markets_on_unique_2"
     t.index ["value"], name: "index_markets_on_value"
