@@ -99,11 +99,10 @@ class ItemsController < ApplicationController
     @show_detail_2 = params["show_detail_2"]
     @show_detail_3 = params["show_detail_3"]
     @show_detail_4 = params["show_detail_4"]
-    @base_first    = "0"
+    @base_first    = (!params["is_form"]) ? "1" : "0"
 
     if !params["is_form"] then
         @show_detail_1 = "1"
-        @base_first    = "1"
     end
   end
   # GET /items/1

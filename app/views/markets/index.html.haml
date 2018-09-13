@@ -42,7 +42,7 @@
   %table.search_toggle.table.table-striped.table-bordered.table-hover
     %tbody
       %tr
-        %td{:colspan => "4"}
+        %td{colspan: "4"}
           絞り込み検索
           %span.act_desc (クリックで閉じます)
           %span.act_desc.closed (クリックで開きます)
@@ -50,7 +50,7 @@
       %tr
       %tr
         %td= f.label :result_no_form, '更新回'
-        %td.formNum{:colspan => "3"}= text_field_tag :result_no_form, @result_no_form
+        %td.formNum{colspan: "3"}= text_field_tag :result_no_form, @result_no_form
       %tr
         %td= f.label :e_no_form, 'Eno'
         %td.formNum= text_field_tag :e_no_form, @e_no_form
@@ -59,105 +59,124 @@
       %tr
         %td= f.label :market_no_form, 'マーケット番号'
         %td.formNum= text_field_tag :market_no_form, @market_no_form
-      %tr
         %td= f.label :name_form, 'パーツ名'
         %td.formNum= text_field_tag :name_form, @name_form
+    %tbody.tbody_toggle
+      %tr
+        %td
+        %td{colspan: "3"}
+          = hidden_field_tag :base_first, @base_first
+          = hidden_field_tag :show_detail_1, @show_detail_1
+          = label_tag :show_detail_1, '基礎情報を表示する', class: "act_desc"
+          = label_tag :show_detail_1, '基礎情報を非表示にする', class: "act_desc closed"
+          %div.act_desc 種別、パーツ種別詳細、付加A、付加B、強度
+    %tbody
       %tr
         %td= f.label :kind_form, '種別'
         %td.formNum= text_field_tag :kind_form, @kind_form
-      %tr
         %td= f.label :orig_name_form, 'パーツ種別詳細'
         %td.formNum= text_field_tag :orig_name_form, @orig_name_form
       %tr
-        %td= f.label :unique_1_form, '特殊1'
-        %td.formNum= text_field_tag :unique_1_form, @unique_1_form
+        %td= f.label :fuka_1_form, '付加A'
+        %td.formText= text_field_tag :fuka_1_form, @fuka_1_form
+        %td= f.label :fuka_2_form, '付加B'
+        %td.formText= text_field_tag :fuka_2_form, @fuka_2_form
       %tr
-        %td= f.label :unique_1_form, '特殊2'
-        %td.formNum= text_field_tag :unique_2_form, @unique_2_form
+        %td= f.label :strength_form, '強度'
+        %td.formNum{colspan: "3"}= text_field_tag :strength_form, @strength_form
+    %tbody.tbody_toggle
+      %tr
+        %td
+        %td{colspan: "3"}
+          = hidden_field_tag :show_detail_2, @show_detail_2
+          = label_tag :show_detail_1, '詳細その1を表示する', class: "act_desc"
+          = label_tag :show_detail_1, '詳細その1を非表示にする', class: "act_desc closed"
+          %div.act_desc AP、消費EN、特殊1、特殊2、旋回速度、防御属性、防御値、金額、弾薬費、重量
+    %tbody.closed
       %tr
         %td= f.label :ap_form, 'AP'
         %td.formNum= text_field_tag :ap_form, @ap_form
-      %tr
         %td= f.label :spending_en_form, '消費EN'
         %td.formNum= text_field_tag :spending_en_form, @spending_en_form
       %tr
+        %td= f.label :unique_1_form, '特殊1'
+        %td.formNum= text_field_tag :unique_1_form, @unique_1_form
+        %td= f.label :unique_1_form, '特殊2'
+        %td.formNum= text_field_tag :unique_2_form, @unique_2_form
+      %tr
+        %td= f.label :turning_speed_form, '旋回速度'
+        %td.formNum{colspan: "3"}= text_field_tag :turning_speed_form, @turning_speed_form
+      %tr
+        %td= f.label :guard_elemental_form, '防御属性'
+        %td.formText= text_field_tag :guard_elemental_form, @guard_elemental_form
+        %td= f.label :guard_value_form, '防御値'
+        %td.formNum= text_field_tag :guard_value_form, @guard_value_form
+      %tr
         %td= f.label :value_form, '金額'
         %td.formNum= text_field_tag :value_form, @value_form
-      %tr
         %td= f.label :ammunition_cost_form, '弾薬費'
         %td.formNum= text_field_tag :ammunition_cost_form, @ammunition_cost_form
       %tr
         %td= f.label :weight_form, '重量'
-        %td.formNum= text_field_tag :weight_form, @weight_form
+        %td.formNum{colspan: "3"}= text_field_tag :weight_form, @weight_form
+    %tbody.tbody_toggle
       %tr
-        %td= f.label :turning_speed_form, '旋回速度'
-        %td.formNum= text_field_tag :turning_speed_form, @turning_speed_form
-      %tr
-        %td= f.label :guard_elemental_form, '防御属性'
-        %td.formText= text_field_tag :guard_elemental_form, @guard_elemental_form
-      %tr
-        %td= f.label :guard_value_form, '防御値'
-        %td.formNum= text_field_tag :guard_value_form, @guard_value_form
+        %td
+        %td{colspan: "3"}
+          = hidden_field_tag :show_detail_3, @show_detail_3
+          = label_tag :show_detail_1, '詳細その2を表示する', class: "act_desc"
+          = label_tag :show_detail_1, '詳細その2を非表示にする', class: "act_desc closed"
+          %div.act_desc 精度、貯水量、噴霧量、弾数、積載量、武器属性、異常追加
+    %tbody.closed
       %tr
         %td= f.label :precision_form, '精度'
-        %td.formNum= text_field_tag :precision_form, @precision_form
+        %td.formNum{colspan: "3"}= text_field_tag :precision_form, @precision_form
       %tr
         %td= f.label :punding_form, '貯水量'
         %td.formNum= text_field_tag :punding_form, @punding_form
-      %tr
         %td= f.label :aerosol_form, '噴霧量'
         %td.formNum= text_field_tag :aerosol_form, @aerosol_form
       %tr
         %td= f.label :bullet_form, '弾数'
-        %td.formNum= text_field_tag :bullet_form, @bullet_form
+        %td.formNum{colspan: "3"}= text_field_tag :bullet_form, @bullet_form
       %tr
         %td= f.label :loading_form, '積載量'
-        %td.formNum= text_field_tag :loading_form, @loading_form
+        %td.formNum{colspan: "3"}= text_field_tag :loading_form, @loading_form
       %tr
         %td= f.label :weapon_element_form, '武器属性'
         %td.formText= text_field_tag :weapon_element_form, @weapon_element_form
-      %tr
         %td= f.label :add_abnormity_form, '異常追加'
         %td.formNum= text_field_tag :add_abnormity_form, @add_abnormity_form
       %tr
-        %td= f.label :strength_form, '強度'
-        %td.formNum= text_field_tag :strength_form, @strength_form
+        %td= f.label :charge_form, '資金投入'
+        %td.formNum{colspan: "3"}= text_field_tag :charge_form, @charge_form
+    %tbody.tbody_toggle
+      %tr
+        %td
+        %td{colspan: "3"}
+          = hidden_field_tag :show_detail_4, @show_detail_4
+          = label_tag :show_detail_1, '作成時ステータスを表示する', class: "act_desc"
+          = label_tag :show_detail_1, '作成時ステータスを非表示にする', class: "act_desc closed"
+    %tbody.closed
       %tr
         %td= f.label :gunshot_form, '射撃'
         %td.formNum= text_field_tag :gunshot_form, @gunshot_form
-      %tr
         %td= f.label :struggle_form, '格闘'
         %td.formNum= text_field_tag :struggle_form, @struggle_form
       %tr
         %td= f.label :reaction_form, '反応'
         %td.formNum= text_field_tag :reaction_form, @reaction_form
-      %tr
         %td= f.label :control_form, '制御'
         %td.formNum= text_field_tag :control_form, @control_form
       %tr
         %td= f.label :preparation_form, '整備'
         %td.formNum= text_field_tag :preparation_form, @preparation_form
-      %tr
         %td= f.label :fitly_form, '適性'
         %td.formNum= text_field_tag :fitly_form, @fitly_form
-      %tr
-        %td= f.label :type_form, 'タイプ'
-        %td.formNum= text_field_tag :type_form, @type_form
-      %tr
-        %td= f.label :equip_form, '装備'
-        %td.formNum= text_field_tag :equip_form, @equip_form
-      %tr
-        %td= f.label :fuka_1_form, '付加A'
-        %td.formText= text_field_tag :fuka_1_form, @fuka_1_form
-      %tr
-        %td= f.label :fuka_2_form, '付加B'
-        %td.formText= text_field_tag :fuka_2_form, @fuka_2_form
-      %tr
-        %td= f.label :charge_form, '資金投入'
-        %td.formNum= text_field_tag :charge_form, @charge_form
+    %tbody
       %tr
         %td= hidden_field_tag :is_form, 1
-        %td{:colspan => "3"}= f.submit '検索する'
+        %td{colspan: "3"}= f.submit '検索する'
 
 
 = paginate(@markets)
@@ -173,38 +192,40 @@
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
       %th= sort_link(@search, :market_no, 'No', default_order: :desc)
       %th= sort_link(@search, :name, 'パーツ名', default_order: :desc)
-      %th= sort_link(@search, :kind, '種別', default_order: :desc)
-      %th= sort_link(@search, :orig_name, '詳細', default_order: :desc)
-      %th= sort_link(@search, :unique_1, '特殊1', default_order: :desc)
-      %th= sort_link(@search, :unique_2, '特殊2', default_order: :desc)
-      %th= sort_link(@search, :ap, 'AP', default_order: :desc)
-      %th= sort_link(@search, :spending_en, '消費EN', default_order: :desc)
-      %th= sort_link(@search, :value, '金額', default_order: :desc)
-      %th= sort_link(@search, :ammunition_cost, '弾薬費', default_order: :desc)
-      %th= sort_link(@search, :weight, '重量', default_order: :desc)
-      %th= sort_link(@search, :turning_speed, '旋回', default_order: :desc)
-      %th= sort_link(@search, :guard_elemental, '防御属性', default_order: :desc)
-      %th= sort_link(@search, :guard_value, '防御値', default_order: :desc)
-      %th= sort_link(@search, :precision, '精度', default_order: :desc)
-      %th= sort_link(@search, :punding, '貯水', default_order: :desc)
-      %th= sort_link(@search, :aerosol, '噴霧', default_order: :desc)
-      %th= sort_link(@search, :bullet, '弾数', default_order: :desc)
-      %th= sort_link(@search, :loading, '積載', default_order: :desc)
-      %th= sort_link(@search, :weapon_element, '武器属性', default_order: :desc)
-      %th= sort_link(@search, :add_abnormity, '異常追加', default_order: :desc)
-      %th= sort_link(@search, :strength, '強度', default_order: :desc)
-      %th= sort_link(@search, :gunshot, '射撃', default_order: :desc)
-      %th= sort_link(@search, :struggle, '格闘', default_order: :desc)
-      %th= sort_link(@search, :reaction, '反応', default_order: :desc)
-      %th= sort_link(@search, :control, '制御', default_order: :desc)
-      %th= sort_link(@search, :preparation, '整備', default_order: :desc)
-      %th= sort_link(@search, :fitly, '適性', default_order: :desc)
-      %th= sort_link(@search, :type, 'タイプ', default_order: :desc)
-      %th= sort_link(@search, :equip, '装備', default_order: :desc)
-      %th= sort_link(@search, :fuka_1, '付加A', default_order: :desc)
-      %th= sort_link(@search, :fuka_2, '付加B', default_order: :desc)
-      %th= sort_link(@search, :charge, '資産投入', default_order: :desc)
-      %th{:colspan =>"2"}
+      - if @show_detail_1 == "1"
+        %th= sort_link(@search, :kind, '種別', default_order: :desc)
+        %th= sort_link(@search, :orig_name, '詳細', default_order: :desc)
+        %th= sort_link(@search, :fuka_1, '付加A', default_order: :desc)
+        %th= sort_link(@search, :fuka_2, '付加B', default_order: :desc)
+        %th= sort_link(@search, :strength, '強度', default_order: :desc)
+      - if @show_detail_2 == "1"
+        %th= sort_link(@search, :ap, 'AP', default_order: :desc)
+        %th= sort_link(@search, :spending_en, '消費EN', default_order: :desc)
+        %th= sort_link(@search, :unique_1, '特殊1', default_order: :desc)
+        %th= sort_link(@search, :unique_2, '特殊2', default_order: :desc)
+        %th= sort_link(@search, :turning_speed, '旋回', default_order: :desc)
+        %th= sort_link(@search, :guard_elemental, '防御属性', default_order: :desc)
+        %th= sort_link(@search, :guard_value, '防御値', default_order: :desc)
+        %th= sort_link(@search, :value, '金額', default_order: :desc)
+        %th= sort_link(@search, :ammunition_cost, '弾薬費', default_order: :desc)
+        %th= sort_link(@search, :weight, '重量', default_order: :desc)
+      - if @show_detail_3 == "1"
+        %th= sort_link(@search, :precision, '精度', default_order: :desc)
+        %th= sort_link(@search, :punding, '貯水', default_order: :desc)
+        %th= sort_link(@search, :aerosol, '噴霧', default_order: :desc)
+        %th= sort_link(@search, :bullet, '弾数', default_order: :desc)
+        %th= sort_link(@search, :loading, '積載', default_order: :desc)
+        %th= sort_link(@search, :weapon_element, '武器属性', default_order: :desc)
+        %th= sort_link(@search, :add_abnormity, '異常追加', default_order: :desc)
+        %th= sort_link(@search, :charge, '資産投入', default_order: :desc)
+      - if @show_detail_4 == "1"
+        %th= sort_link(@search, :gunshot, '射撃', default_order: :desc)
+        %th= sort_link(@search, :struggle, '格闘', default_order: :desc)
+        %th= sort_link(@search, :reaction, '反応', default_order: :desc)
+        %th= sort_link(@search, :control, '制御', default_order: :desc)
+        %th= sort_link(@search, :preparation, '整備', default_order: :desc)
+        %th= sort_link(@search, :fitly, '適性', default_order: :desc)
+      %th{colspan:"2"}
         結果リンク
   %tbody
     - @markets.each do |market|
@@ -213,37 +234,39 @@
         %td= market.p_name.name.html_safe + "(" + sprintf("%d",market.e_no) + ")" if market.e_no > 0
         %td= market.market_no
         %td= market.name
-        %td= market.kind_name.name if market.kind
-        %td= market.orig_name_name.name if market.orig_name_name
-        %td= market.unique_1
-        %td= market.unique_2
-        %td= market.ap
-        %td= market.spending_en
-        %td= market.value
-        %td= market.ammunition_cost
-        %td= market.weight
-        %td= market.turning_speed
-        %td= market.guard_elemental_name.name if market.guard_elemental_name
-        %td= market.guard_value
-        %td= market.precision
-        %td= market.punding
-        %td= market.aerosol
-        %td= market.bullet
-        %td= market.loading
-        %td= market.weapon_element_name.name if market.weapon_element_name
-        %td= market.add_abnormity
-        %td= market.strength
-        %td= market.gunshot
-        %td= market.struggle
-        %td= market.reaction
-        %td= market.control
-        %td= market.preparation
-        %td= market.fitly
-        %td= market.type_id
-        %td= market.equip
-        %td= market.fuka_1_name.name if market.fuka_1_name
-        %td= market.fuka_2_name.name if market.fuka_2_name
-        %td= market.charge
+        - if @show_detail_1 == "1"
+          %td= market.kind_name.name if market.kind
+          %td= market.orig_name_name.name if market.orig_name_name
+          %td= market.fuka_1_name.name if market.fuka_1_name
+          %td= market.fuka_2_name.name if market.fuka_2_name
+          %td= market.strength
+        - if @show_detail_2 == "1"
+          %td= market.ap
+          %td= market.spending_en
+          %td= market.unique_1
+          %td= market.unique_2
+          %td= market.turning_speed
+          %td= market.guard_elemental_name.name if market.guard_elemental_name
+          %td= market.guard_value
+          %td= market.value
+          %td= market.ammunition_cost
+          %td= market.weight
+        - if @show_detail_3 == "1"
+          %td= market.precision
+          %td= market.punding
+          %td= market.aerosol
+          %td= market.bullet
+          %td= market.loading
+          %td= market.weapon_element_name.name if market.weapon_element_name
+          %td= market.add_abnormity
+          %td= market.charge
+        - if @show_detail_4 == "1"
+          %td= market.gunshot
+          %td= market.struggle
+          %td= market.reaction
+          %td= market.control
+          %td= market.preparation
+          %td= market.fitly
         %td= character_link(market.e_no) if market.e_no > 0
         %td= character_old_link(@last_result, market.e_no, market.result_no, market.generate_no) if market.e_no > 0
 = paginate(@markets)

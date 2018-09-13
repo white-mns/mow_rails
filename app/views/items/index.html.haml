@@ -90,9 +90,9 @@
         %td
         %td{:colspan => "3"}
           = hidden_field_tag :show_detail_2, @show_detail_2
-          = label_tag :show_detail_1, 'アイテム詳細その1を表示する', class: "act_desc"
-          = label_tag :show_detail_1, 'アイテム詳細その1を非表示にする', class: "act_desc closed"
-          %div.act_desc AP、消費EN、特殊1、特殊2、旋回速度、金額、弾薬費、重量
+          = label_tag :show_detail_1, '詳細その1を表示する', class: "act_desc"
+          = label_tag :show_detail_1, '詳細その1を非表示にする', class: "act_desc closed"
+          %div.act_desc AP、消費EN、特殊1、特殊2、旋回速度、防御属性、防御値、金額、弾薬費、重量
     %tbody.closed
       %tr
         %td= f.label :ap_form, 'AP'
@@ -125,9 +125,9 @@
         %td
         %td{:colspan => "3"}
           = hidden_field_tag :show_detail_3, @show_detail_3
-          = label_tag :show_detail_1, 'アイテム詳細その2を表示する', class: "act_desc"
-          = label_tag :show_detail_1, 'アイテム詳細その2を非表示にする', class: "act_desc closed"
-          %div.act_desc 防御属性、防御値、精度、貯水量、噴霧量、弾数、積載量、武器属性、異常追加
+          = label_tag :show_detail_1, '詳細その2を表示する', class: "act_desc"
+          = label_tag :show_detail_1, '詳細その2を非表示にする', class: "act_desc closed"
+          %div.act_desc 精度、貯水量、噴霧量、弾数、積載量、武器属性、異常追加
     %tbody.closed
       %tr
         %td= f.label :precision_form, '精度'
