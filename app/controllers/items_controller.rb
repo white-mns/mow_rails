@@ -100,7 +100,6 @@ class ItemsController < ApplicationController
     @show_detail_3 = params["show_detail_3"]
     @show_detail_4 = params["show_detail_4"]
     @base_first    = (!params["is_form"]) ? "1" : "0"
-
   end
   # GET /items/1
   #def show

@@ -68,6 +68,13 @@ class SpecsController < ApplicationController
     @loading_form = params["loading_form"]
     @max_loading_form = params["max_loading_form"]
     @condition_text_form = params["condition_text_form"]
+
+    @show_detail_1 = (!params["is_form"]) ? "1" : params["show_detail_1"]
+    @show_detail_2 = (!params["is_form"]) ? "1" : params["show_detail_2"]
+    @show_detail_3 = params["show_detail_3"]
+    @show_detail_4 = params["show_detail_4"]
+    @show_detail_5 = params["show_detail_5"]
+    @base_first    = (!params["is_form"]) ? "1" : "0"
   end
   # GET /specs/1
   #def show
