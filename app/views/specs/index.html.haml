@@ -180,8 +180,8 @@
         %th= sort_link(@search, :loading, '積載', default_order: :desc)
         %th= sort_link(@search, :max_loading, '最大積載', default_order: :desc)
       - if @show_detail_3 == "1"
-        %th{style: "border-bottom: 0.3em solid #444;"}= sort_link(@search, :pysics, '物理', default_order: :desc)
-        %th{style: "border-bottom: 0.3em solid #ccc;"}= sort_link(@search, :spirit, '霊障', default_order: :desc)
+        %th{style: "border-bottom: 0.3em solid #ccc;"}= sort_link(@search, :pysics, '物理', default_order: :desc)
+        %th{style: "border-bottom: 0.3em solid #c4c;"}= sort_link(@search, :spirit, '霊障', default_order: :desc)
         %th{style: "border-bottom: 0.3em solid #4cc;"}= sort_link(@search, :particle, '粒子', default_order: :desc)
         %th{style: "border-bottom: 0.3em solid #c44;"}= sort_link(@search, :flame, '火炎', default_order: :desc)
         %th{style: "border-bottom: 0.3em solid #ee8;"}= sort_link(@search, :electric, '電子', default_order: :desc)

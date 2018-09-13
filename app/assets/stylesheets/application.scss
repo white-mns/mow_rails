@@ -13,26 +13,44 @@
  */
 
 
-$navbar-default-bg: #f8f8f8;
-$navbar-default-link-color: #222;
-$navbar-default-link-hover-color: #222;
-$navbar-default-link-hover-bg: #ccc;
-$navbar-default-brand-hover-color: #222;
-$navbar-default-toggle-icon-bar-bg: #222;
-$navbar-default-toggle-border-color:       transparent !default;
-$well-bg: #fcfcfc;
+$navbar-default-bg: #444;
+$navbar-default-link-hover-color: #4cf;
+$link-color: #6df;
+$navbar-default-link-hover-bg: #555;
+$navbar-default-toggle-border-color: transparent;
+$table-border-color:            #888 ;
+
+// Cyborgテーマからページネーションのカラーリングをコピー
+$gray-darker: #222 ;
+$gray-dark:   #282828 ;
+$gray-light:  #888 ;
+$pagination-color:           #fff;
+$pagination-bg:              $gray-darker;
+$pagination-border:          $gray-dark;
+
+$pagination-hover-color:     #fff;
+$pagination-hover-bg:        #2A9FD6;
+$pagination-hover-border:    transparent;
+
+$pagination-active-color:    #fff;
+$pagination-active-bg:       #2A9FD6;
+$pagination-active-border:   transparent;
+
+$pagination-disabled-color:  $gray-light;
+$pagination-disabled-bg:     $gray-darker;
+$pagination-disabled-border: $gray-dark;
 
 @import "bootstrap-sprockets";
+@import "bootswatch/darkly/variables";
 @import "bootstrap";
 
-@import "bootswatch/flatly/variables";
 
 body { padding-top: 60px; }
 
-@import "bootswatch/flatly/bootswatch";
+@import "bootswatch/darkly/bootswatch";
 
 .navbar-default {
-    border-color: #888;
+    border-color: MediumSeaGreen;
     border-style: none none solid none;
     border-width: 0.3em;
 }
@@ -74,15 +92,23 @@ p.formNum {
 
 .example_select{
     padding-left: 0.5em;
-    border-left: solid #808080;
-    background-color: #f0f0f0;
+    border-left: solid #282;
+    background-color: #ccc;
+    color: #222;
 }
 .pointer{
     cursor:pointer;
 }
 
 table tbody:nth-child(1) span.act_desc{
-    font-size:80%
+    font-size:80%;
+}
+
+table tbody:nth-child(1) td{
+    background-color: #666;
+}
+table tbody.tbody_toggle td{
+    background-color: #666;
 }
 
 .closed{
