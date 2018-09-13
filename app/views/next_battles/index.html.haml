@@ -1,4 +1,4 @@
-%h1 Listing next_battles
+%h1 次回組み合わせ一覧
 
 %p.formNum 
   テキストフォームの隣に赤い破線がある項目は数値検索です。
@@ -58,17 +58,8 @@
         %td= f.label :p_name_form, 'キャラクター名'
         %td.formText= text_field_tag :p_name_form, @p_name_form
       %tr
-        %td= f.label :result_no_form, 'Result no'
-        %td.formNum= text_field_tag :result_no_form, @result_no_form
-      %tr
-        %td= f.label :generate_no_form, 'Generate no'
-        %td.formNum= text_field_tag :generate_no_form, @generate_no_form
-      %tr
-        %td= f.label :block_no_form, 'Block no'
+        %td= f.label :block_no_form, 'ブロック番号'
         %td.formNum= text_field_tag :block_no_form, @block_no_form
-      %tr
-        %td= f.label :e_no_form, 'E no'
-        %td.formNum= text_field_tag :e_no_form, @e_no_form
       %tr
         %td= hidden_field_tag :is_form, 1
         %td{:colspan => "3"}= f.submit '検索する'
@@ -85,10 +76,7 @@
     %tr
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
-      %th= sort_link(@search, :result_no, 'Result no', default_order: :desc)
-      %th= sort_link(@search, :generate_no, 'Generate no', default_order: :desc)
-      %th= sort_link(@search, :block_no, 'Block no', default_order: :desc)
-      %th= sort_link(@search, :e_no, 'E no', default_order: :desc)
+      %th= sort_link(@search, :block_no, 'ブロック', default_order: :desc)
       %th{:colspan =>"2"}
         結果リンク
   %tbody
@@ -96,10 +84,7 @@
       %tr
         %td= next_battle.result_no
         %td= next_battle.p_name.name.html_safe + "(" + sprintf("%d",next_battle.e_no) + ")"
-        %td= next_battle.result_no
-        %td= next_battle.generate_no
         %td= next_battle.block_no
-        %td= next_battle.e_no
         %td= character_link(next_battle.e_no)
         %td= character_old_link(@last_result, next_battle.e_no, next_battle.result_no, next_battle.generate_no)
 = paginate(@next_battles)
