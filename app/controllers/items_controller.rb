@@ -5,8 +5,8 @@ class ItemsController < ApplicationController
   # GET /items
   def index
     param_set
-    @count	= Item.includes(:p_name).search(params[:q]).result.count()
-    @search	= Item.includes(:p_name).page(params[:page]).search(params[:q])
+    @count	= Item.includes(:p_name, :kind_name, :orig_name_name, :weapon_element_name, :fuka_1_name, :fuka_2_name).search(params[:q]).result.count()
+    @search	= Item.includes(:p_name, :kind_name, :orig_name_name, :weapon_element_name, :fuka_1_name, :fuka_2_name).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @items	= @search.result.per(50)
   end
@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
     reference_number_assign(params, "e_no", "e_no_form")
     reference_number_assign(params, "i_no", "i_no_form")
     reference_number_assign(params, "name", "name_form")
-    reference_number_assign(params, "kind", "kind_form")
+    reference_text_assign(params, "kind_name", "kind_form")
     reference_number_assign(params, "unique_1", "unique_1_form")
     reference_number_assign(params, "unique_2", "unique_2_form")
     reference_number_assign(params, "ap", "ap_form")
@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
     reference_number_assign(params, "aerosol", "aerosol_form")
     reference_number_assign(params, "bullet", "bullet_form")
     reference_number_assign(params, "loading", "loading_form")
-    reference_number_assign(params, "weapon_element", "weapon_element_form")
+    reference_text_assign(params, "weapon_element_name", "weapon_element_form")
     reference_number_assign(params, "add_abnormity", "add_abnormity_form")
     reference_number_assign(params, "strength", "strength_form")
     reference_number_assign(params, "gunshot", "gunshot_form")
@@ -51,9 +51,9 @@ class ItemsController < ApplicationController
     reference_number_assign(params, "preparation", "preparation_form")
     reference_number_assign(params, "fitly", "fitly_form")
     reference_number_assign(params, "equip", "equip_form")
-    reference_number_assign(params, "fuka_1", "fuka_1_form")
-    reference_number_assign(params, "fuka_2", "fuka_2_form")
-    reference_number_assign(params, "orig_name", "orig_name_form")
+    reference_text_assign(params, "fuka_1_name_name", "fuka_1_form")
+    reference_text_assign(params, "fuka_2_name_name", "fuka_2_form")
+    reference_text_assign(params, "orig_name_name_name", "orig_name_form")
     reference_number_assign(params, "drunkenness", "drunkenness_form")
     
     @p_name_form = params["p_name_form"]
