@@ -17,7 +17,9 @@ class ItemsController < ApplicationController
     params[:q] ||= {}
     if !params["is_form"] then
         params["result_no_form"] ||= sprintf('%d',@last_result)
+        @show_detail_1 = "1"
     end
+    params[:q]["e_no_not_eq_any"] ||= [0]
     
     reference_text_assign(params, "p_name_name", "p_name_form")
     reference_number_assign(params, "result_no", "result_no_form")
@@ -92,6 +94,17 @@ class ItemsController < ApplicationController
     @fuka_2_form = params["fuka_2_form"]
     @orig_name_form = params["orig_name_form"]
     @drunkenness_form = params["drunkenness_form"]
+
+    @show_detail_1 = params["show_detail_1"]
+    @show_detail_2 = params["show_detail_2"]
+    @show_detail_3 = params["show_detail_3"]
+    @show_detail_4 = params["show_detail_4"]
+    @base_first    = "0"
+
+    if !params["is_form"] then
+        @show_detail_1 = "1"
+        @base_first    = "1"
+    end
   end
   # GET /items/1
   #def show
