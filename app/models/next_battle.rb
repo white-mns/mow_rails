@@ -1,0 +1,2 @@
+class NextBattle < ApplicationRecord
+end

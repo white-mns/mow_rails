@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :next_battles
   resources :rewards
   resources :condition_all_texts
   resources :specs
