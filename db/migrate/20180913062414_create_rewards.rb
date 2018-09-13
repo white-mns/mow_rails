@@ -4,8 +4,8 @@ class CreateRewards < ActiveRecord::Migration[5.2]
       t.integer :result_no
       t.integer :generate_no
       t.integer :e_no
-      t.float :battle_income
-      t.float :add_income
+      t.integer :battle_income
+      t.integer :add_income
       t.float :attack
       t.float :support
       t.float :defense
