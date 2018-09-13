@@ -1,0 +1,2 @@
+class ConditionAllText < ApplicationRecord
+end
