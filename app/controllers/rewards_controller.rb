@@ -66,6 +66,12 @@ class RewardsController < ApplicationController
     @prize_form = params["prize_form"]
     @union_interest_form = params["union_interest_form"]
     @parts_sell_form = params["parts_sell_form"]
+
+    @show_detail_1 = (!params["is_form"]) ? "1" : params["show_detail_1"]
+    @show_detail_2 = params["show_detail_2"]
+    @show_detail_3 = params["show_detail_3"]
+    @show_detail_4 = params["show_detail_4"]
+    @base_first    = (!params["is_form"]) ? "1" : "0"
   end
   # GET /rewards/1
   #def show

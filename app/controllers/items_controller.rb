@@ -95,15 +95,12 @@ class ItemsController < ApplicationController
     @orig_name_form = params["orig_name_form"]
     @drunkenness_form = params["drunkenness_form"]
 
-    @show_detail_1 = params["show_detail_1"]
+    @show_detail_1 = (!params["is_form"]) ? "1" : params["show_detail_1"]
     @show_detail_2 = params["show_detail_2"]
     @show_detail_3 = params["show_detail_3"]
     @show_detail_4 = params["show_detail_4"]
     @base_first    = (!params["is_form"]) ? "1" : "0"
 
-    if !params["is_form"] then
-        @show_detail_1 = "1"
-    end
   end
   # GET /items/1
   #def show
