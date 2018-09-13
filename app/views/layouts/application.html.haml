@@ -25,6 +25,14 @@
                 個人データ
                 %span.caret
               %ul.dropdown-menu{:aria-labelledby => "themes"}
+                %li= link_to "アイテム一覧", items_path
+                %li.divider
+            %li.dropdown
+              %a.dropdown-toggle#themes{ :data => {:toggle =>"dropdown"}, :href => "#"}
+                結果データ
+                %span.caret
+              %ul.dropdown-menu{:aria-labelledby => "themes"}
+                %li= link_to "マーケット一覧", markets_path
                 %li.divider
 
     .container
