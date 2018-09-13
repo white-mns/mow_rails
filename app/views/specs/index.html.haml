@@ -106,6 +106,9 @@
         %td= f.label :max_loading_form, '最大積載量'
         %td.formNum= text_field_tag :max_loading_form, @max_loading_form
       %tr
+        %td= f.label :condition_text_form, '機体状況'
+        %td.formText{:colspan => "3"}= text_field_tag :condition_text_form, @condition_text_form
+      %tr
         %td= hidden_field_tag :is_form, 1
         %td{:colspan => "3"}= f.submit '検索する'
 
@@ -140,6 +143,7 @@
       %th= sort_link(@search, :electric, '電子', default_order: :desc)
       %th= sort_link(@search, :loading, '積載', default_order: :desc)
       %th= sort_link(@search, :max_loading, '最大積載', default_order: :desc)
+      %th= sort_link(@search, :condition_all_text_condition_text, '機体状況', default_order: :desc)
       %th{:colspan =>"2"}
         結果リンク
   %tbody
@@ -166,6 +170,7 @@
         %td= spec.electric
         %td= spec.loading
         %td= spec.max_loading
+        %td= spec.condition_all_text.condition_text if spec.condition_all_text
         %td= character_link(spec.e_no)
         %td= character_old_link(@last_result, spec.e_no, spec.result_no, spec.generate_no)
 = paginate(@specs)

@@ -5,8 +5,8 @@ class SpecsController < ApplicationController
   # GET /specs
   def index
     param_set
-    @count	= Spec.includes(:p_name).search(params[:q]).result.count()
-    @search	= Spec.includes(:p_name).page(params[:page]).search(params[:q])
+    @count	= Spec.includes(:p_name, :condition_all_text).search(params[:q]).result.count()
+    @search	= Spec.includes(:p_name, :condition_all_text).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @specs	= @search.result.per(50)
   end
@@ -42,6 +42,7 @@ class SpecsController < ApplicationController
     reference_number_assign(params, "electric", "electric_form")
     reference_number_assign(params, "loading", "loading_form")
     reference_number_assign(params, "max_loading", "max_loading_form")
+    reference_text_assign(params, "condition_all_text_condition_text", "condition_text_form")
     
     @p_name_form = params["p_name_form"]
     @result_no_form = params["result_no_form"]
@@ -66,6 +67,7 @@ class SpecsController < ApplicationController
     @electric_form = params["electric_form"]
     @loading_form = params["loading_form"]
     @max_loading_form = params["max_loading_form"]
+    @condition_text_form = params["condition_text_form"]
   end
   # GET /specs/1
   #def show
