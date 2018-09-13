@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rewards
   resources :condition_all_texts
   resources :specs
   resources :statuses

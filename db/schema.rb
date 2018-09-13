@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_13_043446) do
+ActiveRecord::Schema.define(version: 2018_09_13_062422) do
 
   create_table "condition_all_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "result_no"
@@ -186,6 +186,53 @@ ActiveRecord::Schema.define(version: 2018_09_13_043446) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_proper_names_on_name"
     t.index ["proper_id"], name: "index_proper_names_on_proper_id"
+  end
+
+  create_table "rewards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "result_no"
+    t.integer "generate_no"
+    t.integer "e_no"
+    t.float "battle_income"
+    t.float "add_income"
+    t.float "attack"
+    t.float "support"
+    t.float "defense"
+    t.float "defeat"
+    t.float "selling"
+    t.float "sub_quest"
+    t.float "enemy_caution"
+    t.float "colosseum_win"
+    t.float "fight_money"
+    t.integer "total_income"
+    t.integer "ammunition_cost"
+    t.integer "preparation_deduction"
+    t.integer "preparation_cost"
+    t.integer "union_cost"
+    t.integer "prize"
+    t.integer "union_interest"
+    t.integer "parts_sell"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["add_income"], name: "index_rewards_on_add_income"
+    t.index ["ammunition_cost"], name: "index_rewards_on_ammunition_cost"
+    t.index ["attack"], name: "index_rewards_on_attack"
+    t.index ["battle_income"], name: "index_rewards_on_battle_income"
+    t.index ["colosseum_win"], name: "index_rewards_on_colosseum_win"
+    t.index ["defeat"], name: "index_rewards_on_defeat"
+    t.index ["defense"], name: "index_rewards_on_defense"
+    t.index ["e_no", "result_no", "generate_no"], name: "resultno_eno"
+    t.index ["enemy_caution"], name: "index_rewards_on_enemy_caution"
+    t.index ["fight_money"], name: "index_rewards_on_fight_money"
+    t.index ["parts_sell"], name: "index_rewards_on_parts_sell"
+    t.index ["preparation_cost"], name: "index_rewards_on_preparation_cost"
+    t.index ["preparation_deduction"], name: "index_rewards_on_preparation_deduction"
+    t.index ["prize"], name: "index_rewards_on_prize"
+    t.index ["selling"], name: "index_rewards_on_selling"
+    t.index ["sub_quest"], name: "index_rewards_on_sub_quest"
+    t.index ["support"], name: "index_rewards_on_support"
+    t.index ["total_income"], name: "index_rewards_on_total_income"
+    t.index ["union_cost"], name: "index_rewards_on_union_cost"
+    t.index ["union_interest"], name: "index_rewards_on_union_interest"
   end
 
   create_table "specs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
