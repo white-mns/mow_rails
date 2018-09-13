@@ -11,6 +11,15 @@ class BlocksController < ApplicationController
     @blocks	= @search.result.per(50)
   end
 
+  # GET /block/results
+  def result
+    param_set
+    @count	= Block.includes(:p_name).search(params[:q]).result.count()
+    @search	= Block.includes(:p_name).page(params[:page]).search(params[:q])
+    @search.sorts = 'id asc' if @search.sorts.empty?
+    @blocks	= @search.result.per(50)
+  end
+
   def param_set
     @last_result = Name.maximum('result_no')
 

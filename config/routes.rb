@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "block/results", :to => "blocks#result", :as => 'block_results' 
   resources :blocks
   resources :next_battles
   resources :rewards
