@@ -1,0 +1,195 @@
+%h1 Listing specs
+
+%p.formNum 
+  テキストフォームの隣に赤い破線がある項目は数値検索です。
+  %br
+  「/」区切りでOR、「100~」や「100~200」のように「~」をつけて範囲指定となります。
+  %br
+  OR指定と範囲指定を同時に行うことはできません。
+%p.formText
+  テキストフォームの隣に青い太線がある項目は文字検索です。
+  %br
+  半角スペース区切りでAND、「/」区切りでOR、単語の前に「-」でNOT、単語の前後に「"」をつけて完全一致が使えます
+  %br
+  ANDとORを組み合わせた時は、ANDで区切った後にORで区切るという順番になります。
+%p
+  %span.example_select.example_toggle.pointer
+    入力例
+    %span.act_desc（クリックで開きます）
+    %span.act_desc.closed（クリックで閉じます）
+#example.closed
+  %p.formNum
+    数値入力で「100/105/110」と入力　→ 入力した項目の数値が100、105、110の結果がヒット
+    %br
+    「100~」で100以上、「~100」で100以下、「-200~100」で-200～-100の範囲指定となります。
+  %p.formText
+    「粒子」と入力　→　粒子ブレードA、粒子スピアA、粒子爆雷A……が検索結果にヒット
+    %br
+    「"粒子"」　→　完全一致で「粒子」のみ検索結果にヒット
+    %br
+    「-粒子」　→　「粒子」の単語を含まない目的が検索結果にヒット
+    %br
+    「-"粒子"」　→　完全一致で「粒子」以外が検索結果にヒット
+    %br
+    「粒子 ブレード」　→　「粒子」と「ブレード」の2つの単語が含まれるものが検索結果にヒット
+    %br
+    「粒子/ブレード」　→　「粒子」か「ブレード」のどちらかの単語が含まれるものが検索結果にヒット
+    %br
+    「粒子 ブレード/スピア」　→　「粒子」が含まれ、さらに 「ブレード」か「スピア」 が含まれるものが検索結果にヒット
+    %br
+    「-粒子 -ブレード」　→　「粒子」もしくは「ブレード」という単語が含まれるものを検索結果から除外
+= search_form_for @search do |f|
+  %table.search_toggle.table.table-striped.table-bordered.table-hover
+    %tbody
+      %tr
+        %td{:colspan => "4"}
+          絞り込み検索
+          %span.act_desc (クリックで閉じます)
+          %span.act_desc.closed (クリックで開きます)
+    %tbody
+      %tr
+      %tr
+        %td= f.label :result_no_form, '更新回'
+        %td.formNum{:colspan => "3"}= text_field_tag :result_no_form, @result_no_form
+      %tr
+        %td= f.label :e_no_form, 'Eno'
+        %td.formNum= text_field_tag :e_no_form, @e_no_form
+      %tr
+        %td= f.label :p_name_form, 'キャラクター名'
+        %td.formText= text_field_tag :p_name_form, @p_name_form
+      %tr
+        %td= f.label :result_no_form, 'Result no'
+        %td.formNum= text_field_tag :result_no_form, @result_no_form
+      %tr
+        %td= f.label :generate_no_form, 'Generate no'
+        %td.formNum= text_field_tag :generate_no_form, @generate_no_form
+      %tr
+        %td= f.label :e_no_form, 'E no'
+        %td.formNum= text_field_tag :e_no_form, @e_no_form
+      %tr
+        %td= f.label :ap_form, 'Ap'
+        %td.formNum= text_field_tag :ap_form, @ap_form
+      %tr
+        %td= f.label :en_form, 'En'
+        %td.formNum= text_field_tag :en_form, @en_form
+      %tr
+        %td= f.label :en_recovery_form, 'En recovery'
+        %td.formNum= text_field_tag :en_recovery_form, @en_recovery_form
+      %tr
+        %td= f.label :movement_form, 'Movement'
+        %td.formNum= text_field_tag :movement_form, @movement_form
+      %tr
+        %td= f.label :weight_form, 'Weight'
+        %td.formNum= text_field_tag :weight_form, @weight_form
+      %tr
+        %td= f.label :turning_speed_form, 'Turning speed'
+        %td.formNum= text_field_tag :turning_speed_form, @turning_speed_form
+      %tr
+        %td= f.label :jump_form, 'Jump'
+        %td.formNum= text_field_tag :jump_form, @jump_form
+      %tr
+        %td= f.label :max_power_form, 'Max power'
+        %td.formNum= text_field_tag :max_power_form, @max_power_form
+      %tr
+        %td= f.label :search_form, 'Search'
+        %td.formNum= text_field_tag :search_form, @search_form
+      %tr
+        %td= f.label :precision_form, 'Precision'
+        %td.formNum= text_field_tag :precision_form, @precision_form
+      %tr
+        %td= f.label :punding_form, 'Punding'
+        %td.formNum= text_field_tag :punding_form, @punding_form
+      %tr
+        %td= f.label :aerosol_form, 'Aerosol'
+        %td.formNum= text_field_tag :aerosol_form, @aerosol_form
+      %tr
+        %td= f.label :pysics_form, 'Pysics'
+        %td.formNum= text_field_tag :pysics_form, @pysics_form
+      %tr
+        %td= f.label :spirit_form, 'Spirit'
+        %td.formNum= text_field_tag :spirit_form, @spirit_form
+      %tr
+        %td= f.label :particle_form, 'Particle'
+        %td.formNum= text_field_tag :particle_form, @particle_form
+      %tr
+        %td= f.label :flame_form, 'Flame'
+        %td.formNum= text_field_tag :flame_form, @flame_form
+      %tr
+        %td= f.label :electric_form, 'Electric'
+        %td.formNum= text_field_tag :electric_form, @electric_form
+      %tr
+        %td= f.label :loading_form, 'Loading'
+        %td.formNum= text_field_tag :loading_form, @loading_form
+      %tr
+        %td= f.label :max_loading_form, 'Max loading'
+        %td.formNum= text_field_tag :max_loading_form, @max_loading_form
+      %tr
+        %td= hidden_field_tag :is_form, 1
+        %td{:colspan => "3"}= f.submit '検索する'
+
+
+= paginate(@specs)
+%br
+ヒット数：#{ @count }件
+%br
+%br
+
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
+      %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
+      %th= sort_link(@search, :result_no, 'Result no', default_order: :desc)
+      %th= sort_link(@search, :generate_no, 'Generate no', default_order: :desc)
+      %th= sort_link(@search, :e_no, 'E no', default_order: :desc)
+      %th= sort_link(@search, :ap, 'Ap', default_order: :desc)
+      %th= sort_link(@search, :en, 'En', default_order: :desc)
+      %th= sort_link(@search, :en_recovery, 'En recovery', default_order: :desc)
+      %th= sort_link(@search, :movement, 'Movement', default_order: :desc)
+      %th= sort_link(@search, :weight, 'Weight', default_order: :desc)
+      %th= sort_link(@search, :turning_speed, 'Turning speed', default_order: :desc)
+      %th= sort_link(@search, :jump, 'Jump', default_order: :desc)
+      %th= sort_link(@search, :max_power, 'Max power', default_order: :desc)
+      %th= sort_link(@search, :search, 'Search', default_order: :desc)
+      %th= sort_link(@search, :precision, 'Precision', default_order: :desc)
+      %th= sort_link(@search, :punding, 'Punding', default_order: :desc)
+      %th= sort_link(@search, :aerosol, 'Aerosol', default_order: :desc)
+      %th= sort_link(@search, :pysics, 'Pysics', default_order: :desc)
+      %th= sort_link(@search, :spirit, 'Spirit', default_order: :desc)
+      %th= sort_link(@search, :particle, 'Particle', default_order: :desc)
+      %th= sort_link(@search, :flame, 'Flame', default_order: :desc)
+      %th= sort_link(@search, :electric, 'Electric', default_order: :desc)
+      %th= sort_link(@search, :loading, 'Loading', default_order: :desc)
+      %th= sort_link(@search, :max_loading, 'Max loading', default_order: :desc)
+      %th{:colspan =>"2"}
+        結果リンク
+  %tbody
+    - @specs.each do |spec|
+      %tr
+        %td= spec.result_no
+        %td= spec.p_name.name.html_safe + "(" + sprintf("%d",spec.e_no) + ")"
+        %td= spec.result_no
+        %td= spec.generate_no
+        %td= spec.e_no
+        %td= spec.ap
+        %td= spec.en
+        %td= spec.en_recovery
+        %td= spec.movement
+        %td= spec.weight
+        %td= spec.turning_speed
+        %td= spec.jump
+        %td= spec.max_power
+        %td= spec.search
+        %td= spec.precision
+        %td= spec.punding
+        %td= spec.aerosol
+        %td= spec.pysics
+        %td= spec.spirit
+        %td= spec.particle
+        %td= spec.flame
+        %td= spec.electric
+        %td= spec.loading
+        %td= spec.max_loading
+        %td= character_link(spec.e_no)
+        %td= character_old_link(@last_result, spec.e_no, spec.result_no, spec.generate_no)
+= paginate(@specs)

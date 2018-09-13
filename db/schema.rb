@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_13_023731) do
+ActiveRecord::Schema.define(version: 2018_09_13_041351) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "result_no"
@@ -176,6 +176,53 @@ ActiveRecord::Schema.define(version: 2018_09_13_023731) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_proper_names_on_name"
     t.index ["proper_id"], name: "index_proper_names_on_proper_id"
+  end
+
+  create_table "specs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "result_no"
+    t.integer "generate_no"
+    t.integer "e_no"
+    t.integer "ap"
+    t.integer "en"
+    t.integer "en_recovery"
+    t.integer "movement"
+    t.integer "weight"
+    t.integer "turning_speed"
+    t.integer "jump"
+    t.integer "max_power"
+    t.integer "search"
+    t.integer "precision"
+    t.integer "punding"
+    t.integer "aerosol"
+    t.integer "pysics"
+    t.integer "spirit"
+    t.integer "particle"
+    t.integer "flame"
+    t.integer "electric"
+    t.integer "loading"
+    t.integer "max_loading"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aerosol"], name: "index_specs_on_aerosol"
+    t.index ["ap"], name: "index_specs_on_ap"
+    t.index ["e_no", "result_no", "generate_no"], name: "resultno_eno"
+    t.index ["electric"], name: "index_specs_on_electric"
+    t.index ["en"], name: "index_specs_on_en"
+    t.index ["en_recovery"], name: "index_specs_on_en_recovery"
+    t.index ["flame"], name: "index_specs_on_flame"
+    t.index ["jump"], name: "index_specs_on_jump"
+    t.index ["loading"], name: "index_specs_on_loading"
+    t.index ["max_loading"], name: "index_specs_on_max_loading"
+    t.index ["max_power"], name: "index_specs_on_max_power"
+    t.index ["movement"], name: "index_specs_on_movement"
+    t.index ["particle"], name: "index_specs_on_particle"
+    t.index ["precision"], name: "index_specs_on_precision"
+    t.index ["punding"], name: "index_specs_on_punding"
+    t.index ["pysics"], name: "index_specs_on_pysics"
+    t.index ["search"], name: "index_specs_on_search"
+    t.index ["spirit"], name: "index_specs_on_spirit"
+    t.index ["turning_speed"], name: "index_specs_on_turning_speed"
+    t.index ["weight"], name: "index_specs_on_weight"
   end
 
   create_table "statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
