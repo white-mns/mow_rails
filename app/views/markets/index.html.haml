@@ -1,0 +1,265 @@
+%h1 Listing markets
+
+%p.formNum 
+  テキストフォームの隣に赤い破線がある項目は数値検索です。
+  %br
+  「/」区切りでOR、「100~」や「100~200」のように「~」をつけて範囲指定となります。
+  %br
+  OR指定と範囲指定を同時に行うことはできません。
+%p.formText
+  テキストフォームの隣に青い太線がある項目は文字検索です。
+  %br
+  半角スペース区切りでAND、「/」区切りでOR、単語の前に「-」でNOT、単語の前後に「"」をつけて完全一致が使えます
+  %br
+  ANDとORを組み合わせた時は、ANDで区切った後にORで区切るという順番になります。
+%p
+  %span.example_select.example_toggle.pointer
+    入力例
+    %span.act_desc（クリックで開きます）
+    %span.act_desc.closed（クリックで閉じます）
+#example.closed
+  %p.formNum
+    数値入力で「100/105/110」と入力　→ 入力した項目の数値が100、105、110の結果がヒット
+    %br
+    「100~」で100以上、「~100」で100以下、「-200~100」で-200～-100の範囲指定となります。
+  %p.formText
+    「粒子」と入力　→　粒子ブレードA、粒子スピアA、粒子爆雷A……が検索結果にヒット
+    %br
+    「"粒子"」　→　完全一致で「粒子」のみ検索結果にヒット
+    %br
+    「-粒子」　→　「粒子」の単語を含まない目的が検索結果にヒット
+    %br
+    「-"粒子"」　→　完全一致で「粒子」以外が検索結果にヒット
+    %br
+    「粒子 ブレード」　→　「粒子」と「ブレード」の2つの単語が含まれるものが検索結果にヒット
+    %br
+    「粒子/ブレード」　→　「粒子」か「ブレード」のどちらかの単語が含まれるものが検索結果にヒット
+    %br
+    「粒子 ブレード/スピア」　→　「粒子」が含まれ、さらに 「ブレード」か「スピア」 が含まれるものが検索結果にヒット
+    %br
+    「-粒子 -ブレード」　→　「粒子」もしくは「ブレード」という単語が含まれるものを検索結果から除外
+= search_form_for @search do |f|
+  %table.search_toggle.table.table-striped.table-bordered.table-hover
+    %tbody
+      %tr
+        %td{:colspan => "4"}
+          絞り込み検索
+          %span.act_desc (クリックで閉じます)
+          %span.act_desc.closed (クリックで開きます)
+    %tbody
+      %tr
+      %tr
+        %td= f.label :result_no_form, '更新回'
+        %td.formNum{:colspan => "3"}= text_field_tag :result_no_form, @result_no_form
+      %tr
+        %td= f.label :e_no_form, 'Eno'
+        %td.formNum= text_field_tag :e_no_form, @e_no_form
+      %tr
+        %td= f.label :p_name_form, 'キャラクター名'
+        %td.formText= text_field_tag :p_name_form, @p_name_form
+      %tr
+        %td= f.label :result_no_form, 'Result no'
+        %td.formNum= text_field_tag :result_no_form, @result_no_form
+      %tr
+        %td= f.label :generate_no_form, 'Generate no'
+        %td.formNum= text_field_tag :generate_no_form, @generate_no_form
+      %tr
+        %td= f.label :e_no_form, 'E no'
+        %td.formNum= text_field_tag :e_no_form, @e_no_form
+      %tr
+        %td= f.label :market_no_form, 'Market no'
+        %td.formNum= text_field_tag :market_no_form, @market_no_form
+      %tr
+        %td= f.label :name_form, 'Name'
+        %td.formNum= text_field_tag :name_form, @name_form
+      %tr
+        %td= f.label :kind_form, 'Kind'
+        %td.formNum= text_field_tag :kind_form, @kind_form
+      %tr
+        %td= f.label :unique_1_form, 'Unique 1'
+        %td.formNum= text_field_tag :unique_1_form, @unique_1_form
+      %tr
+        %td= f.label :unique_2_form, 'Unique 2'
+        %td.formNum= text_field_tag :unique_2_form, @unique_2_form
+      %tr
+        %td= f.label :ap_form, 'Ap'
+        %td.formNum= text_field_tag :ap_form, @ap_form
+      %tr
+        %td= f.label :spending_en_form, 'Spending en'
+        %td.formNum= text_field_tag :spending_en_form, @spending_en_form
+      %tr
+        %td= f.label :value_form, 'Value'
+        %td.formNum= text_field_tag :value_form, @value_form
+      %tr
+        %td= f.label :ammunition_cost_form, 'Ammunition cost'
+        %td.formNum= text_field_tag :ammunition_cost_form, @ammunition_cost_form
+      %tr
+        %td= f.label :weight_form, 'Weight'
+        %td.formNum= text_field_tag :weight_form, @weight_form
+      %tr
+        %td= f.label :turning_speed_form, 'Turning speed'
+        %td.formNum= text_field_tag :turning_speed_form, @turning_speed_form
+      %tr
+        %td= f.label :guard_elemental_form, 'Guard elemental'
+        %td.formNum= text_field_tag :guard_elemental_form, @guard_elemental_form
+      %tr
+        %td= f.label :guard_value_form, 'Guard value'
+        %td.formNum= text_field_tag :guard_value_form, @guard_value_form
+      %tr
+        %td= f.label :precision_form, 'Precision'
+        %td.formNum= text_field_tag :precision_form, @precision_form
+      %tr
+        %td= f.label :punding_form, 'Punding'
+        %td.formNum= text_field_tag :punding_form, @punding_form
+      %tr
+        %td= f.label :aerosol_form, 'Aerosol'
+        %td.formNum= text_field_tag :aerosol_form, @aerosol_form
+      %tr
+        %td= f.label :bullet_form, 'Bullet'
+        %td.formNum= text_field_tag :bullet_form, @bullet_form
+      %tr
+        %td= f.label :loading_form, 'Loading'
+        %td.formNum= text_field_tag :loading_form, @loading_form
+      %tr
+        %td= f.label :weapon_element_form, 'Weapon element'
+        %td.formNum= text_field_tag :weapon_element_form, @weapon_element_form
+      %tr
+        %td= f.label :add_abnormity_form, 'Add abnormity'
+        %td.formNum= text_field_tag :add_abnormity_form, @add_abnormity_form
+      %tr
+        %td= f.label :strength_form, 'Strength'
+        %td.formNum= text_field_tag :strength_form, @strength_form
+      %tr
+        %td= f.label :gunshot_form, 'Gunshot'
+        %td.formNum= text_field_tag :gunshot_form, @gunshot_form
+      %tr
+        %td= f.label :struggle_form, 'Struggle'
+        %td.formNum= text_field_tag :struggle_form, @struggle_form
+      %tr
+        %td= f.label :reaction_form, 'Reaction'
+        %td.formNum= text_field_tag :reaction_form, @reaction_form
+      %tr
+        %td= f.label :control_form, 'Control'
+        %td.formNum= text_field_tag :control_form, @control_form
+      %tr
+        %td= f.label :preparation_form, 'Preparation'
+        %td.formNum= text_field_tag :preparation_form, @preparation_form
+      %tr
+        %td= f.label :fitly_form, 'Fitly'
+        %td.formNum= text_field_tag :fitly_form, @fitly_form
+      %tr
+        %td= f.label :type_form, 'Type'
+        %td.formNum= text_field_tag :type_form, @type_form
+      %tr
+        %td= f.label :equip_form, 'Equip'
+        %td.formNum= text_field_tag :equip_form, @equip_form
+      %tr
+        %td= f.label :fuka_1_form, 'Fuka 1'
+        %td.formNum= text_field_tag :fuka_1_form, @fuka_1_form
+      %tr
+        %td= f.label :fuka_2_form, 'Fuka 2'
+        %td.formNum= text_field_tag :fuka_2_form, @fuka_2_form
+      %tr
+        %td= f.label :charge_form, 'Charge'
+        %td.formNum= text_field_tag :charge_form, @charge_form
+      %tr
+        %td= f.label :orig_name_form, 'Orig name'
+        %td.formNum= text_field_tag :orig_name_form, @orig_name_form
+      %tr
+        %td= hidden_field_tag :is_form, 1
+        %td{:colspan => "3"}= f.submit '検索する'
+
+
+= paginate(@markets)
+%br
+ヒット数：#{ @count }件
+%br
+%br
+
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
+      %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
+      %th= sort_link(@search, :result_no, 'Result no', default_order: :desc)
+      %th= sort_link(@search, :generate_no, 'Generate no', default_order: :desc)
+      %th= sort_link(@search, :e_no, 'E no', default_order: :desc)
+      %th= sort_link(@search, :market_no, 'Market no', default_order: :desc)
+      %th= sort_link(@search, :name, 'Name', default_order: :desc)
+      %th= sort_link(@search, :kind, 'Kind', default_order: :desc)
+      %th= sort_link(@search, :unique_1, 'Unique 1', default_order: :desc)
+      %th= sort_link(@search, :unique_2, 'Unique 2', default_order: :desc)
+      %th= sort_link(@search, :ap, 'Ap', default_order: :desc)
+      %th= sort_link(@search, :spending_en, 'Spending en', default_order: :desc)
+      %th= sort_link(@search, :value, 'Value', default_order: :desc)
+      %th= sort_link(@search, :ammunition_cost, 'Ammunition cost', default_order: :desc)
+      %th= sort_link(@search, :weight, 'Weight', default_order: :desc)
+      %th= sort_link(@search, :turning_speed, 'Turning speed', default_order: :desc)
+      %th= sort_link(@search, :guard_elemental, 'Guard elemental', default_order: :desc)
+      %th= sort_link(@search, :guard_value, 'Guard value', default_order: :desc)
+      %th= sort_link(@search, :precision, 'Precision', default_order: :desc)
+      %th= sort_link(@search, :punding, 'Punding', default_order: :desc)
+      %th= sort_link(@search, :aerosol, 'Aerosol', default_order: :desc)
+      %th= sort_link(@search, :bullet, 'Bullet', default_order: :desc)
+      %th= sort_link(@search, :loading, 'Loading', default_order: :desc)
+      %th= sort_link(@search, :weapon_element, 'Weapon element', default_order: :desc)
+      %th= sort_link(@search, :add_abnormity, 'Add abnormity', default_order: :desc)
+      %th= sort_link(@search, :strength, 'Strength', default_order: :desc)
+      %th= sort_link(@search, :gunshot, 'Gunshot', default_order: :desc)
+      %th= sort_link(@search, :struggle, 'Struggle', default_order: :desc)
+      %th= sort_link(@search, :reaction, 'Reaction', default_order: :desc)
+      %th= sort_link(@search, :control, 'Control', default_order: :desc)
+      %th= sort_link(@search, :preparation, 'Preparation', default_order: :desc)
+      %th= sort_link(@search, :fitly, 'Fitly', default_order: :desc)
+      %th= sort_link(@search, :type, 'Type', default_order: :desc)
+      %th= sort_link(@search, :equip, 'Equip', default_order: :desc)
+      %th= sort_link(@search, :fuka_1, 'Fuka 1', default_order: :desc)
+      %th= sort_link(@search, :fuka_2, 'Fuka 2', default_order: :desc)
+      %th= sort_link(@search, :charge, 'Charge', default_order: :desc)
+      %th= sort_link(@search, :orig_name, 'Orig name', default_order: :desc)
+      %th{:colspan =>"2"}
+        結果リンク
+  %tbody
+    - @markets.each do |market|
+      %tr
+        %td= market.result_no
+        %td= market.p_name.name.html_safe + "(" + sprintf("%d",market.e_no) + ")"
+        %td= market.result_no
+        %td= market.generate_no
+        %td= market.e_no
+        %td= market.market_no
+        %td= market.name
+        %td= market.kind
+        %td= market.unique_1
+        %td= market.unique_2
+        %td= market.ap
+        %td= market.spending_en
+        %td= market.value
+        %td= market.ammunition_cost
+        %td= market.weight
+        %td= market.turning_speed
+        %td= market.guard_elemental
+        %td= market.guard_value
+        %td= market.precision
+        %td= market.punding
+        %td= market.aerosol
+        %td= market.bullet
+        %td= market.loading
+        %td= market.weapon_element
+        %td= market.add_abnormity
+        %td= market.strength
+        %td= market.gunshot
+        %td= market.struggle
+        %td= market.reaction
+        %td= market.control
+        %td= market.preparation
+        %td= market.fitly
+        %td= market.type
+        %td= market.equip
+        %td= market.fuka_1
+        %td= market.fuka_2
+        %td= market.charge
+        %td= market.orig_name
+        %td= character_link(market.e_no)
+        %td= character_old_link(@last_result, market.e_no, market.result_no, market.generate_no)
+= paginate(@markets)
