@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  result_no: 1
+  generate_no: 1
+  e_no: 1
+  acc_reward: 1
+  rp: 1
+  gunshot: 1
+  struggle: 1
+  reaction: 1
+  control: 1
+  preparation: 1
+  fitly: 1
+  funds: 1
+  exp: 1
+
+two:
+  result_no: 1
+  generate_no: 1
+  e_no: 1
+  acc_reward: 1
+  rp: 1
+  gunshot: 1
+  struggle: 1
+  reaction: 1
+  control: 1
+  preparation: 1
+  fitly: 1
+  funds: 1
+  exp: 1

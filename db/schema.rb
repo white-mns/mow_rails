@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_13_010608) do
+ActiveRecord::Schema.define(version: 2018_09_13_023731) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "result_no"
@@ -176,6 +176,35 @@ ActiveRecord::Schema.define(version: 2018_09_13_010608) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_proper_names_on_name"
     t.index ["proper_id"], name: "index_proper_names_on_proper_id"
+  end
+
+  create_table "statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "result_no"
+    t.integer "generate_no"
+    t.integer "e_no"
+    t.integer "acc_reward"
+    t.integer "rp"
+    t.integer "gunshot"
+    t.integer "struggle"
+    t.integer "reaction"
+    t.integer "control"
+    t.integer "preparation"
+    t.integer "fitly"
+    t.integer "funds"
+    t.integer "exp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["acc_reward"], name: "index_statuses_on_acc_reward"
+    t.index ["control"], name: "index_statuses_on_control"
+    t.index ["e_no", "result_no", "generate_no"], name: "resultno_eno"
+    t.index ["exp"], name: "index_statuses_on_exp"
+    t.index ["fitly"], name: "index_statuses_on_fitly"
+    t.index ["funds"], name: "index_statuses_on_funds"
+    t.index ["gunshot"], name: "index_statuses_on_gunshot"
+    t.index ["preparation"], name: "index_statuses_on_preparation"
+    t.index ["reaction"], name: "index_statuses_on_reaction"
+    t.index ["rp"], name: "index_statuses_on_rp"
+    t.index ["struggle"], name: "index_statuses_on_struggle"
   end
 
 end
