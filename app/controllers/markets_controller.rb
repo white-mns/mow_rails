@@ -5,8 +5,8 @@ class MarketsController < ApplicationController
   # GET /markets
   def index
     param_set
-    @count	= Market.includes(:p_name).search(params[:q]).result.count()
-    @search	= Market.includes(:p_name).page(params[:page]).search(params[:q])
+    @count	= Market.includes(:p_name, :kind_name, :guard_elemental_name, :orig_name_name, :weapon_element_name, :fuka_1_name, :fuka_2_name).search(params[:q]).result.count()
+    @search	= Market.includes(:p_name, :kind_name, :guard_elemental_name, :orig_name_name, :weapon_element_name, :fuka_1_name, :fuka_2_name).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @markets	= @search.result.per(50)
   end
@@ -24,8 +24,8 @@ class MarketsController < ApplicationController
     reference_number_assign(params, "generate_no", "generate_no_form")
     reference_number_assign(params, "e_no", "e_no_form")
     reference_number_assign(params, "market_no", "market_no_form")
-    reference_number_assign(params, "name", "name_form")
-    reference_number_assign(params, "kind", "kind_form")
+    reference_text_assign(params, "name", "name_form")
+    reference_text_assign(params, "kind_name_name", "kind_form")
     reference_number_assign(params, "unique_1", "unique_1_form")
     reference_number_assign(params, "unique_2", "unique_2_form")
     reference_number_assign(params, "ap", "ap_form")
@@ -34,14 +34,14 @@ class MarketsController < ApplicationController
     reference_number_assign(params, "ammunition_cost", "ammunition_cost_form")
     reference_number_assign(params, "weight", "weight_form")
     reference_number_assign(params, "turning_speed", "turning_speed_form")
-    reference_number_assign(params, "guard_elemental", "guard_elemental_form")
+    reference_text_assign(params, "guard_elemental_name_name", "guard_elemental_form")
     reference_number_assign(params, "guard_value", "guard_value_form")
     reference_number_assign(params, "precision", "precision_form")
     reference_number_assign(params, "punding", "punding_form")
     reference_number_assign(params, "aerosol", "aerosol_form")
     reference_number_assign(params, "bullet", "bullet_form")
     reference_number_assign(params, "loading", "loading_form")
-    reference_number_assign(params, "weapon_element", "weapon_element_form")
+    reference_text_assign(params, "weapon_element_name_name", "weapon_element_form")
     reference_number_assign(params, "add_abnormity", "add_abnormity_form")
     reference_number_assign(params, "strength", "strength_form")
     reference_number_assign(params, "gunshot", "gunshot_form")
@@ -52,10 +52,10 @@ class MarketsController < ApplicationController
     reference_number_assign(params, "fitly", "fitly_form")
     reference_number_assign(params, "type", "type_form")
     reference_number_assign(params, "equip", "equip_form")
-    reference_number_assign(params, "fuka_1", "fuka_1_form")
-    reference_number_assign(params, "fuka_2", "fuka_2_form")
+    reference_text_assign(params, "fuka_1_name_name", "fuka_1_form")
+    reference_text_assign(params, "fuka_2_name_name", "fuka_2_form")
     reference_number_assign(params, "charge", "charge_form")
-    reference_number_assign(params, "orig_name", "orig_name_form")
+    reference_text_assign(params, "orig_name_name_name", "orig_name_form")
     
     @p_name_form = params["p_name_form"]
     @result_no_form = params["result_no_form"]
