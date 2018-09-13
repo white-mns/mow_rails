@@ -66,6 +66,9 @@
         %td= f.label :kind_form, '種別'
         %td.formText= text_field_tag :kind_form, @kind_form
       %tr
+        %td= f.label :orig_name_form, 'パーツ種別詳細'
+        %td.formText= text_field_tag :orig_name_form, @orig_name_form
+      %tr
         %td= f.label :unique_1_form, '特殊1'
         %td.formNum= text_field_tag :unique_1_form, @unique_1_form
       %tr
@@ -147,9 +150,6 @@
         %td= f.label :fuka_2_form, '付加B'
         %td.formText= text_field_tag :fuka_2_form, @fuka_2_form
       %tr
-        %td= f.label :orig_name_form, 'パーツ名'
-        %td.formText= text_field_tag :orig_name_form, @orig_name_form
-      %tr
         %td= f.label :drunkenness_form, '送品酔い'
         %td.formNum= text_field_tag :drunkenness_form, @drunkenness_form
       %tr
@@ -171,7 +171,7 @@
       %th= sort_link(@search, :i_no, 'Ino', default_order: :desc)
       %th= sort_link(@search, :name, 'アイテム名', default_order: :desc)
       %th= sort_link(@search, :kind, '種別', default_order: :desc)
-      %th= sort_link(@search, :orig_name, 'パーツ名', default_order: :desc)
+      %th= sort_link(@search, :orig_name, '詳細', default_order: :desc)
       %th= sort_link(@search, :unique_1, '特殊1', default_order: :desc)
       %th= sort_link(@search, :unique_2, '特殊2', default_order: :desc)
       %th= sort_link(@search, :ap, 'AP', default_order: :desc)
@@ -219,7 +219,7 @@
         %td= item.ammunition_cost
         %td= item.weight
         %td= item.turning_speed
-        %td= item.guard_elemental
+        %td= item.guard_elemental_name.name if item.guard_elemental
         %td= item.guard_value
         %td= item.precision
         %td= item.punding

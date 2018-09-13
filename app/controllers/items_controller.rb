@@ -5,8 +5,8 @@ class ItemsController < ApplicationController
   # GET /items
   def index
     param_set
-    @count	= Item.includes(:p_name, :kind_name, :orig_name_name, :weapon_element_name, :fuka_1_name, :fuka_2_name).search(params[:q]).result.count()
-    @search	= Item.includes(:p_name, :kind_name, :orig_name_name, :weapon_element_name, :fuka_1_name, :fuka_2_name).page(params[:page]).search(params[:q])
+    @count	= Item.includes(:p_name, :kind_name, :orig_name_name, :guard_elemental_name, :weapon_element_name, :fuka_1_name, :fuka_2_name).search(params[:q]).result.count()
+    @search	= Item.includes(:p_name, :kind_name, :orig_name_name, :guard_elemental_name, :weapon_element_name, :fuka_1_name, :fuka_2_name).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @items	= @search.result.per(50)
   end
@@ -34,7 +34,7 @@ class ItemsController < ApplicationController
     reference_number_assign(params, "ammunition_cost", "ammunition_cost_form")
     reference_number_assign(params, "weight", "weight_form")
     reference_number_assign(params, "turning_speed", "turning_speed_form")
-    reference_number_assign(params, "guard_elemental", "guard_elemental_form")
+    reference_text_assign(params, "guard_elemental_name_name", "guard_elemental_form")
     reference_number_assign(params, "guard_value", "guard_value_form")
     reference_number_assign(params, "precision", "precision_form")
     reference_number_assign(params, "punding", "punding_form")
