@@ -1,4 +1,4 @@
-%h1 Listing condition_all_texts
+%h1 全機体状況一覧
 
 %p.formNum 
   テキストフォームの隣に赤い破線がある項目は数値検索です。
@@ -58,17 +58,8 @@
         %td= f.label :p_name_form, 'キャラクター名'
         %td.formText= text_field_tag :p_name_form, @p_name_form
       %tr
-        %td= f.label :result_no_form, 'Result no'
-        %td.formNum= text_field_tag :result_no_form, @result_no_form
-      %tr
-        %td= f.label :generate_no_form, 'Generate no'
-        %td.formNum= text_field_tag :generate_no_form, @generate_no_form
-      %tr
-        %td= f.label :e_no_form, 'E no'
-        %td.formNum= text_field_tag :e_no_form, @e_no_form
-      %tr
-        %td= f.label :condition_text_form, 'Condition text'
-        %td.formNum= text_field_tag :condition_text_form, @condition_text_form
+        %td= f.label :condition_text_form, '全機体状況'
+        %td.formText= text_field_tag :condition_text_form, @condition_text_form
       %tr
         %td= hidden_field_tag :is_form, 1
         %td{:colspan => "3"}= f.submit '検索する'
@@ -85,10 +76,7 @@
     %tr
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
-      %th= sort_link(@search, :result_no, 'Result no', default_order: :desc)
-      %th= sort_link(@search, :generate_no, 'Generate no', default_order: :desc)
-      %th= sort_link(@search, :e_no, 'E no', default_order: :desc)
-      %th= sort_link(@search, :condition_text, 'Condition text', default_order: :desc)
+      %th= sort_link(@search, :condition_text, '全機体状況', default_order: :desc)
       %th{:colspan =>"2"}
         結果リンク
   %tbody
@@ -96,9 +84,6 @@
       %tr
         %td= condition_all_text.result_no
         %td= condition_all_text.p_name.name.html_safe + "(" + sprintf("%d",condition_all_text.e_no) + ")"
-        %td= condition_all_text.result_no
-        %td= condition_all_text.generate_no
-        %td= condition_all_text.e_no
         %td= condition_all_text.condition_text
         %td= character_link(condition_all_text.e_no)
         %td= character_old_link(@last_result, condition_all_text.e_no, condition_all_text.result_no, condition_all_text.generate_no)

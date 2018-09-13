@@ -23,7 +23,7 @@ class ConditionAllTextsController < ApplicationController
     reference_number_assign(params, "result_no", "result_no_form")
     reference_number_assign(params, "generate_no", "generate_no_form")
     reference_number_assign(params, "e_no", "e_no_form")
-    reference_number_assign(params, "condition_text", "condition_text_form")
+    reference_text_assign(params, "condition_text", "condition_text_form")
     
     @p_name_form = params["p_name_form"]
     @result_no_form = params["result_no_form"]
