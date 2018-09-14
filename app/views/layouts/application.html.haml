@@ -28,17 +28,17 @@
                 %li= link_to "アイテム一覧", items_path
                 %li= link_to "ステータス一覧", statuses_path
                 %li= link_to "機体データ一覧", specs_path
-                %li= link_to "戦闘報酬一覧", rewards_path
                 %li.divider
+                %li= link_to "戦闘報酬一覧", rewards_path
             %li.dropdown
               %a.dropdown-toggle#themes{ :data => {:toggle =>"dropdown"}, :href => "#"}
                 結果データ
                 %span.caret
               %ul.dropdown-menu{:aria-labelledby => "themes"}
                 %li= link_to "マーケット一覧", markets_path
+                %li.divider
                 %li= link_to "戦場別戦果一覧", block_results_path
                 %li= link_to "次回組み合わせ一覧", next_battles_path
-                %li.divider
 
     .container
       .row
