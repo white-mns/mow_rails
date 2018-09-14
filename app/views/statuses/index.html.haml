@@ -40,50 +40,59 @@
     「-粒子 -ブレード」　→　「粒子」もしくは「ブレード」という単語が含まれるものを検索結果から除外
 = search_form_for @search do |f|
   %table.search_toggle.table.table-striped.table-bordered.table-hover
-    %tbody
+    %tbody.pointer
       %tr
-        %td{colspan: "4"}
+        %td{colspan: "5"}
           絞り込み検索
           %span.act_desc (クリックで閉じます)
           %span.act_desc.closed (クリックで開きます)
     %tbody
       %tr
-      %tr
+        %td
         %td= f.label :result_no_form, '更新回'
         %td.formNum{colspan: "3"}= text_field_tag :result_no_form, @result_no_form
       %tr
+        %td
         %td= f.label :e_no_form, 'Eno'
         %td.formNum= text_field_tag :e_no_form, @e_no_form
         %td= f.label :p_name_form, 'キャラクター名'
         %td.formText= text_field_tag :p_name_form, @p_name_form
       %tr
+        %td
         %td= f.label :acc_reward_form, '累積報酬'
         %td.formNum{colspan: "3"}= text_field_tag :acc_reward_form, @acc_reward_form
       %tr
+        %td
         %td= f.label :rp_form, 'RP'
         %td.formNum{colspan: "3"}= text_field_tag :rp_form, @rp_form
       %tr
+        %td
         %td= f.label :gunshot_form, '射撃'
         %td.formNum= text_field_tag :gunshot_form, @gunshot_form
         %td= f.label :struggle_form, '格闘'
         %td.formNum= text_field_tag :struggle_form, @struggle_form
       %tr
+        %td
         %td= f.label :reaction_form, '反応'
         %td.formNum= text_field_tag :reaction_form, @reaction_form
         %td= f.label :control_form, '制御'
         %td.formNum= text_field_tag :control_form, @control_form
       %tr
+        %td
         %td= f.label :preparation_form, '整備'
         %td.formNum= text_field_tag :preparation_form, @preparation_form
         %td= f.label :fitly_form, '適性'
         %td.formNum= text_field_tag :fitly_form, @fitly_form
       %tr
+        %td
         %td= f.label :funds_form, '所持資金'
         %td.formNum{colspan: "3"}= text_field_tag :funds_form, @funds_form
       %tr
+        %td
         %td= f.label :exp_form, '経験値'
         %td.formNum{colspan: "3"}= text_field_tag :exp_form, @exp_form
       %tr
+        %td
         %td= hidden_field_tag :is_form, 1
         %td{colspan: "3"}= f.submit '検索する'
 

@@ -65,6 +65,7 @@
         %td= f.label :block_no_form, 'ブロック番号'
         %td.formNum= text_field_tag :block_no_form, @block_no_form
       %tr
+        %td
         %td= hidden_field_tag :is_form, 1
         %td{colspan: "4"}= f.submit '検索する'
 
