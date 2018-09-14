@@ -107,8 +107,17 @@ table tbody:nth-child(1) span.act_desc{
 table tbody:nth-child(1) td{
     background-color: #666;
 }
+
+table tbody:nth-child(1) td:hover{
+    background-color: #444;
+}
+
 table tbody.tbody_toggle td{
     background-color: #666;
+}
+
+table tbody.tbody_toggle td:hover{
+    background-color: #444;
 }
 
 .closed{
