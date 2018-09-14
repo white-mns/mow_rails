@@ -26,7 +26,7 @@ $gray-dark:   #282828 ;
 $gray-light:  #888 ;
 $pagination-color:           #fff;
 $pagination-bg:              $gray-darker;
-$pagination-border:          $gray-dark;
+$pagination-border:          #888;
 
 $pagination-hover-color:     #fff;
 $pagination-hover-bg:        #2A9FD6;
@@ -38,7 +38,7 @@ $pagination-active-border:   transparent;
 
 $pagination-disabled-color:  $gray-light;
 $pagination-disabled-bg:     $gray-darker;
-$pagination-disabled-border: $gray-dark;
+$pagination-disabled-border: #888;
 
 @import "bootstrap-sprockets";
 @import "bootswatch/darkly/variables";
