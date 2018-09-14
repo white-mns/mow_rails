@@ -42,7 +42,7 @@
   %table.search_toggle.table.table-striped.table-bordered.table-hover
     %tbody
       %tr
-        %td{:colspan => "4"}
+        %td{colspan: "4"}
           絞り込み検索
           %span.act_desc (クリックで閉じます)
           %span.act_desc.closed (クリックで開きます)
@@ -50,7 +50,7 @@
       %tr
       %tr
         %td= f.label :result_no_form, '更新回'
-        %td.formNum{:colspan => "3"}= text_field_tag :result_no_form, @result_no_form
+        %td.formNum{colspan: "3"}= text_field_tag :result_no_form, @result_no_form
       %tr
         %td= f.label :e_no_form, 'Eno'
         %td.formNum= text_field_tag :e_no_form, @e_no_form
@@ -58,10 +58,10 @@
         %td.formText= text_field_tag :p_name_form, @p_name_form
       %tr
         %td= f.label :acc_reward_form, '累積報酬'
-        %td.formNum{:colspan => "3"}= text_field_tag :acc_reward_form, @acc_reward_form
+        %td.formNum{colspan: "3"}= text_field_tag :acc_reward_form, @acc_reward_form
       %tr
         %td= f.label :rp_form, 'RP'
-        %td.formNum{:colspan => "3"}= text_field_tag :rp_form, @rp_form
+        %td.formNum{colspan: "3"}= text_field_tag :rp_form, @rp_form
       %tr
         %td= f.label :gunshot_form, '射撃'
         %td.formNum= text_field_tag :gunshot_form, @gunshot_form
@@ -79,13 +79,13 @@
         %td.formNum= text_field_tag :fitly_form, @fitly_form
       %tr
         %td= f.label :funds_form, '所持資金'
-        %td.formNum{:colspan => "3"}= text_field_tag :funds_form, @funds_form
+        %td.formNum{colspan: "3"}= text_field_tag :funds_form, @funds_form
       %tr
         %td= f.label :exp_form, '経験値'
-        %td.formNum{:colspan => "3"}= text_field_tag :exp_form, @exp_form
+        %td.formNum{colspan: "3"}= text_field_tag :exp_form, @exp_form
       %tr
         %td= hidden_field_tag :is_form, 1
-        %td{:colspan => "3"}= f.submit '検索する'
+        %td{colspan: "3"}= f.submit '検索する'
 
 
 = paginate(@statuses)
@@ -109,7 +109,7 @@
       %th= sort_link(@search, :fitly, '適性', default_order: :desc)
       %th= sort_link(@search, :funds, '所持資金', default_order: :desc)
       %th= sort_link(@search, :exp, '経験値', default_order: :desc)
-      %th{:colspan =>"2"}
+      %th{colspan: "2"}
         結果リンク
   %tbody
     - @statuses.each do |status|

@@ -40,29 +40,161 @@
     「-粒子 -ブレード」　→　「粒子」もしくは「ブレード」という単語が含まれるものを検索結果から除外
 = search_form_for @search do |f|
   %table.search_toggle.table.table-striped.table-bordered.table-hover
-    %tbody
+    %tbody.pointer
       %tr
-        %td{:colspan => "4"}
+        %td{colspan: "5"}
           絞り込み検索
           %span.act_desc (クリックで閉じます)
           %span.act_desc.closed (クリックで開きます)
     %tbody
       %tr
       %tr
+        %td  
         %td= f.label :result_no_form, '更新回'
-        %td.formNum{:colspan => "3"}= text_field_tag :result_no_form, @result_no_form
+        %td.formNum{colspan: "3"}= text_field_tag :result_no_form, @result_no_form
       %tr
+        %td  
         %td= f.label :e_no_form, 'Eno'
         %td.formNum= text_field_tag :e_no_form, @e_no_form
-      %tr
         %td= f.label :p_name_form, 'キャラクター名'
         %td.formText= text_field_tag :p_name_form, @p_name_form
       %tr
+        %td  
         %td= f.label :block_no_form, 'ブロック番号'
-        %td.formNum= text_field_tag :block_no_form, @block_no_form
+        %td.formNum{colspan: "3"}= text_field_tag :block_no_form, @block_no_form
+    %tbody.tbody_toggle.pointer
+      %tr
+        %td{colspan: "5"}
+          = hidden_field_tag :show_detail_1_1, @show_detail_1_1
+          = label_tag :show_detail_1_1, '＋　累積報酬を表示する', class: "act_desc"
+          = label_tag :show_detail_1_1, '×　累積報酬を非表示にする', class: "act_desc closed"
+    %tbody.closed
+      %tr
+        %td  
+        %td= f.label :acc_reward_form, '累積報酬'
+        %td.formNum{colspan: "3"}= text_field_tag :acc_reward_form, @acc_reward_form
+    %tbody.tbody_toggle.pointer
+      %tr
+        %td{colspan: "5"}
+          = hidden_field_tag :show_detail_2_1, @show_detail_2_1
+          = label_tag :show_detail_2_1, '＋　戦闘報酬を表示する', class: "act_desc"
+          = label_tag :show_detail_2_1, '×　戦闘報酬を非表示にする', class: "act_desc closed"
+          %div.act_desc 　合計現金収入、攻撃戦果補正、支援戦果補正、防衛戦果補正
+    %tbody.closed
+      %tr
+        %td  
+        %td= f.label :total_income_form, '合計現金収入'
+        %td.formNum{colspan: "3"}= text_field_tag :total_income_form, @total_income_form
+      %tr
+        %td  
+        %td= f.label :attack_form, '攻撃戦果補正'
+        %td.formNum= text_field_tag :attack_form, @attack_form
+        %td= f.label :support_form, '支援戦果補正'
+        %td.formNum= text_field_tag :support_form, @support_form
+      %tr
+        %td  
+        %td= f.label :defense_form, '防衛戦果補正'
+        %td.formNum{colspan: "3"}= text_field_tag :defense_form, @defense_form
+    %tbody.tbody_toggle.pointer
+      %tr
+        %td{colspan: "5"}
+          = hidden_field_tag :show_detail_3_1, @show_detail_3_1
+          = label_tag :show_detail_3_1, '＋　機体データその1を表示する', class: "act_desc"
+          = label_tag :show_detail_3_1, '×　機体データその1を非表示にする', class: "act_desc closed"
+          %div.act_desc 　AP、EN、EN回復量
+    %tbody.closed
+      %tr
+        %td  
+        %td= f.label :ap_form, 'AP'
+        %td.formNum{colspan: "3"}= text_field_tag :ap_form, @ap_form
+      %tr
+        %td  
+        %td= f.label :en_form, 'EN'
+        %td.formNum= text_field_tag :en_form, @en_form
+        %td= f.label :en_recovery_form, 'EN回復量'
+        %td.formNum= text_field_tag :en_recovery_form, @en_recovery_form
+    %tbody.tbody_toggle.pointer
+      %tr
+        %td{colspan: "5"}
+          = hidden_field_tag :show_detail_3_2, @show_detail_3_2
+          = label_tag :show_detail_3_2, '＋　機体データその2を表示する', class: "act_desc"
+          = label_tag :show_detail_3_2, '×　機体データその2を非表示にする', class: "act_desc closed"
+          %div.act_desc 　機動力、総重量、旋回速度、跳躍力、最大火力、索敵範囲、命中精度、貯水量、噴霧量、積載量、最大積載量
+    %tbody.closed
+      %tr
+        %td  
+        %td= f.label :movement_form, '機動力'
+        %td.formNum= text_field_tag :movement_form, @movement_form
+        %td= f.label :weight_form, '総重量'
+        %td.formNum= text_field_tag :weight_form, @weight_form
+      %tr
+        %td  
+        %td= f.label :turning_speed_form, '旋回速度'
+        %td.formNum= text_field_tag :turning_speed_form, @turning_speed_form
+        %td= f.label :jump_form, '跳躍力'
+        %td.formNum= text_field_tag :jump_form, @jump_form
+      %tr
+        %td  
+        %td= f.label :max_power_form, '最大火力'
+        %td.formNum{colspan: "3"}= text_field_tag :max_power_form, @max_power_form
+      %tr
+        %td  
+        %td= f.label :search_form, '索敵範囲'
+        %td.formNum= text_field_tag :search_form, @search_form
+        %td= f.label :precision_form, '命中精度'
+        %td.formNum= text_field_tag :precision_form, @precision_form
+      %tr
+        %td  
+        %td= f.label :punding_form, '貯水量'
+        %td.formNum= text_field_tag :punding_form, @punding_form
+        %td= f.label :aerosol_form, '噴霧量'
+        %td.formNum= text_field_tag :aerosol_form, @aerosol_form
+      %tr
+        %td  
+        %td= f.label :loading_form, '積載量'
+        %td.formNum= text_field_tag :loading_form, @loading_form
+        %td= f.label :max_loading_form, '最大積載量'
+        %td.formNum= text_field_tag :max_loading_form, @max_loading_form
+    %tbody.tbody_toggle.pointer
+      %tr
+        %td{colspan: "5"}
+          = hidden_field_tag :show_detail_3_3, @show_detail_3_3
+          = label_tag :show_detail_3_3, '＋　防御値を表示する', class: "act_desc"
+          = label_tag :show_detail_3_3, '×　防御値を非表示にする', class: "act_desc closed"
+          %div.act_desc 　物理防御、霊障防御、粒子防御、火炎防御、電子防御
+    %tbody.closed
+      %tr
+        %td  
+        %td= f.label :pysics_form, '物理防御'
+        %td.formNum= text_field_tag :pysics_form, @pysics_form
+        %td= f.label :spirit_form, '霊障防御'
+        %td.formNum= text_field_tag :spirit_form, @spirit_form
+      %tr
+        %td  
+        %td= f.label :particle_form, '粒子防御'
+        %td.formNum= text_field_tag :particle_form, @particle_form
+        %td= f.label :flame_form, '火炎防御'
+        %td.formNum= text_field_tag :flame_form, @flame_form
+      %tr
+        %td  
+        %td= f.label :electric_form, '電子防御'
+        %td.formNum{colspan: "3"}= text_field_tag :electric_form, @electric_form
+    %tbody.tbody_toggle.pointer
+      %tr
+        %td{colspan: "5"}
+          = hidden_field_tag :show_detail_4_1, @show_detail_4_1
+          = label_tag :show_detail_4_1, '＋　機体状況を表示する', class: "act_desc"
+          = label_tag :show_detail_4_1, '×　機体状況を非表示にする', class: "act_desc closed"
+    %tbody.closed
+      %tr
+      %tr
+        %td  
+        %td= f.label :condition_text_form, '機体状況'
+        %td.formText{colspan: "3"}= text_field_tag :condition_text_form, @condition_text_form
+    %tbody
       %tr
         %td= hidden_field_tag :is_form, 1
-        %td{:colspan => "3"}= f.submit '検索する'
+        %td{colspan: "4"}= f.submit '検索する'
 
 
 = paginate(@next_battles)
@@ -77,7 +209,38 @@
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
       %th= sort_link(@search, :block_no, 'ブロック', default_order: :desc)
-      %th{:colspan =>"2"}
+      - if @show_detail_1_1 == "1"
+        %th= sort_link(@search, :status_acc_reward, '累積報酬', default_order: :desc)
+      - if @show_detail_2_1 == "1"
+        %th= sort_link(@search, :reward_total_income, '合計収入', default_order: :desc)
+        %th= sort_link(@search, :reward_attack, '攻撃', default_order: :desc)
+        %th= sort_link(@search, :reward_support, '支援', default_order: :desc)
+        %th= sort_link(@search, :reward_defense, '防衛', default_order: :desc)
+      - if @show_detail_3_1 == "1"
+        %th= sort_link(@search, :spec_ap, 'AP', default_order: :desc)
+        %th= sort_link(@search, :spec_en, 'EN', default_order: :desc)
+        %th= sort_link(@search, :spec_en_recovery, 'EN回復', default_order: :desc)
+      - if @show_detail_3_2 == "1"
+        %th= sort_link(@search, :spec_movement, '機動', default_order: :desc)
+        %th= sort_link(@search, :spec_weight, '総重量', default_order: :desc)
+        %th= sort_link(@search, :spec_turning_speed, '旋回', default_order: :desc)
+        %th= sort_link(@search, :spec_jump, '跳躍', default_order: :desc)
+        %th= sort_link(@search, :spec_max_power, '最大火力', default_order: :desc)
+        %th= sort_link(@search, :spec_search, '索敵', default_order: :desc)
+        %th= sort_link(@search, :spec_precision, '命中', default_order: :desc)
+        %th= sort_link(@search, :spec_punding, '貯水', default_order: :desc)
+        %th= sort_link(@search, :spec_aerosol, '噴霧', default_order: :desc)
+        %th= sort_link(@search, :spec_loading, '積載', default_order: :desc)
+        %th= sort_link(@search, :spec_max_loading, '最大積載', default_order: :desc)
+      - if @show_detail_3_3 == "1"
+        %th{style: "border-bottom: 0.3em solid #ccc;"}= sort_link(@search, :pysics, '物理', default_order: :desc)
+        %th{style: "border-bottom: 0.3em solid #c4c;"}= sort_link(@search, :spirit, '霊障', default_order: :desc)
+        %th{style: "border-bottom: 0.3em solid #4cc;"}= sort_link(@search, :particle, '粒子', default_order: :desc)
+        %th{style: "border-bottom: 0.3em solid #c44;"}= sort_link(@search, :flame, '火炎', default_order: :desc)
+        %th{style: "border-bottom: 0.3em solid #ee8;"}= sort_link(@search, :electric, '電子', default_order: :desc)
+      - if @show_detail_4_1 == "1"
+        %th= sort_link(@search, :condition_all_text_condition_text, '機体状況', default_order: :desc)
+      %th{colspan: "2"}
         結果リンク
   %tbody
     - @next_battles.each do |next_battle|
@@ -85,6 +248,37 @@
         %td= next_battle.result_no
         %td= next_battle.p_name.name.html_safe + "(" + sprintf("%d",next_battle.e_no) + ")"
         %td= next_battle.block_no
+        - if @show_detail_1_1 == "1"
+          %td= next_battle.status.acc_reward if next_battle.status
+        - if @show_detail_2_1 == "1"
+          %td= next_battle.reward.total_income if next_battle.reward
+          %td= next_battle.reward.attack if next_battle.reward
+          %td= next_battle.reward.support if next_battle.reward
+          %td= next_battle.reward.defense if next_battle.reward
+        - if @show_detail_3_1 == "1"
+          %td= next_battle.spec.ap if next_battle.spec
+          %td= next_battle.spec.en if next_battle.spec
+          %td= next_battle.spec.en_recovery if next_battle.spec
+        - if @show_detail_3_2 == "1"
+          %td= next_battle.spec.movement if next_battle.spec
+          %td= next_battle.spec.weight if next_battle.spec
+          %td= next_battle.spec.turning_speed if next_battle.spec
+          %td= next_battle.spec.jump if next_battle.spec
+          %td= next_battle.spec.max_power if next_battle.spec
+          %td= next_battle.spec.search if next_battle.spec
+          %td= next_battle.spec.precision if next_battle.spec
+          %td= next_battle.spec.punding if next_battle.spec
+          %td= next_battle.spec.aerosol if next_battle.spec
+          %td= next_battle.spec.loading if next_battle.spec
+          %td= next_battle.spec.max_loading if next_battle.spec
+        - if @show_detail_3_3 == "1"
+          %td= next_battle.spec.pysics if next_battle.spec
+          %td= next_battle.spec.spirit if next_battle.spec
+          %td= next_battle.spec.particle if next_battle.spec
+          %td= next_battle.spec.flame if next_battle.spec
+          %td= next_battle.spec.electric if next_battle.spec
+        - if @show_detail_4_1 == "1"
+          %td= next_battle.condition_all_text.condition_text if next_battle.condition_all_text
         %td= character_link(next_battle.e_no)
         %td= character_old_link(@last_result, next_battle.e_no, next_battle.result_no, next_battle.generate_no)
 = paginate(@next_battles)
