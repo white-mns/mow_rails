@@ -1,0 +1,2 @@
+json.extract! market, :id, :result_no, :generate_no, :e_no, :market_no, :name, :kind, :unique_1, :unique_2, :ap, :spending_en, :value, :ammunition_cost, :weight, :turning_speed, :guard_elemental, :guard_value, :precision, :punding, :aerosol, :bullet, :loading, :weapon_element, :add_abnormity, :strength, :gunshot, :struggle, :reaction, :control, :preparation, :fitly, :type, :equip, :fuka_1, :fuka_2, :charge, :orig_name, :created_at, :updated_at
+json.url market_url(market, format: :json)

@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  result_no: 1
+  generate_no: 1
+  e_no: 1
+  battle_income: 1.5
+  add_income: 1.5
+  attack: 1.5
+  support: 1.5
+  defense: 1.5
+  defeat: 1.5
+  selling: 1.5
+  sub_quest: 1.5
+  enemy_caution: 1.5
+  colosseum_win: 1.5
+  fight_money: 1.5
+  total_income: 1
+  ammunition_cost: 1
+  preparation_deduction: 1
+  preparation_cost: 1
+  union_cost: 1
+  prize: 1
+  union_interest: 1
+  parts_sell: 1
+
+two:
+  result_no: 1
+  generate_no: 1
+  e_no: 1
+  battle_income: 1.5
+  add_income: 1.5
+  attack: 1.5
+  support: 1.5
+  defense: 1.5
+  defeat: 1.5
+  selling: 1.5
+  sub_quest: 1.5
+  enemy_caution: 1.5
+  colosseum_win: 1.5
+  fight_money: 1.5
+  total_income: 1
+  ammunition_cost: 1
+  preparation_deduction: 1
+  preparation_cost: 1
+  union_cost: 1
+  prize: 1
+  union_interest: 1
+  parts_sell: 1

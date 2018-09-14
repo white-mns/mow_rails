@@ -10,16 +10,19 @@ class <%= controller_class_name %>Controller < ApplicationController
   # GET <%= route_url %>
   def index
     param_set
-    @count	= <%= class_name %>.includes([:p_name]).search(params[:q]).result.count()
-    @search	= <%= class_name %>.includes([:p_name]).page(params[:page]).search(params[:q])
+    @count	= <%= class_name %>.includes(:p_name).search(params[:q]).result.count()
+    @search	= <%= class_name %>.includes(:p_name).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @<%= plural_table_name %>	= @search.result.per(50)
   end
 
   def param_set
     @last_result = Name.maximum('result_no')
-    params["result_no_form"] = params["result_no_form"] ? params["result_no_form"] : sprintf('%d',@last_result)
-    params[:q]  = params[:q] ? params[:q] : {}
+
+    params[:q] ||= {}
+    if !params["is_form"] then
+        params["result_no_form"] ||= sprintf('%d',@last_result)
+    end
     
     reference_text_assign(params, "p_name_name", "p_name_form")
 <% attributes.reject(&:password_digest?).each do |attribute| -%>

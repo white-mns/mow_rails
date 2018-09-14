@@ -1,0 +1,2 @@
+json.extract! item, :id, :result_no, :generate_no, :e_no, :i_no, :name, :kind, :unique_1, :unique_2, :ap, :spending_en, :value, :ammunition_cost, :weight, :turning_speed, :guard_elemental, :guard_value, :precision, :punding, :aerosol, :bullet, :loading, :weapon_element, :add_abnormity, :strength, :gunshot, :struggle, :reaction, :control, :preparation, :fitly, :equip, :fuka_1, :fuka_2, :orig_name, :drunkenness, :created_at, :updated_at
+json.url item_url(item, format: :json)

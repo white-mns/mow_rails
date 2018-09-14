@@ -1,0 +1,219 @@
+%h1 戦闘報酬一覧
+
+%p.formNum 
+  テキストフォームの隣に赤い破線がある項目は数値検索です。
+  %br
+  「/」区切りでOR、「100~」や「100~200」のように「~」をつけて範囲指定となります。
+  %br
+  OR指定と範囲指定を同時に行うことはできません。
+%p.formText
+  テキストフォームの隣に青い太線がある項目は文字検索です。
+  %br
+  半角スペース区切りでAND、「/」区切りでOR、単語の前に「-」でNOT、単語の前後に「"」をつけて完全一致が使えます
+  %br
+  ANDとORを組み合わせた時は、ANDで区切った後にORで区切るという順番になります。
+%p
+  %span.example_select.example_toggle.pointer
+    入力例
+    %span.act_desc（クリックで開きます）
+    %span.act_desc.closed（クリックで閉じます）
+#example.closed
+  %p.formNum
+    数値入力で「100/105/110」と入力　→ 入力した項目の数値が100、105、110の結果がヒット
+    %br
+    「100~」で100以上、「~100」で100以下、「-200~100」で-200～-100の範囲指定となります。
+  %p.formText
+    「粒子」と入力　→　粒子ブレードA、粒子スピアA、粒子爆雷A……が検索結果にヒット
+    %br
+    「"粒子"」　→　完全一致で「粒子」のみ検索結果にヒット
+    %br
+    「-粒子」　→　「粒子」の単語を含まない目的が検索結果にヒット
+    %br
+    「-"粒子"」　→　完全一致で「粒子」以外が検索結果にヒット
+    %br
+    「粒子 ブレード」　→　「粒子」と「ブレード」の2つの単語が含まれるものが検索結果にヒット
+    %br
+    「粒子/ブレード」　→　「粒子」か「ブレード」のどちらかの単語が含まれるものが検索結果にヒット
+    %br
+    「粒子 ブレード/スピア」　→　「粒子」が含まれ、さらに 「ブレード」か「スピア」 が含まれるものが検索結果にヒット
+    %br
+    「-粒子 -ブレード」　→　「粒子」もしくは「ブレード」という単語が含まれるものを検索結果から除外
+= search_form_for @search do |f|
+  %table.search_toggle.table.table-striped.table-bordered.table-hover
+    %tbody.pointer
+      %tr
+        %td{colspan: "5"}
+          絞り込み検索
+          %span.act_desc (クリックで閉じます)
+          %span.act_desc.closed (クリックで開きます)
+    %tbody
+      %tr
+      %tr
+        %td
+        %td= f.label :result_no_form, '更新回'
+        %td.formNum{colspan: "3"}= text_field_tag :result_no_form, @result_no_form
+      %tr
+        %td
+        %td= f.label :e_no_form, 'Eno'
+        %td.formNum= text_field_tag :e_no_form, @e_no_form
+        %td= f.label :p_name_form, 'キャラクター名'
+        %td.formText= text_field_tag :p_name_form, @p_name_form
+    %tbody.tbody_toggle.pointer
+      %tr
+        %td{colspan: "5"}
+          = hidden_field_tag :base_first, @base_first
+          = hidden_field_tag :show_detail_1, @show_detail_1
+          = label_tag :show_detail_1, '＋　基礎情報を表示する', class: "act_desc"
+          = label_tag :show_detail_1, '×　基礎情報を非表示にする', class: "act_desc closed"
+          %div.act_desc 　合計現金収入、攻撃戦果補正、支援戦果補正、防衛戦果補正
+    %tbody
+      %tr
+        %td
+        %td= f.label :total_income_form, '合計現金収入'
+        %td.formNum{colspan: "3"}= text_field_tag :total_income_form, @total_income_form
+      %tr
+        %td
+        %td= f.label :attack_form, '攻撃戦果補正'
+        %td.formNum= text_field_tag :attack_form, @attack_form
+        %td= f.label :support_form, '支援戦果補正'
+        %td.formNum= text_field_tag :support_form, @support_form
+      %tr
+        %td
+        %td= f.label :defense_form, '防衛戦果補正'
+        %td.formNum{colspan: "3"}= text_field_tag :defense_form, @defense_form
+    %tbody.tbody_toggle.pointer
+      %tr
+        %td{colspan: "5"}
+          = hidden_field_tag :show_detail_2, @show_detail_2
+          = label_tag :show_detail_1, '＋　その他補正を表示する', class: "act_desc"
+          = label_tag :show_detail_1, '×　その他補正を非表示にする', class: "act_desc closed"
+          %div.act_desc 　撃墜補正、販売数補正、サブクエスト、敵警戒補正、コロッセオ勝利補正、ファイトマネー補正
+    %tbody.closed
+      %tr
+        %td
+        %td= f.label :defeat_form, '撃墜補正'
+        %td.formNum{colspan: "3"}= text_field_tag :defeat_form, @defeat_form
+      %tr
+        %td
+        %td= f.label :selling_form, '販売数補正'
+        %td.formNum= text_field_tag :selling_form, @selling_form
+        %td= f.label :sub_quest_form, 'サブクエスト'
+        %td.formNum= text_field_tag :sub_quest_form, @sub_quest_form
+      %tr
+        %td
+        %td= f.label :enemy_caution_form, '敵警戒補正'
+        %td.formNum{colspan: "3"}= text_field_tag :enemy_caution_form, @enemy_caution_form
+      %tr
+        %td
+        %td= f.label :colosseum_win_form, 'コロッセオ勝利補正'
+        %td.formNum= text_field_tag :colosseum_win_form, @colosseum_win_form
+        %td= f.label :fight_money_form, 'ファイトマネー補正'
+        %td.formNum= text_field_tag :fight_money_form, @fight_money_form
+    %tbody.tbody_toggle.pointer
+      %tr
+        %td{colspan: "5"}
+          = hidden_field_tag :show_detail_3, @show_detail_3
+          = label_tag :show_detail_1, '＋　その他収支を表示する', class: "act_desc"
+          = label_tag :show_detail_1, '×　その他収支を非表示にする', class: "act_desc closed"
+          %div.act_desc 　戦闘収入、追加収入、弾薬費請求、整備控除修正額、整備請求費、ユニオン費、賞金、ユニオン利子、パーツ販売数
+    %tbody.closed
+      %tr
+        %td
+        %td= f.label :battle_income_form, '戦闘収入'
+        %td.formNum= text_field_tag :battle_income_form, @battle_income_form
+        %td= f.label :add_income_form, '追加収入'
+        %td.formNum= text_field_tag :add_income_form, @add_income_form
+      %tr
+        %td
+        %td= f.label :ammunition_cost_form, '弾薬費請求'
+        %td.formNum= text_field_tag :ammunition_cost_form, @ammunition_cost_form
+        %td= f.label :preparation_deduction_form, '整備控除修正額'
+        %td.formNum= text_field_tag :preparation_deduction_form, @preparation_deduction_form
+      %tr
+        %td
+        %td= f.label :preparation_cost_form, '整備請求費'
+        %td.formNum= text_field_tag :preparation_cost_form, @preparation_cost_form
+        %td= f.label :union_cost_form, 'ユニオン費'
+        %td.formNum= text_field_tag :union_cost_form, @union_cost_form
+      %tr
+        %td
+        %td= f.label :prize_form, '賞金'
+        %td.formNum= text_field_tag :prize_form, @prize_form
+        %td= f.label :union_interest_form, 'ユニオン利子'
+        %td.formNum= text_field_tag :union_interest_form, @union_interest_form
+      %tr
+        %td
+        %td= f.label :parts_sell_form, 'パーツ販売数'
+        %td.formNum{colspan: "3"}= text_field_tag :parts_sell_form, @parts_sell_form
+    %tbody
+      %tr
+        %td
+        %td= hidden_field_tag :is_form, 1
+        %td{colspan: "4"}= f.submit '検索する'
+
+
+= paginate(@rewards)
+%br
+ヒット数：#{ @count }件
+%br
+%br
+
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
+      %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
+      - if @show_detail_1 == "1"
+        %th= sort_link(@search, :total_income, '合計収入', default_order: :desc)
+        %th= sort_link(@search, :attack, '攻撃', default_order: :desc)
+        %th= sort_link(@search, :support, '支援', default_order: :desc)
+        %th= sort_link(@search, :defense, '防衛', default_order: :desc)
+      - if @show_detail_2 == "1"
+        %th= sort_link(@search, :defeat, '撃墜', default_order: :desc)
+        %th= sort_link(@search, :selling, '販売', default_order: :desc)
+        %th= sort_link(@search, :sub_quest, 'サブ', default_order: :desc)
+        %th= sort_link(@search, :enemy_caution, '敵警戒', default_order: :desc)
+        %th= sort_link(@search, :colosseum_win, 'コロシアム勝利', default_order: :desc)
+        %th= sort_link(@search, :fight_money, 'ファイトマネー', default_order: :desc)
+      - if @show_detail_3 == "1"
+        %th= sort_link(@search, :battle_income, '戦闘', default_order: :desc)
+        %th= sort_link(@search, :add_income, '追加', default_order: :desc)
+        %th= sort_link(@search, :ammunition_cost, '弾薬', default_order: :desc)
+        %th= sort_link(@search, :preparation_deduction, '整備控除', default_order: :desc)
+        %th= sort_link(@search, :preparation_cost, '整備費', default_order: :desc)
+        %th= sort_link(@search, :union_cost, 'ユニオン費', default_order: :desc)
+        %th= sort_link(@search, :prize, '賞金', default_order: :desc)
+        %th= sort_link(@search, :union_interest, 'ユニオン利子', default_order: :desc)
+        %th= sort_link(@search, :parts_sell, '販売数', default_order: :desc)
+      %th{colspan:"2"}
+        結果リンク
+  %tbody
+    - @rewards.each do |reward|
+      %tr
+        %td= reward.result_no
+        %td= reward.p_name.name.html_safe + "(" + sprintf("%d",reward.e_no) + ")"
+        - if @show_detail_1 == "1"
+          %td= reward.total_income
+          %td= reward.attack
+          %td= reward.support
+          %td= reward.defense
+        - if @show_detail_2 == "1"
+          %td= reward.defeat
+          %td= reward.selling
+          %td= reward.sub_quest
+          %td= reward.enemy_caution
+          %td= reward.colosseum_win
+          %td= reward.fight_money
+        - if @show_detail_3 == "1"
+          %td= reward.battle_income
+          %td= reward.add_income
+          %td= reward.ammunition_cost
+          %td= reward.preparation_deduction
+          %td= reward.preparation_cost
+          %td= reward.union_cost
+          %td= reward.prize
+          %td= reward.union_interest
+          %td= reward.parts_sell
+        %td= character_link(reward.e_no)
+        %td= character_old_link(@last_result, reward.e_no, reward.result_no, reward.generate_no)
+= paginate(@rewards)

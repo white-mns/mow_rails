@@ -9,17 +9,27 @@
 %p 
   第#{@last_result}回#{ "再" if @last_generate > 0}#{ num = 2; text = ""; while num <= @last_generate do num += 1; text += "々" end; text}更新結果まで反映済です。
 
-.col-lg-12
-  .bs-component
-    .well.well-sm
-      %h2 サイトマップ
+.well.well-sm
+  %h2 サイトマップ
+  .row
+    .col-md-6
       %ul
         %li 個人データ
         %ul  
+          %li= link_to "アイテム一覧", items_path
+          %li= link_to "ステータス一覧", statuses_path
+          %li= link_to "機体データ一覧", specs_path
+          %li= link_to "戦闘報酬一覧", rewards_path
+        %br
+        %li 結果データ
+        %ul  
+          %li= link_to "マーケット一覧", markets_path
+          %li= link_to "戦場別戦果一覧", block_results_path
+          %li= link_to "次回組み合わせ一覧", next_battles_path
 
-    .well.well-sm
-      %h2 更新履歴
-      %ul
-        %li 2018/-/-
-        %ul
-          %li サイト公開
+.well.well-sm
+  %h2 更新履歴
+  %ul
+    %li 2018/-/-
+    %ul
+      %li サイト公開

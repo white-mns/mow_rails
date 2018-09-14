@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  result_no: 1
+  generate_no: 1
+  e_no: 1
+  ap: 1
+  en: 1
+  en_recovery: 1
+  movement: 1
+  weight: 1
+  turning_speed: 1
+  jump: 1
+  max_power: 1
+  search: 1
+  precision: 1
+  punding: 1
+  aerosol: 1
+  pysics: 1
+  spirit: 1
+  particle: 1
+  flame: 1
+  electric: 1
+  loading: 1
+  max_loading: 1
+
+two:
+  result_no: 1
+  generate_no: 1
+  e_no: 1
+  ap: 1
+  en: 1
+  en_recovery: 1
+  movement: 1
+  weight: 1
+  turning_speed: 1
+  jump: 1
+  max_power: 1
+  search: 1
+  precision: 1
+  punding: 1
+  aerosol: 1
+  pysics: 1
+  spirit: 1
+  particle: 1
+  flame: 1
+  electric: 1
+  loading: 1
+  max_loading: 1
