@@ -63,7 +63,7 @@
       %tr
         %td  
         %td= f.label :intention_form, '意思表示'
-        %td.formNum= text_field_tag :intention_form, @intention_form
+        %td.formText= text_field_tag :intention_form, @intention_form
       %tr
         %td= hidden_field_tag :is_form, 1
         %td{colspan: "4"}= f.submit '検索する'

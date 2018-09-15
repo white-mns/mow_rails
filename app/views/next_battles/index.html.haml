@@ -65,9 +65,9 @@
     %tbody.tbody_toggle.pointer
       %tr
         %td{colspan: "5"}
-          = hidden_field_tag :show_detail_1_1, @show_detail_1_1
-          = label_tag :show_detail_1_1, '＋　累積報酬を表示する', class: "act_desc"
-          = label_tag :show_detail_1_1, '×　累積報酬を非表示にする', class: "act_desc closed"
+          = hidden_field_tag :show_detail_status_1, @show_detail_status_1
+          = label_tag :show_detail_status_1, '＋　累積報酬を表示する', class: "act_desc"
+          = label_tag :show_detail_status_1, '×　累積報酬を非表示にする', class: "act_desc closed"
     %tbody.closed
       %tr
         %td  
@@ -76,9 +76,9 @@
     %tbody.tbody_toggle.pointer
       %tr
         %td{colspan: "5"}
-          = hidden_field_tag :show_detail_2_1, @show_detail_2_1
-          = label_tag :show_detail_2_1, '＋　戦闘報酬を表示する', class: "act_desc"
-          = label_tag :show_detail_2_1, '×　戦闘報酬を非表示にする', class: "act_desc closed"
+          = hidden_field_tag :show_detail_reward_1, @show_detail_reward_1
+          = label_tag :show_detail_reward_1, '＋　戦闘報酬を表示する', class: "act_desc"
+          = label_tag :show_detail_reward_1, '×　戦闘報酬を非表示にする', class: "act_desc closed"
           %div.act_desc 　合計現金収入、攻撃戦果補正、支援戦果補正、防衛戦果補正
     %tbody.closed
       %tr
@@ -98,9 +98,49 @@
     %tbody.tbody_toggle.pointer
       %tr
         %td{colspan: "5"}
-          = hidden_field_tag :show_detail_3_1, @show_detail_3_1
-          = label_tag :show_detail_3_1, '＋　機体データその1を表示する', class: "act_desc"
-          = label_tag :show_detail_3_1, '×　機体データその1を非表示にする', class: "act_desc closed"
+          = hidden_field_tag :show_detail_battle_system_1, @show_detail_battle_system_1
+          = label_tag :show_detail_battle_system_1, '＋　戦闘システムを表示する', class: "act_desc"
+          = label_tag :show_detail_battle_system_1, '×　戦闘システムを非表示にする', class: "act_desc closed"
+    %tbody.closed
+      %tr
+        %td  
+        %td= f.label :battle_system_form, '戦闘システム'
+        %td.formText{:colspan => "3"}= text_field_tag :battle_system_form, @battle_system_form
+    %tbody.tbody_toggle.pointer
+      %tr
+        %td{colspan: "5"}
+          = hidden_field_tag :show_detail_intention_1, @show_detail_intention_1
+          = label_tag :show_detail_intention_1, '＋　意思表示を表示する', class: "act_desc"
+          = label_tag :show_detail_intention_1, '×　意思表示を非表示にする', class: "act_desc closed"
+    %tbody.closed
+      %tr
+        %td  
+        %td= f.label :intention_form, '意思表示'
+        %td.formText{:colspan => "3"}= text_field_tag :intention_form, @intention_form
+    %tbody.tbody_toggle.pointer
+      %tr
+        %td{colspan: "5"}
+          = hidden_field_tag :show_detail_consort_plane_1, @show_detail_consort_plane_1
+          = label_tag :show_detail_consort_plane_1, '＋　僚機を表示する', class: "act_desc"
+          = label_tag :show_detail_consort_plane_1, '×　僚機を非表示にする', class: "act_desc closed"
+    %tbody.closed
+      %tr
+        %td  
+        %td= f.label :consort_plane_form, '僚機Eno'
+        %td.formNum= text_field_tag :consort_plane_form, @consort_plane_form
+        %td= f.label :consort_plane_form, '僚機キャラクター名'
+        %td.formText= text_field_tag :consort_plane_name_form, @consort_plane_name_form
+      %tr
+        %td
+        %td{:colspan => "4"}
+          = check_box_tag :show_consort_plane_name, @show_consort_plane_name, @show_consort_plane_name
+          = label_tag :show_consort_plane_name, '僚機名を表示する'
+    %tbody.tbody_toggle.pointer
+      %tr
+        %td{colspan: "5"}
+          = hidden_field_tag :show_detail_spec_1, @show_detail_spec_1
+          = label_tag :show_detail_spec_1, '＋　機体データその1を表示する', class: "act_desc"
+          = label_tag :show_detail_spec_1, '×　機体データその1を非表示にする', class: "act_desc closed"
           %div.act_desc 　AP、EN、EN回復量
     %tbody.closed
       %tr
@@ -116,9 +156,9 @@
     %tbody.tbody_toggle.pointer
       %tr
         %td{colspan: "5"}
-          = hidden_field_tag :show_detail_3_2, @show_detail_3_2
-          = label_tag :show_detail_3_2, '＋　機体データその2を表示する', class: "act_desc"
-          = label_tag :show_detail_3_2, '×　機体データその2を非表示にする', class: "act_desc closed"
+          = hidden_field_tag :show_detail_spec_2, @show_detail_spec_2
+          = label_tag :show_detail_spec_2, '＋　機体データその2を表示する', class: "act_desc"
+          = label_tag :show_detail_spec_2, '×　機体データその2を非表示にする', class: "act_desc closed"
           %div.act_desc 　機動力、総重量、旋回速度、跳躍力、最大火力、索敵範囲、命中精度、貯水量、噴霧量、積載量、最大積載量
     %tbody.closed
       %tr
@@ -158,9 +198,9 @@
     %tbody.tbody_toggle.pointer
       %tr
         %td{colspan: "5"}
-          = hidden_field_tag :show_detail_3_3, @show_detail_3_3
-          = label_tag :show_detail_3_3, '＋　防御値を表示する', class: "act_desc"
-          = label_tag :show_detail_3_3, '×　防御値を非表示にする', class: "act_desc closed"
+          = hidden_field_tag :show_detail_spec_3, @show_detail_spec_3
+          = label_tag :show_detail_spec_3, '＋　防御値を表示する', class: "act_desc"
+          = label_tag :show_detail_spec_3, '×　防御値を非表示にする', class: "act_desc closed"
           %div.act_desc 　物理防御、霊障防御、粒子防御、火炎防御、電子防御
     %tbody.closed
       %tr
@@ -182,9 +222,9 @@
     %tbody.tbody_toggle.pointer
       %tr
         %td{colspan: "5"}
-          = hidden_field_tag :show_detail_4_1, @show_detail_4_1
-          = label_tag :show_detail_4_1, '＋　機体状況を表示する', class: "act_desc"
-          = label_tag :show_detail_4_1, '×　機体状況を非表示にする', class: "act_desc closed"
+          = hidden_field_tag :show_detail_condition_1, @show_detail_condition_1
+          = label_tag :show_detail_condition_1, '＋　機体状況を表示する', class: "act_desc"
+          = label_tag :show_detail_condition_1, '×　機体状況を非表示にする', class: "act_desc closed"
     %tbody.closed
       %tr
       %tr
@@ -210,18 +250,24 @@
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
       %th= sort_link(@search, :block_no, 'ブロック', default_order: :desc)
-      - if @show_detail_1_1 == "1"
+      - if @show_detail_status_1 == "1"
         %th= sort_link(@search, :status_acc_reward, '累積報酬', default_order: :desc)
-      - if @show_detail_2_1 == "1"
+      - if @show_detail_reward_1 == "1"
         %th= sort_link(@search, :reward_total_income, '合計収入', default_order: :desc)
         %th= sort_link(@search, :reward_attack, '攻撃', default_order: :desc)
         %th= sort_link(@search, :reward_support, '支援', default_order: :desc)
         %th= sort_link(@search, :reward_defense, '防衛', default_order: :desc)
-      - if @show_detail_3_1 == "1"
+      - if @show_detail_battle_system_1 == "1"
+        %th= sort_link(@search, :battle_system_battle_system, '戦闘システム', default_order: :desc)
+      - if @show_detail_intention_1 == "1"
+        %th= sort_link(@search, :intention, '意思', default_order: :desc)
+      - if @show_detail_consort_plane_1 == "1"
+        %th= sort_link(@search, :consort_plane, '僚機', default_order: :desc)
+      - if @show_detail_spec_1 == "1"
         %th= sort_link(@search, :spec_ap, 'AP', default_order: :desc)
         %th= sort_link(@search, :spec_en, 'EN', default_order: :desc)
         %th= sort_link(@search, :spec_en_recovery, 'EN回復', default_order: :desc)
-      - if @show_detail_3_2 == "1"
+      - if @show_detail_spec_2 == "1"
         %th= sort_link(@search, :spec_movement, '機動', default_order: :desc)
         %th= sort_link(@search, :spec_weight, '総重量', default_order: :desc)
         %th= sort_link(@search, :spec_turning_speed, '旋回', default_order: :desc)
@@ -233,13 +279,13 @@
         %th= sort_link(@search, :spec_aerosol, '噴霧', default_order: :desc)
         %th= sort_link(@search, :spec_loading, '積載', default_order: :desc)
         %th= sort_link(@search, :spec_max_loading, '最大積載', default_order: :desc)
-      - if @show_detail_3_3 == "1"
+      - if @show_detail_spec_3 == "1"
         %th{style: "border-bottom: 0.3em solid #ccc;"}= sort_link(@search, :pysics, '物理', default_order: :desc)
         %th{style: "border-bottom: 0.3em solid #c4c;"}= sort_link(@search, :spirit, '霊障', default_order: :desc)
         %th{style: "border-bottom: 0.3em solid #4cc;"}= sort_link(@search, :particle, '粒子', default_order: :desc)
         %th{style: "border-bottom: 0.3em solid #c44;"}= sort_link(@search, :flame, '火炎', default_order: :desc)
         %th{style: "border-bottom: 0.3em solid #ee8;"}= sort_link(@search, :electric, '電子', default_order: :desc)
-      - if @show_detail_4_1 == "1"
+      - if @show_detail_condition_1 == "1"
         %th= sort_link(@search, :condition_all_text_condition_text, '機体状況', default_order: :desc)
       %th{colspan: "2"}
         結果リンク
@@ -249,18 +295,27 @@
         %td= next_battle.result_no
         %td= next_battle.p_name.name.html_safe + "(" + sprintf("%d",next_battle.e_no) + ")"
         %td= next_battle.block_no
-        - if @show_detail_1_1 == "1"
+        - if @show_detail_status_1 == "1"
           %td= next_battle.status.acc_reward if next_battle.status
-        - if @show_detail_2_1 == "1"
+        - if @show_detail_reward_1 == "1"
           %td= next_battle.reward.total_income if next_battle.reward
           %td= next_battle.reward.attack if next_battle.reward
           %td= next_battle.reward.support if next_battle.reward
           %td= next_battle.reward.defense if next_battle.reward
-        - if @show_detail_3_1 == "1"
+        - if @show_detail_battle_system_1 == "1"
+          %td= next_battle.battle_system.battle_system_name.name if next_battle.battle_system && next_battle.battle_system.battle_system_name
+        - if @show_detail_intention_1 == "1"
+          %td= next_battle.intention.intention_name.name if next_battle.intention && next_battle.intention.intention_name
+        - if @show_detail_consort_plane_1 == "1"
+          - if @show_consort_plane_name == "on"
+            %td= next_battle.consort_plane.consort_plane_name.name.html_safe + "(" + sprintf("%d",next_battle.consort_plane.e_no) + ")" if next_battle.consort_plane && next_battle.consort_plane.consort_plane_name
+          - else
+            %td= next_battle.consort_plane.e_no if next_battle.consort_plane && next_battle.consort_plane.consort_plane_name
+        - if @show_detail_spec_1 == "1"
           %td= next_battle.spec.ap if next_battle.spec
           %td= next_battle.spec.en if next_battle.spec
           %td= next_battle.spec.en_recovery if next_battle.spec
-        - if @show_detail_3_2 == "1"
+        - if @show_detail_spec_2 == "1"
           %td= next_battle.spec.movement if next_battle.spec
           %td= next_battle.spec.weight if next_battle.spec
           %td= next_battle.spec.turning_speed if next_battle.spec
@@ -272,13 +327,13 @@
           %td= next_battle.spec.aerosol if next_battle.spec
           %td= next_battle.spec.loading if next_battle.spec
           %td= next_battle.spec.max_loading if next_battle.spec
-        - if @show_detail_3_3 == "1"
+        - if @show_detail_spec_3 == "1"
           %td= next_battle.spec.pysics if next_battle.spec
           %td= next_battle.spec.spirit if next_battle.spec
           %td= next_battle.spec.particle if next_battle.spec
           %td= next_battle.spec.flame if next_battle.spec
           %td= next_battle.spec.electric if next_battle.spec
-        - if @show_detail_4_1 == "1"
+        - if @show_detail_condition_1 == "1"
           %td= next_battle.condition_all_text.condition_text if next_battle.condition_all_text
         %td= character_link(next_battle.e_no)
         %td= character_old_link(@last_result, next_battle.e_no, next_battle.result_no, next_battle.generate_no)

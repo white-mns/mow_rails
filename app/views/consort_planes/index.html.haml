@@ -63,7 +63,7 @@
         %td= f.label :consort_plane_form, '僚機Eno'
         %td.formNum= text_field_tag :consort_plane_form, @consort_plane_form
         %td= f.label :consort_plane_form, '僚機キャラクター名'
-        %td.formNum= text_field_tag :consort_plane_name_form, @consort_plane_name_form
+        %td.formText= text_field_tag :consort_plane_name_form, @consort_plane_name_form
       %tr
         %td= hidden_field_tag :is_form, 1
         %td{colspan: "4"}= f.submit '検索する'
