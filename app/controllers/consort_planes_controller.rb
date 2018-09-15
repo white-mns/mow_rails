@@ -24,12 +24,14 @@ class ConsortPlanesController < ApplicationController
     reference_number_assign(params, "generate_no", "generate_no_form")
     reference_number_assign(params, "e_no", "e_no_form")
     reference_number_assign(params, "consort_plane", "consort_plane_form")
+    reference_text_assign(params, "consort_plane_name_name", "consort_plane_name_form")
     
     @p_name_form = params["p_name_form"]
     @result_no_form = params["result_no_form"]
     @generate_no_form = params["generate_no_form"]
     @e_no_form = params["e_no_form"]
     @consort_plane_form = params["consort_plane_form"]
+    @consort_plane_name_form = params["consort_plane_name_form"]
   end
   # GET /consort_planes/1
   #def show

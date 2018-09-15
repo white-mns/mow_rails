@@ -1,4 +1,4 @@
-%h1 Listing consort_planes
+%h1 僚機一覧
 
 %p.formNum 
   テキストフォームの隣に赤い破線がある項目は数値検索です。
@@ -56,26 +56,14 @@
         %td  
         %td= f.label :e_no_form, 'Eno'
         %td.formNum= text_field_tag :e_no_form, @e_no_form
-      %tr
-        %td  
         %td= f.label :p_name_form, 'キャラクター名'
         %td.formText= text_field_tag :p_name_form, @p_name_form
       %tr
         %td  
-        %td= f.label :result_no_form, 'Result no'
-        %td.formNum= text_field_tag :result_no_form, @result_no_form
-      %tr
-        %td  
-        %td= f.label :generate_no_form, 'Generate no'
-        %td.formNum= text_field_tag :generate_no_form, @generate_no_form
-      %tr
-        %td  
-        %td= f.label :e_no_form, 'E no'
-        %td.formNum= text_field_tag :e_no_form, @e_no_form
-      %tr
-        %td  
-        %td= f.label :consort_plane_form, 'Consort plane'
+        %td= f.label :consort_plane_form, '僚機Eno'
         %td.formNum= text_field_tag :consort_plane_form, @consort_plane_form
+        %td= f.label :consort_plane_form, '僚機キャラクター名'
+        %td.formNum= text_field_tag :consort_plane_name_form, @consort_plane_name_form
       %tr
         %td= hidden_field_tag :is_form, 1
         %td{colspan: "4"}= f.submit '検索する'
@@ -92,10 +80,7 @@
     %tr
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
-      %th= sort_link(@search, :result_no, 'Result no', default_order: :desc)
-      %th= sort_link(@search, :generate_no, 'Generate no', default_order: :desc)
-      %th= sort_link(@search, :e_no, 'E no', default_order: :desc)
-      %th= sort_link(@search, :consort_plane, 'Consort plane', default_order: :desc)
+      %th= sort_link(@search, :consort_plane, '僚機', default_order: :desc)
       %th{colspan: "2"}
         結果リンク
   %tbody
@@ -103,10 +88,7 @@
       %tr
         %td= consort_plane.result_no
         %td= consort_plane.p_name.name.html_safe + "(" + sprintf("%d",consort_plane.e_no) + ")"
-        %td= consort_plane.result_no
-        %td= consort_plane.generate_no
-        %td= consort_plane.e_no
-        %td= consort_plane.consort_plane
+        %td= consort_plane.consort_plane_name.name.html_safe + "(" + sprintf("%d",consort_plane.consort_plane) + ")" if consort_plane.consort_plane_name
         %td= character_link(consort_plane.e_no)
         %td= character_old_link(@last_result, consort_plane.e_no, consort_plane.result_no, consort_plane.generate_no)
 = paginate(@consort_planes)
