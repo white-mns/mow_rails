@@ -1,4 +1,4 @@
-%h1 Listing battle_systems
+%h1 戦闘システム一覧
 
 %p.formNum 
   テキストフォームの隣に赤い破線がある項目は数値検索です。
@@ -40,7 +40,7 @@
     「-粒子 -ブレード」　→　「粒子」もしくは「ブレード」という単語が含まれるものを検索結果から除外
 = search_form_for @search do |f|
   %table.search_toggle.table.table-striped.table-bordered.table-hover
-     %tbody.pointer
+    %tbody.pointer
       %tr
         %td{colspan: "5"}
           絞り込み検索
@@ -62,20 +62,8 @@
         %td.formText= text_field_tag :p_name_form, @p_name_form
       %tr
         %td  
-        %td= f.label :result_no_form, 'Result no'
-        %td.formNum= text_field_tag :result_no_form, @result_no_form
-      %tr
-        %td  
-        %td= f.label :generate_no_form, 'Generate no'
-        %td.formNum= text_field_tag :generate_no_form, @generate_no_form
-      %tr
-        %td  
-        %td= f.label :e_no_form, 'E no'
-        %td.formNum= text_field_tag :e_no_form, @e_no_form
-      %tr
-        %td  
-        %td= f.label :battle_system_form, 'Battle system'
-        %td.formNum= text_field_tag :battle_system_form, @battle_system_form
+        %td= f.label :battle_system_form, '戦闘システム'
+        %td.formText= text_field_tag :battle_system_form, @battle_system_form
       %tr
         %td= hidden_field_tag :is_form, 1
         %td{colspan: "4"}= f.submit '検索する'
@@ -92,10 +80,7 @@
     %tr
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
-      %th= sort_link(@search, :result_no, 'Result no', default_order: :desc)
-      %th= sort_link(@search, :generate_no, 'Generate no', default_order: :desc)
-      %th= sort_link(@search, :e_no, 'E no', default_order: :desc)
-      %th= sort_link(@search, :battle_system, 'Battle system', default_order: :desc)
+      %th= sort_link(@search, :battle_system, '戦闘システム', default_order: :desc)
       %th{colspan: "2"}
         結果リンク
   %tbody
@@ -103,10 +88,7 @@
       %tr
         %td= battle_system.result_no
         %td= battle_system.p_name.name.html_safe + "(" + sprintf("%d",battle_system.e_no) + ")"
-        %td= battle_system.result_no
-        %td= battle_system.generate_no
-        %td= battle_system.e_no
-        %td= battle_system.battle_system
+        %td= battle_system.battle_system_name.name if battle_system.battle_system_name
         %td= character_link(battle_system.e_no)
         %td= character_old_link(@last_result, battle_system.e_no, battle_system.result_no, battle_system.generate_no)
 = paginate(@battle_systems)

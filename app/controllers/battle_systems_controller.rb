@@ -5,8 +5,8 @@ class BattleSystemsController < ApplicationController
   # GET /battle_systems
   def index
     param_set
-    @count	= BattleSystem.includes(:p_name).search(params[:q]).result.count()
-    @search	= BattleSystem.includes(:p_name).page(params[:page]).search(params[:q])
+    @count	= BattleSystem.includes(:p_name, :battle_system_name).search(params[:q]).result.count()
+    @search	= BattleSystem.includes(:p_name, :battle_system_name).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @battle_systems	= @search.result.per(50)
   end
@@ -23,7 +23,7 @@ class BattleSystemsController < ApplicationController
     reference_number_assign(params, "result_no", "result_no_form")
     reference_number_assign(params, "generate_no", "generate_no_form")
     reference_number_assign(params, "e_no", "e_no_form")
-    reference_number_assign(params, "battle_system", "battle_system_form")
+    reference_text_assign(params, "battle_system_name_name", "battle_system_form")
     
     @p_name_form = params["p_name_form"]
     @result_no_form = params["result_no_form"]
