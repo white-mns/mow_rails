@@ -98,6 +98,24 @@
     %tbody.tbody_toggle.pointer
       %tr
         %td{colspan: "5"}
+          = hidden_field_tag :show_detail_assembly_1, @show_detail_assembly_1
+          = label_tag :show_detail_assembly_1, '＋　アセンブルを表示する', class: "act_desc"
+          = label_tag :show_detail_assembly_1, '×　アセンブルを非表示にする', class: "act_desc closed"
+    %tbody.closed
+      %tr
+        %td  
+        %td= f.label :leg_form, '脚部'
+        %td.formText= text_field_tag :leg_form, @leg_form
+        %td= f.label :assembly_form, '全アセンブル (ORのみ)'
+        %td.formText= text_field_tag :assembly_form, @assembly_form
+      %tr
+        %td
+        %td{:colspan => "4"}
+          = check_box_tag :show_all_assembly, @show_all_assembly, @show_all_assembly
+          = label_tag :show_all_assembly, '全アセンブルを表示する'
+    %tbody.tbody_toggle.pointer
+      %tr
+        %td{colspan: "5"}
           = hidden_field_tag :show_detail_battle_system_1, @show_detail_battle_system_1
           = label_tag :show_detail_battle_system_1, '＋　戦闘システムを表示する', class: "act_desc"
           = label_tag :show_detail_battle_system_1, '×　戦闘システムを非表示にする', class: "act_desc closed"
@@ -250,6 +268,8 @@
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
       %th= sort_link(@search, :block_no, 'ブロック', default_order: :desc)
+      - if @show_detail_assembly_1 == "1"
+        %th= sort_link(@search, :leg_orig_name_name_name, '脚部', default_order: :desc)
       - if @show_detail_status_1 == "1"
         %th= sort_link(@search, :status_acc_reward, '累積報酬', default_order: :desc)
       - if @show_detail_reward_1 == "1"
@@ -292,9 +312,11 @@
   %tbody
     - @next_battles.each do |next_battle|
       %tr
-        %td= next_battle.result_no
-        %td= next_battle.p_name.name.html_safe + "(" + sprintf("%d",next_battle.e_no) + ")"
-        %td= next_battle.block_no
+        %td{rowspan: "#{ '2' if @show_all_assembly }" }= next_battle.result_no
+        %td{rowspan: "#{ '2' if @show_all_assembly }" }= next_battle.p_name.name.html_safe + "(" + sprintf("%d",next_battle.e_no) + ")"
+        %td{rowspan: "#{ '2' if @show_all_assembly }" }= next_battle.block_no
+        - if @show_detail_assembly_1 == "1"
+          %td= next_battle.leg.orig_name_name.name if next_battle.leg
         - if @show_detail_status_1 == "1"
           %td= next_battle.status.acc_reward if next_battle.status
         - if @show_detail_reward_1 == "1"
@@ -337,4 +359,7 @@
           %td= next_battle.condition_all_text.condition_text if next_battle.condition_all_text
         %td= character_link(next_battle.e_no)
         %td= character_old_link(@last_result, next_battle.e_no, next_battle.result_no, next_battle.generate_no)
+      -if @show_all_assembly
+        %tr
+          %td{colspan: 100}= all_assembly_text(next_battle.assembly)
 = paginate(@next_battles)

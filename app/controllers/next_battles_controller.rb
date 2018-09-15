@@ -5,8 +5,8 @@ class NextBattlesController < ApplicationController
   # GET /next_battles
   def index
     param_set
-    @count	= NextBattle.includes(:p_name, :status, :spec, :reward, :condition_all_text, [battle_system: :battle_system_name], [intention: :intention_name], [consort_plane: :consort_plane_name]).search(params[:q]).result.count()
-    @search	= NextBattle.includes(:p_name, :status, :spec, :reward, :condition_all_text, [battle_system: :battle_system_name], [intention: :intention_name], [consort_plane: :consort_plane_name]).page(params[:page]).search(params[:q])
+    @count	= NextBattle.includes(:p_name, :status, :spec, :reward, :condition_all_text, [leg: :orig_name_name], [assembly: :orig_name_name], [battle_system: :battle_system_name], [intention: :intention_name], [consort_plane: :consort_plane_name]).search(params[:q]).result.count()
+    @search	= NextBattle.includes(:p_name, :status, :spec, :reward, :condition_all_text, [leg: :orig_name_name], [assembly: :orig_name_name], [battle_system: :battle_system_name], [intention: :intention_name], [consort_plane: :consort_plane_name]).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @next_battles	= @search.result.per(50)
   end
@@ -30,6 +30,8 @@ class NextBattlesController < ApplicationController
     reference_number_assign(params, "reward_attack", "attack_form")
     reference_number_assign(params, "reward_support", "support_form")
     reference_number_assign(params, "reward_defense", "defense_form")
+    reference_text_assign(params, "leg_orig_name_name_name", "leg_form")
+    reference_text_assign(params, "assembly_orig_name_name_name", "assembly_form")
     reference_text_assign(params, "battle_system_battle_system_name_name", "battle_system_form")
     reference_text_assign(params, "intention_intention_name_name", "intention_form")
     reference_text_assign(params, "consort_plane_consort_plane", "consort_plane_form")
@@ -66,6 +68,8 @@ class NextBattlesController < ApplicationController
     @attack_form = params["attack_form"]
     @support_form = params["support_form"]
     @defense_form = params["defense_form"]
+    @leg_form = params["leg_form"]
+    @assembly_form = params["assembly_form"]
     @battle_system_form = params["battle_system_form"]
     @intention_form = params["intention_form"]
     @consort_plane_form = params["consort_plane_form"]
@@ -93,10 +97,12 @@ class NextBattlesController < ApplicationController
 
     @show_detail_status_1 = params["show_detail_status_1"]
     @show_detail_reward_1 = params["show_detail_reward_1"]
+    @show_detail_assembly_1 = params["show_detail_assembly_1"]
+    @show_all_assembly = params["show_all_assembly"]
     @show_detail_battle_system_1 = params["show_detail_battle_system_1"]
     @show_detail_intention_1 = params["show_detail_intention_1"]
     @show_detail_consort_plane_1 = params["show_detail_consort_plane_1"]
-    @show_consort_plane_name = (!params["is_form"]) ? "on" : params["show_consort_plane_name"]
+    @show_consort_plane_name = params["show_consort_plane_name"]
     @show_detail_spec_1 = params["show_detail_spec_1"]
     @show_detail_spec_2 = params["show_detail_spec_2"]
     @show_detail_spec_3 = params["show_detail_spec_3"]
