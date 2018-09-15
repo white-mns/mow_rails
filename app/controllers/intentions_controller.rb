@@ -5,8 +5,8 @@ class IntentionsController < ApplicationController
   # GET /intentions
   def index
     param_set
-    @count	= Intention.includes(:p_name).search(params[:q]).result.count()
-    @search	= Intention.includes(:p_name).page(params[:page]).search(params[:q])
+    @count	= Intention.includes(:p_name, :intention_name).search(params[:q]).result.count()
+    @search	= Intention.includes(:p_name, :intention_name).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @intentions	= @search.result.per(50)
   end
@@ -23,7 +23,7 @@ class IntentionsController < ApplicationController
     reference_number_assign(params, "result_no", "result_no_form")
     reference_number_assign(params, "generate_no", "generate_no_form")
     reference_number_assign(params, "e_no", "e_no_form")
-    reference_number_assign(params, "intention", "intention_form")
+    reference_text_assign(params, "intention_name_name", "intention_form")
     
     @p_name_form = params["p_name_form"]
     @result_no_form = params["result_no_form"]

@@ -1,4 +1,4 @@
-%h1 Listing intentions
+%h1 意思表示一覧
 
 %p.formNum 
   テキストフォームの隣に赤い破線がある項目は数値検索です。
@@ -62,19 +62,7 @@
         %td.formText= text_field_tag :p_name_form, @p_name_form
       %tr
         %td  
-        %td= f.label :result_no_form, 'Result no'
-        %td.formNum= text_field_tag :result_no_form, @result_no_form
-      %tr
-        %td  
-        %td= f.label :generate_no_form, 'Generate no'
-        %td.formNum= text_field_tag :generate_no_form, @generate_no_form
-      %tr
-        %td  
-        %td= f.label :e_no_form, 'E no'
-        %td.formNum= text_field_tag :e_no_form, @e_no_form
-      %tr
-        %td  
-        %td= f.label :intention_form, 'Intention'
+        %td= f.label :intention_form, '意思表示'
         %td.formNum= text_field_tag :intention_form, @intention_form
       %tr
         %td= hidden_field_tag :is_form, 1
@@ -92,10 +80,7 @@
     %tr
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
-      %th= sort_link(@search, :result_no, 'Result no', default_order: :desc)
-      %th= sort_link(@search, :generate_no, 'Generate no', default_order: :desc)
-      %th= sort_link(@search, :e_no, 'E no', default_order: :desc)
-      %th= sort_link(@search, :intention, 'Intention', default_order: :desc)
+      %th= sort_link(@search, :intention, '意思', default_order: :desc)
       %th{colspan: "2"}
         結果リンク
   %tbody
@@ -103,10 +88,7 @@
       %tr
         %td= intention.result_no
         %td= intention.p_name.name.html_safe + "(" + sprintf("%d",intention.e_no) + ")"
-        %td= intention.result_no
-        %td= intention.generate_no
-        %td= intention.e_no
-        %td= intention.intention
+        %td= intention.intention_name.name if intention.intention_name
         %td= character_link(intention.e_no)
         %td= character_old_link(@last_result, intention.e_no, intention.result_no, intention.generate_no)
 = paginate(@intentions)
