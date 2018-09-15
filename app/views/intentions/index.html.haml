@@ -1,4 +1,4 @@
-%h1 Listing <%= plural_table_name %>
+%h1 意思表示一覧
 
 %p.formNum 
   テキストフォームの隣に赤い破線がある項目は数値検索です。
@@ -60,18 +60,16 @@
         %td  
         %td= f.label :p_name_form, 'キャラクター名'
         %td.formText= text_field_tag :p_name_form, @p_name_form
-<% attributes.reject(&:password_digest?).each do |attribute| -%>
       %tr
         %td  
-        %td= f.label :<%= attribute.name %>_form, '<%= attribute.human_name %>'
-        %td.formNum= text_field_tag :<%= attribute.name %>_form, @<%= attribute.name %>_form
-<% end -%>
+        %td= f.label :intention_form, '意思表示'
+        %td.formText= text_field_tag :intention_form, @intention_form
       %tr
         %td= hidden_field_tag :is_form, 1
         %td{colspan: "4"}= f.submit '検索する'
 
 
-= paginate(@<%= plural_table_name %>)
+= paginate(@intentions)
 %br
 ヒット数：#{ @count }件
 %br
@@ -82,19 +80,15 @@
     %tr
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
-<% attributes.reject(&:password_digest?).each do |attribute| -%>
-      %th= sort_link(@search, :<%= attribute.name %>, <%= '\'' +  attribute.human_name + '\'' %>, default_order: :desc)
-<% end -%>
+      %th= sort_link(@search, :intention, '意思', default_order: :desc)
       %th{colspan: "2"}
         結果リンク
   %tbody
-    - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+    - @intentions.each do |intention|
       %tr
-        %td= <%= singular_table_name %>.result_no
-        %td= <%= singular_table_name %>.p_name.name.html_safe + "(" + sprintf("%d",<%= singular_table_name %>.e_no) + ")"
-<% attributes.reject(&:password_digest?).each do |attribute| -%>
-        %td= <%= singular_table_name %>.<%= attribute.name %>
-<% end -%>
-        %td= character_link(<%= singular_table_name %>.e_no)
-        %td= character_old_link(@last_result, <%= singular_table_name %>.e_no, <%= singular_table_name %>.result_no, <%= singular_table_name %>.generate_no)
-= paginate(@<%= plural_table_name %>)
+        %td= intention.result_no
+        %td= intention.p_name.name.html_safe + "(" + sprintf("%d",intention.e_no) + ")"
+        %td= intention.intention_name.name if intention.intention_name
+        %td= character_link(intention.e_no)
+        %td= character_old_link(@last_result, intention.e_no, intention.result_no, intention.generate_no)
+= paginate(@intentions)

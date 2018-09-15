@@ -14,8 +14,8 @@ class BlocksController < ApplicationController
   # GET /block/results
   def result
     param_set
-    @count	= Block.includes(:p_name).search(params[:q]).result.count()
-    @search	= Block.includes(:p_name).page(params[:page]).search(params[:q])
+    @count	= Block.includes(:p_name, :status, :spec, :reward, :condition_all_text, [leg: :orig_name_name], [assembly: :orig_name_name], [battle_system: :battle_system_name], [intention: :intention_name], [consort_plane: :consort_plane_name]).search(params[:q]).result.count()
+    @search	= Block.includes(:p_name, :status, :spec, :reward, :condition_all_text, [leg: :orig_name_name], [assembly: :orig_name_name], [battle_system: :battle_system_name], [intention: :intention_name], [consort_plane: :consort_plane_name]).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @blocks	= @search.result.per(50)
   end
@@ -35,10 +35,17 @@ class BlocksController < ApplicationController
     reference_number_assign(params, "e_no", "e_no_form")
  
     reference_number_assign(params, "status_acc_reward", "acc_reward_form")
+    reference_number_assign(params, "status_rp", "rp_form")
     reference_number_assign(params, "reward_total_income", "total_income_form")
     reference_number_assign(params, "reward_attack", "attack_form")
     reference_number_assign(params, "reward_support", "support_form")
     reference_number_assign(params, "reward_defense", "defense_form")
+    reference_text_assign(params, "leg_orig_name_name_name", "leg_form")
+    reference_text_assign(params, "assembly_orig_name_name_name", "assembly_form")
+    reference_text_assign(params, "battle_system_battle_system_name_name", "battle_system_form")
+    reference_text_assign(params, "intention_intention_name_name", "intention_form")
+    reference_text_assign(params, "consort_plane_consort_plane", "consort_plane_form")
+    reference_text_assign(params, "consort_plane_consort_plane_name_name", "consort_plane_name_form")
     reference_number_assign(params, "spec_ap", "ap_form")
     reference_number_assign(params, "spec_en", "en_form")
     reference_number_assign(params, "spec_en_recovery", "en_recovery_form")
@@ -67,10 +74,17 @@ class BlocksController < ApplicationController
     @e_no_form = params["e_no_form"]
 
     @acc_reward_form = params["acc_reward_form"]
+    @rp_form = params["rp_form"]
     @total_income_form = params["total_income_form"]
     @attack_form = params["attack_form"]
     @support_form = params["support_form"]
     @defense_form = params["defense_form"]
+    @leg_form = params["leg_form"]
+    @assembly_form = params["assembly_form"]
+    @battle_system_form = params["battle_system_form"]
+    @intention_form = params["intention_form"]
+    @consort_plane_form = params["consort_plane_form"]
+    @consort_plane_name_form = params["consort_plane_name_form"]
     @ap_form = params["ap_form"]
     @en_form = params["en_form"]
     @en_recovery_form = params["en_recovery_form"]
@@ -92,12 +106,18 @@ class BlocksController < ApplicationController
     @max_loading_form = params["max_loading_form"]
     @condition_text_form = params["condition_text_form"]
 
-    @show_detail_1_1 = params["show_detail_1_1"]
-    @show_detail_2_1 = (!params["is_form"]) ? "1" : params["show_detail_2_1"]
-    @show_detail_3_1 = params["show_detail_3_1"]
-    @show_detail_3_2 = params["show_detail_3_2"]
-    @show_detail_3_3 = params["show_detail_3_3"]
-    @show_detail_4_1 = params["show_detail_4_1"]
+    @show_detail_status_1 = params["show_detail_status_1"]
+    @show_detail_reward_1 = (!params["is_form"]) ? "1" : params["show_detail_reward_1"]
+    @show_detail_assembly_1 = params["show_detail_assembly_1"]
+    @show_all_assembly = params["show_all_assembly"]
+    @show_detail_battle_system_1 = (!params["is_form"]) ? "1" : params["show_detail_battle_system_1"]
+    @show_detail_intention_1 = (!params["is_form"]) ? "1" : params["show_detail_intention_1"]
+    @show_detail_consort_plane_1 = params["show_detail_consort_plane_1"]
+    @show_consort_plane_name = params["show_consort_plane_name"]
+    @show_detail_spec_1 = params["show_detail_spec_1"]
+    @show_detail_spec_2 = params["show_detail_spec_2"]
+    @show_detail_spec_3 = params["show_detail_spec_3"]
+    @show_detail_condition_1 = params["show_detail_condition_1"]
     @base_first    = (!params["is_form"]) ? "1" : "0"
   end
   # GET /blocks/1
