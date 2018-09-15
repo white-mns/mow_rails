@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_15_142755) do
+ActiveRecord::Schema.define(version: 2018_09_15_151359) do
 
   create_table "battle_systems", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "result_no"
@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(version: 2018_09_15_142755) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["e_no", "result_no", "generate_no"], name: "resultno_eno"
+  end
+
+  create_table "intentions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "result_no"
+    t.integer "generate_no"
+    t.integer "e_no"
+    t.integer "intention"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["e_no", "result_no", "generate_no"], name: "resultno_eno"
+    t.index ["intention"], name: "index_intentions_on_intention"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

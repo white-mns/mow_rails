@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :intentions
   resources :battle_systems
   get "block/results", :to => "blocks#result", :as => 'block_results' 
   resources :blocks
