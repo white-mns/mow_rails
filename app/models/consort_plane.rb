@@ -1,0 +1,2 @@
+class ConsortPlane < ApplicationRecord
+end

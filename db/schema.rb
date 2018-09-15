@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_15_151359) do
+ActiveRecord::Schema.define(version: 2018_09_15_160316) do
 
   create_table "battle_systems", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "result_no"
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 2018_09_15_151359) do
     t.string "condition_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["e_no", "result_no", "generate_no"], name: "resultno_eno"
+  end
+
+  create_table "consort_planes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "result_no"
+    t.integer "generate_no"
+    t.integer "e_no"
+    t.integer "consort_plane"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["consort_plane"], name: "index_consort_planes_on_consort_plane"
     t.index ["e_no", "result_no", "generate_no"], name: "resultno_eno"
   end
 
