@@ -1,0 +1,2 @@
+class BattleSystem < ApplicationRecord
+end
