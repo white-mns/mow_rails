@@ -26,6 +26,7 @@ class NextBattlesController < ApplicationController
     reference_number_assign(params, "e_no", "e_no_form")
 
     reference_number_assign(params, "status_acc_reward", "acc_reward_form")
+    reference_number_assign(params, "status_rp", "rp_form")
     reference_number_assign(params, "reward_total_income", "total_income_form")
     reference_number_assign(params, "reward_attack", "attack_form")
     reference_number_assign(params, "reward_support", "support_form")
@@ -64,6 +65,7 @@ class NextBattlesController < ApplicationController
     @e_no_form = params["e_no_form"]
 
     @acc_reward_form = params["acc_reward_form"]
+    @rp_form = params["rp_form"]
     @total_income_form = params["total_income_form"]
     @attack_form = params["attack_form"]
     @support_form = params["support_form"]

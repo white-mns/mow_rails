@@ -66,13 +66,16 @@
       %tr
         %td{colspan: "5"}
           = hidden_field_tag :show_detail_status_1, @show_detail_status_1
-          = label_tag :show_detail_status_1, '＋　累積報酬を表示する', class: "act_desc"
-          = label_tag :show_detail_status_1, '×　累積報酬を非表示にする', class: "act_desc closed"
+          = label_tag :show_detail_status_1, '＋　ステータスを表示する', class: "act_desc"
+          = label_tag :show_detail_status_1, '×　ステータスを非表示にする', class: "act_desc closed"
+          %div.act_desc 　累積報酬、RP
     %tbody.closed
       %tr
         %td  
         %td= f.label :acc_reward_form, '累積報酬'
-        %td.formNum{colspan: "3"}= text_field_tag :acc_reward_form, @acc_reward_form
+        %td.formNum= text_field_tag :acc_reward_form, @acc_reward_form
+        %td= f.label :rp_form, 'RP'
+        %td.formNum= text_field_tag :rp_form, @rp_form
     %tbody.tbody_toggle.pointer
       %tr
         %td{colspan: "5"}
@@ -101,6 +104,7 @@
           = hidden_field_tag :show_detail_assembly_1, @show_detail_assembly_1
           = label_tag :show_detail_assembly_1, '＋　アセンブルを表示する', class: "act_desc"
           = label_tag :show_detail_assembly_1, '×　アセンブルを非表示にする', class: "act_desc closed"
+          %div.act_desc 　脚部、全アセンブル
     %tbody.closed
       %tr
         %td  
@@ -272,6 +276,7 @@
         %th= sort_link(@search, :leg_orig_name_name_name, '脚部', default_order: :desc)
       - if @show_detail_status_1 == "1"
         %th= sort_link(@search, :status_acc_reward, '累積報酬', default_order: :desc)
+        %th= sort_link(@search, :status_rp, 'RP', default_order: :desc)
       - if @show_detail_reward_1 == "1"
         %th= sort_link(@search, :reward_total_income, '合計収入', default_order: :desc)
         %th= sort_link(@search, :reward_attack, '攻撃', default_order: :desc)
@@ -319,6 +324,7 @@
           %td= next_battle.leg.orig_name_name.name if next_battle.leg
         - if @show_detail_status_1 == "1"
           %td= next_battle.status.acc_reward if next_battle.status
+          %td= next_battle.status.rp if next_battle.status
         - if @show_detail_reward_1 == "1"
           %td= next_battle.reward.total_income if next_battle.reward
           %td= next_battle.reward.attack if next_battle.reward
