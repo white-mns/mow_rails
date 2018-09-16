@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "five_radars", :to => "assembly_nums#five_radar", :as => 'five_radars' 
   resources :assembly_nums
   resources :consort_planes
   resources :intentions

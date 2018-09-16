@@ -11,6 +11,18 @@ class AssemblyNumsController < ApplicationController
     @assembly_nums	= @search.result.per(50)
   end
 
+  # GET /five_radars
+  def five_radar
+    params["is_division_0"] = "on"
+    params["parts_name_form"] ||= "\"レーダー\""
+    param_set
+    params[:q]["num_gteq_any"] ||= [5]
+
+    @count	= AssemblyNum.includes(:p_name, :parts_name, [leg: :orig_name_name], [assembly: :orig_name_name]).search(params[:q]).result.count()
+    @search	= AssemblyNum.includes(:p_name, :parts_name, [leg: :orig_name_name], [assembly: :orig_name_name]).page(params[:page]).search(params[:q])
+    @assembly_nums	= @search.result.per(50)
+  end
+
   def param_set
     @last_result = Name.maximum('result_no')
 
@@ -28,6 +40,9 @@ class AssemblyNumsController < ApplicationController
     reference_number_assign(params, "division_type", "division_type_form")
     reference_text_assign(params, "parts_name_name", "parts_name_form")
     reference_number_assign(params, "num", "num_form")
+
+    reference_text_assign(params, "leg_orig_name_name_name", "leg_form")
+    reference_text_assign(params, "assembly_orig_name_name_name", "assembly_form")
     
     params[:q]["division_type_eq_any"] ||= []
     if params["is_division_0"] == "on" then params[:q]["division_type_eq_any"].push(0) end
@@ -38,10 +53,16 @@ class AssemblyNumsController < ApplicationController
     @generate_no_form = params["generate_no_form"]
     @e_no_form = params["e_no_form"]
     @division_type_form = params["division_type_form"]
-    @proper_name_id_form = params["proper_name_id_form"]
+    @parts_name_form = params["parts_name_form"]
     @num_form = params["num_form"]
+
+    @leg_form = params["leg_form"]
+    @assembly_form = params["assembly_form"]
+
     @is_division_0 = params["is_division_0"]
     @is_division_1 = params["is_division_1"]
+
+    @show_detail_assembly_1 = params["show_detail_assembly_1"]
   end
   # GET /assembly_nums/1
   #def show
