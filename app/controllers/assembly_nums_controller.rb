@@ -18,8 +18,8 @@ class AssemblyNumsController < ApplicationController
     param_set
     params[:q]["num_gteq_any"] ||= [5]
 
-    @count	= AssemblyNum.includes(:p_name, :parts_name, [leg: :orig_name_name], [assembly: :orig_name_name]).search(params[:q]).result.count()
-    @search	= AssemblyNum.includes(:p_name, :parts_name, [leg: :orig_name_name], [assembly: :orig_name_name]).page(params[:page]).search(params[:q])
+    @count	= AssemblyNum.includes(:p_name, :parts_name, :reward, :block, :next_battle, [leg: :orig_name_name], [assembly: :orig_name_name]).search(params[:q]).result.count()
+    @search	= AssemblyNum.includes(:p_name, :parts_name, :reward, :block, :next_battle, [leg: :orig_name_name], [assembly: :orig_name_name]).page(params[:page]).search(params[:q])
     @assembly_nums	= @search.result.per(50)
   end
 
@@ -41,6 +41,12 @@ class AssemblyNumsController < ApplicationController
     reference_text_assign(params, "parts_name_name", "parts_name_form")
     reference_number_assign(params, "num", "num_form")
 
+    reference_number_assign(params, "reward_total_income", "total_income_form")
+    reference_number_assign(params, "reward_attack", "attack_form")
+    reference_number_assign(params, "reward_support", "support_form")
+    reference_number_assign(params, "reward_defense", "defense_form")
+    reference_number_assign(params, "block_block_no", "block_no_form")
+    reference_number_assign(params, "next_battle_block_no", "next_block_no_form")
     reference_text_assign(params, "leg_orig_name_name_name", "leg_form")
     reference_text_assign(params, "assembly_orig_name_name_name", "assembly_form")
     
@@ -56,12 +62,21 @@ class AssemblyNumsController < ApplicationController
     @parts_name_form = params["parts_name_form"]
     @num_form = params["num_form"]
 
+    @total_income_form = params["total_income_form"]
+    @attack_form = params["attack_form"]
+    @support_form = params["support_form"]
+    @defense_form = params["defense_form"]
+    @block_no_form = params["block_no_form"]
+    @next_block_no_form = params["next_block_no_form"]
     @leg_form = params["leg_form"]
     @assembly_form = params["assembly_form"]
 
     @is_division_0 = params["is_division_0"]
     @is_division_1 = params["is_division_1"]
 
+    @show_detail_reward_1 = params["show_detail_reward_1"]
+    @show_detail_block_1 = params["show_detail_block_1"]
+    @show_detail_next_battle_1 = params["show_detail_next_battle_1"]
     @show_detail_assembly_1 = params["show_detail_assembly_1"]
   end
   # GET /assembly_nums/1

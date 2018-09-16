@@ -65,6 +65,50 @@
     %tbody.tbody_toggle.pointer
       %tr
         %td{colspan: "5"}
+          = hidden_field_tag :show_detail_reward_1, @show_detail_reward_1
+          = label_tag :show_detail_reward_1, '＋　戦闘報酬を表示する', class: "act_desc"
+          = label_tag :show_detail_reward_1, '×　戦闘報酬を非表示にする', class: "act_desc closed"
+          %div.act_desc 　合計現金収入、攻撃戦果補正、支援戦果補正、防衛戦果補正
+    %tbody.closed
+      %tr
+        %td  
+        %td= f.label :total_income_form, '合計現金収入'
+        %td.formNum{colspan: "3"}= text_field_tag :total_income_form, @total_income_form
+      %tr
+        %td  
+        %td= f.label :attack_form, '攻撃戦果補正'
+        %td.formNum= text_field_tag :attack_form, @attack_form
+        %td= f.label :support_form, '支援戦果補正'
+        %td.formNum= text_field_tag :support_form, @support_form
+      %tr
+        %td  
+        %td= f.label :defense_form, '防衛戦果補正'
+        %td.formNum{colspan: "3"}= text_field_tag :defense_form, @defense_form
+    %tbody.tbody_toggle.pointer
+      %tr
+        %td{colspan: "5"}
+          = hidden_field_tag :show_detail_block_1, @show_detail_block_1
+          = label_tag :show_detail_block_1, '＋　今回のブロックを表示する', class: "act_desc"
+          = label_tag :show_detail_block_1, '×　今回のブロックを非表示にする', class: "act_desc closed"
+    %tbody.closed
+      %tr
+        %td  
+        %td= f.label :block_no_form, 'ブロック番号'
+        %td.formNum{colspan: "3"}= text_field_tag :block_no_form, @block_no_form
+    %tbody.tbody_toggle.pointer
+      %tr
+        %td{colspan: "5"}
+          = hidden_field_tag :show_detail_next_battle_1, @show_detail_next_battle_1
+          = label_tag :show_detail_next_battle_1, '＋　次回のブロックを表示する', class: "act_desc"
+          = label_tag :show_detail_next_battle_1, '×　次回のブロックを非表示にする', class: "act_desc closed"
+    %tbody.closed
+      %tr
+        %td  
+        %td= f.label :next_block_no_form, 'ブロック番号'
+        %td.formNum{colspan: "3"}= text_field_tag :next_block_no_form, @next_block_no_form
+    %tbody.tbody_toggle.pointer
+      %tr
+        %td{colspan: "5"}
           = hidden_field_tag :show_detail_assembly_1, @show_detail_assembly_1
           = label_tag :show_detail_assembly_1, '＋　アセンブルを表示する', class: "act_desc"
           = label_tag :show_detail_assembly_1, '×　アセンブルを非表示にする', class: "act_desc closed"
@@ -94,6 +138,15 @@
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
       %th= sort_link(@search, :num, 'レーダー数', default_order: :desc)
+      - if @show_detail_reward_1 == "1"
+        %th= sort_link(@search, :reward_total_income, '合計収入', default_order: :desc)
+        %th= sort_link(@search, :reward_attack, '攻撃', default_order: :desc)
+        %th= sort_link(@search, :reward_support, '支援', default_order: :desc)
+        %th= sort_link(@search, :reward_defense, '防衛', default_order: :desc)
+      - if @show_detail_block_1 == "1"
+        %th= sort_link(@search, :block_block_no, '今回戦場', default_order: :desc)
+      - if @show_detail_next_battle_1 == "1"
+        %th= sort_link(@search, :next_battles_block_no, '次回戦場', default_order: :desc)
       - if @show_detail_assembly_1 == "1"
         %th= sort_link(@search, :leg_orig_name_name_name, '脚部', default_order: :desc)
         %th= sort_link(@search, :assembly_orig_name_name_name, 'アセンブル', default_order: :desc)
@@ -105,6 +158,15 @@
         %td= assembly_num.result_no
         %td= assembly_num.p_name.name.html_safe + "(" + sprintf("%d",assembly_num.e_no) + ")"
         %td= assembly_num.num
+        - if @show_detail_reward_1 == "1"
+          %td= assembly_num.reward.total_income if assembly_num.reward
+          %td= assembly_num.reward.attack if assembly_num.reward
+          %td= assembly_num.reward.support if assembly_num.reward
+          %td= assembly_num.reward.defense if assembly_num.reward
+        - if @show_detail_block_1 == "1"
+          %td= assembly_num.block.block_no if assembly_num.block
+        - if @show_detail_next_battle_1 == "1"
+          %td= assembly_num.next_battle.block_no if assembly_num.next_battle
         - if @show_detail_assembly_1 == "1"
           %td= assembly_num.leg.orig_name_name.name if assembly_num.leg
           %td= all_assembly_text(assembly_num.assembly)

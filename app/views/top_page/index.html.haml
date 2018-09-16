@@ -21,6 +21,9 @@
           %li= link_to "機体データ一覧", specs_path
           %br
           %li= link_to "戦闘報酬一覧", rewards_path
+          %br
+          %li= link_to "メガアセンブル一覧", assembly_nums_path
+          %li= link_to "ファイブレーダーズ", five_radars_path
     .col-md-6
       %ul
         %li 結果データ
@@ -40,6 +43,11 @@
         、
         = link_to "次回組み合わせ一覧", next_battles_path
         にRP、戦闘システム、意思表示、僚機、アセンブル内容での検索
+      %li
+        = link_to "メガアセンブル一覧", assembly_nums_path
+        、
+        = link_to "ファイブレーダーズ", five_radars_path
+        を公開
     %li 2018/9/14
     %ul
       %li サイト公開
