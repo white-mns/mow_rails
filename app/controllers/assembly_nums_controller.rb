@@ -10,6 +10,10 @@ class AssemblyNumsController < ApplicationController
     @search.sorts = 'num desc' if @search.sorts.empty?
     @assembly_nums	= @search.result.per(50)
   end
+  # GET /mega_assembles
+  def mega_assemble
+      index
+  end
 
   # GET /five_radars
   def five_radar
