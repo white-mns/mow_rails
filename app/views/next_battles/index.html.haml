@@ -336,9 +336,9 @@
           %td= next_battle.intention.intention_name.name if next_battle.intention && next_battle.intention.intention_name
         - if @show_detail_consort_plane_1 == "1"
           - if @show_consort_plane_name == "on"
-            %td= next_battle.consort_plane.consort_plane_name.name.html_safe + "(" + sprintf("%d",next_battle.consort_plane.e_no) + ")" if next_battle.consort_plane && next_battle.consort_plane.consort_plane_name
+            %td= next_battle.consort_plane.consort_plane_name.name.html_safe + "(" + sprintf("%d",next_battle.consort_plane.consort_plane) + ")" if next_battle.consort_plane && next_battle.consort_plane.consort_plane_name
           - else
-            %td= next_battle.consort_plane.e_no if next_battle.consort_plane && next_battle.consort_plane.consort_plane_name
+            %td= next_battle.consort_plane.consort_plane if next_battle.consort_plane && next_battle.consort_plane.consort_plane_name
         - if @show_detail_spec_1 == "1"
           %td= next_battle.spec.ap if next_battle.spec
           %td= next_battle.spec.en if next_battle.spec
