@@ -5,9 +5,9 @@ class AssemblyNumsController < ApplicationController
   # GET /assembly_nums
   def index
     param_set
-    @count	= AssemblyNum.includes(:p_name).search(params[:q]).result.count()
-    @search	= AssemblyNum.includes(:p_name).page(params[:page]).search(params[:q])
-    @search.sorts = 'id asc' if @search.sorts.empty?
+    @count	= AssemblyNum.includes(:p_name, :parts_name).search(params[:q]).result.count()
+    @search	= AssemblyNum.includes(:p_name, :parts_name).page(params[:page]).search(params[:q])
+    @search.sorts = 'num desc' if @search.sorts.empty?
     @assembly_nums	= @search.result.per(50)
   end
 
@@ -17,16 +17,22 @@ class AssemblyNumsController < ApplicationController
     params[:q] ||= {}
     if !params["is_form"] then
         params["result_no_form"] ||= sprintf('%d',@last_result)
+        params["is_division_0"] ||= "on"
     end
+    params[:q]["e_no_not_eq_any"] ||= [0]
     
     reference_text_assign(params, "p_name_name", "p_name_form")
     reference_number_assign(params, "result_no", "result_no_form")
     reference_number_assign(params, "generate_no", "generate_no_form")
     reference_number_assign(params, "e_no", "e_no_form")
     reference_number_assign(params, "division_type", "division_type_form")
-    reference_number_assign(params, "proper_name_id", "proper_name_id_form")
+    reference_text_assign(params, "parts_name_name", "parts_name_form")
     reference_number_assign(params, "num", "num_form")
     
+    params[:q]["division_type_eq_any"] ||= []
+    if params["is_division_0"] == "on" then params[:q]["division_type_eq_any"].push(0) end
+    if params["is_division_1"] == "on" then params[:q]["division_type_eq_any"].push(1) end
+
     @p_name_form = params["p_name_form"]
     @result_no_form = params["result_no_form"]
     @generate_no_form = params["generate_no_form"]
@@ -34,6 +40,8 @@ class AssemblyNumsController < ApplicationController
     @division_type_form = params["division_type_form"]
     @proper_name_id_form = params["proper_name_id_form"]
     @num_form = params["num_form"]
+    @is_division_0 = params["is_division_0"]
+    @is_division_1 = params["is_division_1"]
   end
   # GET /assembly_nums/1
   #def show

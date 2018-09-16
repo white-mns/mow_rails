@@ -1,4 +1,4 @@
-%h1 Listing assembly_nums
+%h1 メガアセンブル一覧
 
 %p.formNum 
   テキストフォームの隣に赤い破線がある項目は数値検索です。
@@ -56,34 +56,23 @@
         %td  
         %td= f.label :e_no_form, 'Eno'
         %td.formNum= text_field_tag :e_no_form, @e_no_form
-      %tr
-        %td  
         %td= f.label :p_name_form, 'キャラクター名'
         %td.formText= text_field_tag :p_name_form, @p_name_form
       %tr
         %td  
-        %td= f.label :result_no_form, 'Result no'
-        %td.formNum= text_field_tag :result_no_form, @result_no_form
-      %tr
-        %td  
-        %td= f.label :generate_no_form, 'Generate no'
-        %td.formNum= text_field_tag :generate_no_form, @generate_no_form
-      %tr
-        %td  
-        %td= f.label :e_no_form, 'E no'
-        %td.formNum= text_field_tag :e_no_form, @e_no_form
-      %tr
-        %td  
-        %td= f.label :division_type_form, 'Division type'
-        %td.formNum= text_field_tag :division_type_form, @division_type_form
-      %tr
-        %td  
-        %td= f.label :proper_name_id_form, 'Proper name'
-        %td.formNum= text_field_tag :proper_name_id_form, @proper_name_id_form
-      %tr
-        %td  
-        %td= f.label :num_form, 'Num'
+        %td= f.label :parts_name_form, 'パーツ名'
+        %td.formText= text_field_tag :parts_name_form, @parts_name_form
+        %td= f.label :num_form, 'アセンブル数'
         %td.formNum= text_field_tag :num_form, @num_form
+      %tr
+        %td
+        %td= f.label :division_type_form, 'パーツ分類'
+        %td{:colspan => "3"}
+          = check_box_tag :is_division_0, @is_division_0, @is_division_0
+          = label_tag :is_division_0, 'パーツ大分類を表示'
+          　　
+          = check_box_tag :is_division_1, @is_division_1, @is_division_1
+          = label_tag :is_division_1, 'パーツ小分類(A,B,C)を分類'
       %tr
         %td= hidden_field_tag :is_form, 1
         %td{colspan: "4"}= f.submit '検索する'
@@ -100,12 +89,9 @@
     %tr
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
-      %th= sort_link(@search, :result_no, 'Result no', default_order: :desc)
-      %th= sort_link(@search, :generate_no, 'Generate no', default_order: :desc)
-      %th= sort_link(@search, :e_no, 'E no', default_order: :desc)
-      %th= sort_link(@search, :division_type, 'Division type', default_order: :desc)
-      %th= sort_link(@search, :proper_name_id, 'Proper name', default_order: :desc)
-      %th= sort_link(@search, :num, 'Num', default_order: :desc)
+      %th= sort_link(@search, :division_type, '分類', default_order: :desc)
+      %th= sort_link(@search, :proper_name_id, 'パーツ名', default_order: :desc)
+      %th= sort_link(@search, :num, '数', default_order: :desc)
       %th{colspan: "2"}
         結果リンク
   %tbody
@@ -113,11 +99,10 @@
       %tr
         %td= assembly_num.result_no
         %td= assembly_num.p_name.name.html_safe + "(" + sprintf("%d",assembly_num.e_no) + ")"
-        %td= assembly_num.result_no
-        %td= assembly_num.generate_no
-        %td= assembly_num.e_no
-        %td= assembly_num.division_type
-        %td= assembly_num.proper_name_id
+        %td
+          = "大" if assembly_num.division_type == 0
+          = "　小" if assembly_num.division_type == 1
+        %td= assembly_num.parts_name.name if assembly_num.parts_name
         %td= assembly_num.num
         %td= character_link(assembly_num.e_no)
         %td= character_old_link(@last_result, assembly_num.e_no, assembly_num.result_no, assembly_num.generate_no)
