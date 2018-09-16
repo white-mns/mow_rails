@@ -339,9 +339,9 @@
           %td= block.intention.intention_name.name if block.intention && block.intention.intention_name
         - if @show_detail_consort_plane_1 == "1"
           - if @show_consort_plane_name == "on"
-            %td= block.consort_plane.consort_plane_name.name.html_safe + "(" + sprintf("%d",block.consort_plane.e_no) + ")" if block.consort_plane && block.consort_plane.consort_plane_name
+            %td= block.consort_plane.consort_plane_name.name.html_safe + "(" + sprintf("%d",block.consort_plane.consort_plane) + ")" if block.consort_plane && block.consort_plane.consort_plane_name
           - else
-            %td= block.consort_plane.e_no if block.consort_plane && block.consort_plane.consort_plane_name
+            %td= block.consort_plane.consort_plane if block.consort_plane && block.consort_plane.consort_plane_name
         - if @show_detail_spec_1 == "1"
           %td= block.spec.ap if block.spec
           %td= block.spec.en if block.spec
