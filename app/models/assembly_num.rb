@@ -1,0 +1,2 @@
+class AssemblyNum < ApplicationRecord
+end

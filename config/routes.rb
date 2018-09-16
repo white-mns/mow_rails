@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :assembly_nums
   resources :consort_planes
   resources :intentions
   resources :battle_systems
