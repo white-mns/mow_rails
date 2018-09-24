@@ -5,8 +5,8 @@ class ConditionAllTextsController < ApplicationController
   # GET /condition_all_texts
   def index
     param_set
-    @count	= ConditionAllText.includes(:p_name).search(params[:q]).result.count()
-    @search	= ConditionAllText.includes(:p_name).page(params[:page]).search(params[:q])
+    @count	= ConditionAllText.notnil().includes(:p_name).search(params[:q]).result.count()
+    @search	= ConditionAllText.notnil().includes(:p_name).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @condition_all_texts	= @search.result.per(50)
   end

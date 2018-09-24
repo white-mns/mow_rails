@@ -5,8 +5,8 @@ class ConsortPlanesController < ApplicationController
   # GET /consort_planes
   def index
     param_set
-    @count	= ConsortPlane.includes(:p_name).search(params[:q]).result.count()
-    @search	= ConsortPlane.includes(:p_name).page(params[:page]).search(params[:q])
+    @count	= ConsortPlane.notnil().includes(:p_name).search(params[:q]).result.count()
+    @search	= ConsortPlane.notnil().includes(:p_name).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @consort_planes	= @search.result.per(50)
   end
