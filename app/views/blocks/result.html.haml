@@ -292,7 +292,7 @@
     - @blocks.each do |block|
       %tr
         %td{rowspan: "#{ '2' if @show_all_assembly }" }= block.result_no
-        %td{rowspan: "#{ '2' if @show_all_assembly }" }= block.p_name.name.html_safe + "(" + sprintf("%d",block.e_no) + ")"
+        %td{rowspan: "#{ '2' if @show_all_assembly }" }= p_name_text(block.e_no, block.p_name)
         %td{rowspan: "#{ '2' if @show_all_assembly }" }= block.block_no
         - if @show_detail_assembly_1 == "1"
           %td= block.leg.orig_name_name.name if block.leg

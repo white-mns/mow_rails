@@ -58,7 +58,7 @@
     - @consort_planes.each do |consort_plane|
       %tr
         %td= consort_plane.result_no
-        %td= consort_plane.p_name.name.html_safe + "(" + sprintf("%d",consort_plane.e_no) + ")"
+        %td= p_name_text(consort_plane.e_no, consort_plane.p_name)
         %td= consort_plane.consort_plane_name.name.html_safe + "(" + sprintf("%d",consort_plane.consort_plane) + ")" if consort_plane.consort_plane_name
         %td= character_link(consort_plane.e_no)
         %td= character_old_link(@last_result, consort_plane.e_no, consort_plane.result_no, consort_plane.generate_no)

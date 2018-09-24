@@ -59,7 +59,7 @@
     - @condition_all_texts.each do |condition_all_text|
       %tr
         %td= condition_all_text.result_no
-        %td= condition_all_text.p_name.name.html_safe + "(" + sprintf("%d",condition_all_text.e_no) + ")"
+        %td= p_name_text(condition_all_text.e_no, condition_all_text.p_name)
         %td= condition_all_text.condition_text
         %td= character_link(condition_all_text.e_no)
         %td= character_old_link(@last_result, condition_all_text.e_no, condition_all_text.result_no, condition_all_text.generate_no)

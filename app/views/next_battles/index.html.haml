@@ -289,7 +289,7 @@
     - @next_battles.each do |next_battle|
       %tr
         %td{rowspan: "#{ '2' if @show_all_assembly }" }= next_battle.result_no
-        %td{rowspan: "#{ '2' if @show_all_assembly }" }= next_battle.p_name.name.html_safe + "(" + sprintf("%d",next_battle.e_no) + ")"
+        %td{rowspan: "#{ '2' if @show_all_assembly }" }= p_name_text(next_battle.e_no, next_battle.p_name)
         %td{rowspan: "#{ '2' if @show_all_assembly }" }= next_battle.block_no
         - if @show_detail_assembly_1 == "1"
           %td= next_battle.leg.orig_name_name.name if next_battle.leg

@@ -221,7 +221,7 @@
     - @markets.each do |market|
       %tr
         %td= market.result_no
-        %td= market.p_name.name.html_safe + "(" + sprintf("%d",market.e_no) + ")" if market.e_no > 0
+        %td= p_name_text(market.e_no, market.p_name)
         %td= market.market_no
         %td= market.name
         - if @show_detail_1 == "1"

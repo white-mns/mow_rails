@@ -59,7 +59,7 @@
     - @blocks.each do |block|
       %tr
         %td= block.result_no
-        %td= block.p_name.name.html_safe + "(" + sprintf("%d",block.e_no) + ")"
+        %td= p_name_text(block.e_no, block.p_name)
         %td= block.block_no
         %td= character_link(block.e_no)
         %td= character_old_link(@last_result, block.e_no, block.result_no, block.generate_no)

@@ -58,7 +58,7 @@
     - @battle_systems.each do |battle_system|
       %tr
         %td= battle_system.result_no
-        %td= battle_system.p_name.name.html_safe + "(" + sprintf("%d",battle_system.e_no) + ")"
+        %td= p_name_text(battle_system.e_no, battle_system.p_name)
         %td= battle_system.battle_system_name.name if battle_system.battle_system_name
         %td= character_link(battle_system.e_no)
         %td= character_old_link(@last_result, battle_system.e_no, battle_system.result_no, battle_system.generate_no)

@@ -58,7 +58,7 @@
     - @names.each do |name|
       %tr
         %td= name.result_no
-        %td= name.name.html_safe + "(" + sprintf("%d", name.e_no) + ")"
+        %td= p_name_text(name.e_no, name)
         %td= name.nickname
         %td
           - file_name = sprintf("%04d",name.e_no)

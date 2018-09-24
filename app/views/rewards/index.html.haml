@@ -162,7 +162,7 @@
     - @rewards.each do |reward|
       %tr
         %td= reward.result_no
-        %td= reward.p_name.name.html_safe + "(" + sprintf("%d",reward.e_no) + ")"
+        %td= p_name_text(reward.e_no, reward.p_name)
         - if @show_detail_1 == "1"
           %td= reward.total_income
           %td= reward.attack

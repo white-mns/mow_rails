@@ -69,7 +69,7 @@
     - @assembly_nums.each do |assembly_num|
       %tr
         %td= assembly_num.result_no
-        %td= assembly_num.p_name.name.html_safe + "(" + sprintf("%d",assembly_num.e_no) + ")"
+        %td= p_name_text(assembly_num.e_no, assembly_num.p_name)
         %td
           = "大" if assembly_num.division_type == 0
           = "　小" if assembly_num.division_type == 1

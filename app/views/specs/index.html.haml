@@ -174,7 +174,7 @@
     - @specs.each do |spec|
       %tr
         %td= spec.result_no
-        %td= spec.p_name.name.html_safe + "(" + sprintf("%d",spec.e_no) + ")"
+        %td= p_name_text(spec.e_no, spec.p_name)
         - if @show_detail_1 == "1"
           %td= spec.ap
           %td= spec.en
