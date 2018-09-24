@@ -5,8 +5,8 @@ class NextBattlesController < ApplicationController
   # GET /next_battles
   def index
     param_set
-    @count	= NextBattle.includes(:p_name, :status, :spec, :reward, :condition_all_text, [leg: :orig_name_name], [assembly: :orig_name_name], [battle_system: :battle_system_name], [intention: :intention_name], [consort_plane: :consort_plane_name]).search(params[:q]).result.count()
-    @search	= NextBattle.includes(:p_name, :status, :spec, :reward, :condition_all_text, [leg: :orig_name_name], [assembly: :orig_name_name], [battle_system: :battle_system_name], [intention: :intention_name], [consort_plane: :consort_plane_name]).page(params[:page]).search(params[:q])
+    @count	= NextBattle.notnil().includes(:p_name, :status, :spec, :reward, :condition_all_text, [leg: :orig_name_name], [assembly: :orig_name_name], [battle_system: :battle_system_name], [intention: :intention_name], [consort_plane: :consort_plane_name]).search(params[:q]).result.count()
+    @search	= NextBattle.notnil().includes(:p_name, :status, :spec, :reward, :condition_all_text, [leg: :orig_name_name], [assembly: :orig_name_name], [battle_system: :battle_system_name], [intention: :intention_name], [consort_plane: :consort_plane_name]).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @next_battles	= @search.result.per(50)
   end

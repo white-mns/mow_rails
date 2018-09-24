@@ -5,8 +5,8 @@ class BlocksController < ApplicationController
   # GET /blocks
   def index
     param_set
-    @count	= Block.includes(:p_name).search(params[:q]).result.count()
-    @search	= Block.includes(:p_name).page(params[:page]).search(params[:q])
+    @count	= Block.notnil().includes(:p_name).search(params[:q]).result.count()
+    @search	= Block.notnil().includes(:p_name).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @blocks	= @search.result.per(50)
   end
@@ -14,8 +14,8 @@ class BlocksController < ApplicationController
   # GET /block/results
   def result
     param_set
-    @count	= Block.includes(:p_name, :status, :spec, :reward, :condition_all_text, [leg: :orig_name_name], [assembly: :orig_name_name], [battle_system: :battle_system_name], [intention: :intention_name], [consort_plane: :consort_plane_name]).search(params[:q]).result.count()
-    @search	= Block.includes(:p_name, :status, :spec, :reward, :condition_all_text, [leg: :orig_name_name], [assembly: :orig_name_name], [battle_system: :battle_system_name], [intention: :intention_name], [consort_plane: :consort_plane_name]).page(params[:page]).search(params[:q])
+    @count	= Block.notnil().includes(:p_name, :status, :spec, :reward, :condition_all_text, [leg: :orig_name_name], [assembly: :orig_name_name], [battle_system: :battle_system_name], [intention: :intention_name], [consort_plane: :consort_plane_name]).search(params[:q]).result.count()
+    @search	= Block.notnil().includes(:p_name, :status, :spec, :reward, :condition_all_text, [leg: :orig_name_name], [assembly: :orig_name_name], [battle_system: :battle_system_name], [intention: :intention_name], [consort_plane: :consort_plane_name]).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @blocks	= @search.result.per(50)
   end

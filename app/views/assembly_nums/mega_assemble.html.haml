@@ -1,43 +1,14 @@
-%h1 メガアセンブル一覧
+- @page_title = "メガアセンブル一覧"
+%h1= @page_title
 
-%p.formNum 
-  テキストフォームの隣に赤い破線がある項目は数値検索です。
-  %br
-  「/」区切りでOR、「100~」や「100~200」のように「~」をつけて範囲指定となります。
-  %br
-  OR指定と範囲指定を同時に行うことはできません。
-%p.formText
-  テキストフォームの隣に青い太線がある項目は文字検索です。
-  %br
-  半角スペース区切りでAND、「/」区切りでOR、単語の前に「-」でNOT、単語の前後に「"」をつけて完全一致が使えます
-  %br
-  ANDとORを組み合わせた時は、ANDで区切った後にORで区切るという順番になります。
+= render "layouts/base_desc"
 %p
   %span.example_select.example_toggle.pointer
     入力例
     %span.act_desc（クリックで開きます）
     %span.act_desc.closed（クリックで閉じます）
 #example.closed
-  %p.formNum
-    数値入力で「100/105/110」と入力　→ 入力した項目の数値が100、105、110の結果がヒット
-    %br
-    「100~」で100以上、「~100」で100以下、「-200~100」で-200～-100の範囲指定となります。
-  %p.formText
-    「粒子」と入力　→　粒子ブレードA、粒子スピアA、粒子爆雷A……が検索結果にヒット
-    %br
-    「"粒子"」　→　完全一致で「粒子」のみ検索結果にヒット
-    %br
-    「-粒子」　→　「粒子」の単語を含まない目的が検索結果にヒット
-    %br
-    「-"粒子"」　→　完全一致で「粒子」以外が検索結果にヒット
-    %br
-    「粒子 ブレード」　→　「粒子」と「ブレード」の2つの単語が含まれるものが検索結果にヒット
-    %br
-    「粒子/ブレード」　→　「粒子」か「ブレード」のどちらかの単語が含まれるものが検索結果にヒット
-    %br
-    「粒子 ブレード/スピア」　→　「粒子」が含まれ、さらに 「ブレード」か「スピア」 が含まれるものが検索結果にヒット
-    %br
-    「-粒子 -ブレード」　→　「粒子」もしくは「ブレード」という単語が含まれるものを検索結果から除外
+  = render "layouts/input_desc"
 = search_form_for @search, url: mega_assembles_path do |f|
   %table.search_toggle.table.table-striped.table-bordered.table-hover
     %tbody.pointer
@@ -98,7 +69,7 @@
     - @assembly_nums.each do |assembly_num|
       %tr
         %td= assembly_num.result_no
-        %td= assembly_num.p_name.name.html_safe + "(" + sprintf("%d",assembly_num.e_no) + ")"
+        %td= p_name_text(assembly_num.e_no, assembly_num.p_name)
         %td
           = "大" if assembly_num.division_type == 0
           = "　小" if assembly_num.division_type == 1

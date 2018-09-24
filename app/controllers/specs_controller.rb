@@ -5,8 +5,8 @@ class SpecsController < ApplicationController
   # GET /specs
   def index
     param_set
-    @count	= Spec.includes(:p_name, :condition_all_text).search(params[:q]).result.count()
-    @search	= Spec.includes(:p_name, :condition_all_text).page(params[:page]).search(params[:q])
+    @count	= Spec.notnil().includes(:p_name, :condition_all_text).search(params[:q]).result.count()
+    @search	= Spec.notnil().includes(:p_name, :condition_all_text).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @specs	= @search.result.per(50)
   end

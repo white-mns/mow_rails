@@ -5,8 +5,8 @@ class IntentionsController < ApplicationController
   # GET /intentions
   def index
     param_set
-    @count	= Intention.includes(:p_name, :intention_name).search(params[:q]).result.count()
-    @search	= Intention.includes(:p_name, :intention_name).page(params[:page]).search(params[:q])
+    @count	= Intention.notnil().includes(:p_name, :intention_name).search(params[:q]).result.count()
+    @search	= Intention.notnil().includes(:p_name, :intention_name).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @intentions	= @search.result.per(50)
   end

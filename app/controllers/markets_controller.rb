@@ -5,8 +5,8 @@ class MarketsController < ApplicationController
   # GET /markets
   def index
     param_set
-    @count	= Market.includes(:p_name, :kind_name, :guard_elemental_name, :orig_name_name, :weapon_element_name, :fuka_1_name, :fuka_2_name).search(params[:q]).result.count()
-    @search	= Market.includes(:p_name, :kind_name, :guard_elemental_name, :orig_name_name, :weapon_element_name, :fuka_1_name, :fuka_2_name).page(params[:page]).search(params[:q])
+    @count	= Market.notnil().includes(:p_name, :kind_name, :guard_elemental_name, :orig_name_name, :weapon_element_name, :fuka_1_name, :fuka_2_name).search(params[:q]).result.count()
+    @search	= Market.notnil().includes(:p_name, :kind_name, :guard_elemental_name, :orig_name_name, :weapon_element_name, :fuka_1_name, :fuka_2_name).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @markets	= @search.result.per(50)
   end

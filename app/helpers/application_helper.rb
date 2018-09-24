@@ -1,4 +1,19 @@
 module ApplicationHelper
+    def page_title
+        title = "霧戦争5期データ小屋"
+        title = @page_title + " | " + title if @page_title
+        title
+    end
+
+    def p_name_text(e_no, p_name)
+        e_no_text = "(" + sprintf("%d",e_no) + ")"
+        if p_name then
+            p_name.name.html_safe + e_no_text
+        else
+            e_no_text
+        end
+    end
+
     def character_link(e_no)
         file_name = sprintf("%04d",e_no)
         link_to " 結果", "http://blacktea.sakura.ne.jp/mistofwar/RESULT/c"+file_name+".html", :target => "_blank"

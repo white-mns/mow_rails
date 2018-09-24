@@ -5,8 +5,8 @@ class BattleSystemsController < ApplicationController
   # GET /battle_systems
   def index
     param_set
-    @count	= BattleSystem.includes(:p_name, :battle_system_name).search(params[:q]).result.count()
-    @search	= BattleSystem.includes(:p_name, :battle_system_name).page(params[:page]).search(params[:q])
+    @count	= BattleSystem.notnil().includes(:p_name, :battle_system_name).search(params[:q]).result.count()
+    @search	= BattleSystem.notnil().includes(:p_name, :battle_system_name).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @battle_systems	= @search.result.per(50)
   end
