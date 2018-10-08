@@ -1,22 +1,23 @@
 - @page_title = "戦闘報酬一覧"
 %h1= @page_title
 
-= render "layouts/base_desc"
-%p
-  %span.example_select.example_toggle.pointer
-    入力例
-    %span.act_desc（クリックで開きます）
-    %span.act_desc.closed（クリックで閉じます）
-#example.closed
-  = render "layouts/input_desc"
+%div.well.desc
+  = render "layouts/base_desc"
+  %p
+    %span.example_select.example_toggle.pointer
+      - help_icon
+      入力例
+      - act_desc(false)
+  #example.closed
+    = render "layouts/input_desc"
 = search_form_for @search do |f|
   %table.search_toggle.table.table-striped.table-bordered.table-hover
     %tbody.pointer
       %tr
         %td{colspan: "5"}
+          - act_icon(true)
           絞り込み検索
-          %span.act_desc (クリックで閉じます)
-          %span.act_desc.closed (クリックで開きます)
+          - act_desc(true)
     %tbody
       %tr
       %tr
@@ -34,8 +35,9 @@
         %td{colspan: "5"}
           = hidden_field_tag :base_first, @base_first
           = hidden_field_tag :show_detail_1, @show_detail_1
-          = label_tag :show_detail_1, '＋　基礎情報を表示する', class: "act_desc"
-          = label_tag :show_detail_1, '×　基礎情報を非表示にする', class: "act_desc closed"
+          - act_icon(false)
+          = label_tag :show_detail_1, '　基礎情報を表示する', class: "act_desc"
+          = label_tag :show_detail_1, '　基礎情報を非表示にする', class: "act_desc closed"
           %div.act_desc 　合計現金収入、攻撃戦果補正、支援戦果補正、防衛戦果補正
     %tbody
       %tr
@@ -56,8 +58,9 @@
       %tr
         %td{colspan: "5"}
           = hidden_field_tag :show_detail_2, @show_detail_2
-          = label_tag :show_detail_1, '＋　その他補正を表示する', class: "act_desc"
-          = label_tag :show_detail_1, '×　その他補正を非表示にする', class: "act_desc closed"
+          - act_icon(false)
+          = label_tag :show_detail_1, '　その他補正を表示する', class: "act_desc"
+          = label_tag :show_detail_1, '　その他補正を非表示にする', class: "act_desc closed"
           %div.act_desc 　撃墜補正、販売数補正、サブクエスト、敵警戒補正、コロッセオ勝利補正、ファイトマネー補正
     %tbody.closed
       %tr
@@ -84,8 +87,9 @@
       %tr
         %td{colspan: "5"}
           = hidden_field_tag :show_detail_3, @show_detail_3
-          = label_tag :show_detail_1, '＋　その他収支を表示する', class: "act_desc"
-          = label_tag :show_detail_1, '×　その他収支を非表示にする', class: "act_desc closed"
+          - act_icon(false)
+          = label_tag :show_detail_1, '　その他収支を表示する', class: "act_desc"
+          = label_tag :show_detail_1, '　その他収支を非表示にする', class: "act_desc closed"
           %div.act_desc 　戦闘収入、追加収入、弾薬費請求、整備控除修正額、整備請求費、ユニオン費、賞金、ユニオン利子、パーツ販売数
     %tbody.closed
       %tr
@@ -120,7 +124,8 @@
       %tr
         %td
         %td= hidden_field_tag :is_form, 1
-        %td{colspan: "4"}= f.submit '検索する'
+        %td{colspan: "3"}
+          - search_submit_button
 
 
 = paginate(@rewards)

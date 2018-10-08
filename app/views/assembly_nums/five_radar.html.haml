@@ -1,22 +1,23 @@
 - @page_title = "ファイブレーダーズ"
 %h1= @page_title
 
-= render "layouts/base_desc"
-%p
-  %span.example_select.example_toggle.pointer
-    入力例
-    %span.act_desc（クリックで開きます）
-    %span.act_desc.closed（クリックで閉じます）
-#example.closed
-  = render "layouts/input_desc"
+%div.well.desc
+  = render "layouts/base_desc"
+  %p
+    %span.example_select.example_toggle.pointer
+      - help_icon
+      入力例
+      - act_desc(false)
+  #example.closed
+    = render "layouts/input_desc"
 = search_form_for @search, url: five_radars_path do |f|
   %table.search_toggle.table.table-striped.table-bordered.table-hover
     %tbody.pointer
       %tr
         %td{colspan: "5"}
+          - act_icon(true)
           絞り込み検索
-          %span.act_desc (クリックで閉じます)
-          %span.act_desc.closed (クリックで開きます)
+          - act_desc(true)
     %tbody
       %tr
       %tr
@@ -37,8 +38,9 @@
       %tr
         %td{colspan: "5"}
           = hidden_field_tag :show_detail_reward_1, @show_detail_reward_1
-          = label_tag :show_detail_reward_1, '＋　戦闘報酬を表示する', class: "act_desc"
-          = label_tag :show_detail_reward_1, '×　戦闘報酬を非表示にする', class: "act_desc closed"
+          - act_icon(false)
+          = label_tag :show_detail_reward_1, '　戦闘報酬を表示する', class: "act_desc"
+          = label_tag :show_detail_reward_1, '　戦闘報酬を非表示にする', class: "act_desc closed"
           %div.act_desc 　合計現金収入、攻撃戦果補正、支援戦果補正、防衛戦果補正
     %tbody.closed
       %tr
@@ -59,8 +61,9 @@
       %tr
         %td{colspan: "5"}
           = hidden_field_tag :show_detail_block_1, @show_detail_block_1
-          = label_tag :show_detail_block_1, '＋　今回のブロックを表示する', class: "act_desc"
-          = label_tag :show_detail_block_1, '×　今回のブロックを非表示にする', class: "act_desc closed"
+          - act_icon(false)
+          = label_tag :show_detail_block_1, '　今回のブロックを表示する', class: "act_desc"
+          = label_tag :show_detail_block_1, '　今回のブロックを非表示にする', class: "act_desc closed"
     %tbody.closed
       %tr
         %td  
@@ -70,8 +73,9 @@
       %tr
         %td{colspan: "5"}
           = hidden_field_tag :show_detail_next_battle_1, @show_detail_next_battle_1
-          = label_tag :show_detail_next_battle_1, '＋　次回のブロックを表示する', class: "act_desc"
-          = label_tag :show_detail_next_battle_1, '×　次回のブロックを非表示にする', class: "act_desc closed"
+          - act_icon(false)
+          = label_tag :show_detail_next_battle_1, '　次回のブロックを表示する', class: "act_desc"
+          = label_tag :show_detail_next_battle_1, '　次回のブロックを非表示にする', class: "act_desc closed"
     %tbody.closed
       %tr
         %td  
@@ -81,8 +85,9 @@
       %tr
         %td{colspan: "5"}
           = hidden_field_tag :show_detail_assembly_1, @show_detail_assembly_1
-          = label_tag :show_detail_assembly_1, '＋　アセンブルを表示する', class: "act_desc"
-          = label_tag :show_detail_assembly_1, '×　アセンブルを非表示にする', class: "act_desc closed"
+          - act_icon(false)
+          = label_tag :show_detail_assembly_1, '　アセンブルを表示する', class: "act_desc"
+          = label_tag :show_detail_assembly_1, '　アセンブルを非表示にする', class: "act_desc closed"
           %div.act_desc 　脚部、全アセンブル
     %tbody.closed
       %tr
@@ -93,8 +98,10 @@
         %td.formText= text_field_tag :assembly_form, @assembly_form
     %tbody
       %tr
+        %td  
         %td= hidden_field_tag :is_form, 1
-        %td{colspan: "4"}= f.submit '検索する'
+        %td{colspan: "3"}
+          - search_submit_button
 
 
 = paginate(@assembly_nums)

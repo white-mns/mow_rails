@@ -1,22 +1,23 @@
 - @page_title = "次回組み合わせ一覧"
 %h1= @page_title
 
-= render "layouts/base_desc"
-%p
-  %span.example_select.example_toggle.pointer
-    入力例
-    %span.act_desc（クリックで開きます）
-    %span.act_desc.closed（クリックで閉じます）
-#example.closed
-  = render "layouts/input_desc"
+%div.well.desc
+  = render "layouts/base_desc"
+  %p
+    %span.example_select.example_toggle.pointer
+      - help_icon
+      入力例
+      - act_desc(false)
+  #example.closed
+    = render "layouts/input_desc"
 = search_form_for @search do |f|
   %table.search_toggle.table.table-striped.table-bordered.table-hover
     %tbody.pointer
       %tr
         %td{colspan: "5"}
+          - act_icon(true)
           絞り込み検索
-          %span.act_desc (クリックで閉じます)
-          %span.act_desc.closed (クリックで開きます)
+          - act_desc(true)
     %tbody
       %tr
       %tr
@@ -37,8 +38,9 @@
       %tr
         %td{colspan: "5"}
           = hidden_field_tag :show_detail_status_1, @show_detail_status_1
-          = label_tag :show_detail_status_1, '＋　ステータスを表示する', class: "act_desc"
-          = label_tag :show_detail_status_1, '×　ステータスを非表示にする', class: "act_desc closed"
+          - act_icon(false)
+          = label_tag :show_detail_status_1, '　ステータスを表示する', class: "act_desc"
+          = label_tag :show_detail_status_1, '　ステータスを非表示にする', class: "act_desc closed"
           %div.act_desc 　累積報酬、RP
     %tbody.closed
       %tr
@@ -51,8 +53,9 @@
       %tr
         %td{colspan: "5"}
           = hidden_field_tag :show_detail_reward_1, @show_detail_reward_1
-          = label_tag :show_detail_reward_1, '＋　戦闘報酬を表示する', class: "act_desc"
-          = label_tag :show_detail_reward_1, '×　戦闘報酬を非表示にする', class: "act_desc closed"
+          - act_icon(false)
+          = label_tag :show_detail_reward_1, '　戦闘報酬を表示する', class: "act_desc"
+          = label_tag :show_detail_reward_1, '　戦闘報酬を非表示にする', class: "act_desc closed"
           %div.act_desc 　合計現金収入、攻撃戦果補正、支援戦果補正、防衛戦果補正
     %tbody.closed
       %tr
@@ -73,8 +76,9 @@
       %tr
         %td{colspan: "5"}
           = hidden_field_tag :show_detail_assembly_1, @show_detail_assembly_1
-          = label_tag :show_detail_assembly_1, '＋　アセンブルを表示する', class: "act_desc"
-          = label_tag :show_detail_assembly_1, '×　アセンブルを非表示にする', class: "act_desc closed"
+          - act_icon(false)
+          = label_tag :show_detail_assembly_1, '　アセンブルを表示する', class: "act_desc"
+          = label_tag :show_detail_assembly_1, '　アセンブルを非表示にする', class: "act_desc closed"
           %div.act_desc 　脚部、全アセンブル
     %tbody.closed
       %tr
@@ -92,8 +96,9 @@
       %tr
         %td{colspan: "5"}
           = hidden_field_tag :show_detail_battle_system_1, @show_detail_battle_system_1
-          = label_tag :show_detail_battle_system_1, '＋　戦闘システムを表示する', class: "act_desc"
-          = label_tag :show_detail_battle_system_1, '×　戦闘システムを非表示にする', class: "act_desc closed"
+          - act_icon(false)
+          = label_tag :show_detail_battle_system_1, '　戦闘システムを表示する', class: "act_desc"
+          = label_tag :show_detail_battle_system_1, '　戦闘システムを非表示にする', class: "act_desc closed"
     %tbody.closed
       %tr
         %td  
@@ -103,8 +108,9 @@
       %tr
         %td{colspan: "5"}
           = hidden_field_tag :show_detail_intention_1, @show_detail_intention_1
-          = label_tag :show_detail_intention_1, '＋　意思表示を表示する', class: "act_desc"
-          = label_tag :show_detail_intention_1, '×　意思表示を非表示にする', class: "act_desc closed"
+          - act_icon(false)
+          = label_tag :show_detail_intention_1, '　意思表示を表示する', class: "act_desc"
+          = label_tag :show_detail_intention_1, '　意思表示を非表示にする', class: "act_desc closed"
     %tbody.closed
       %tr
         %td  
@@ -114,8 +120,9 @@
       %tr
         %td{colspan: "5"}
           = hidden_field_tag :show_detail_consort_plane_1, @show_detail_consort_plane_1
-          = label_tag :show_detail_consort_plane_1, '＋　僚機を表示する', class: "act_desc"
-          = label_tag :show_detail_consort_plane_1, '×　僚機を非表示にする', class: "act_desc closed"
+          - act_icon(false)
+          = label_tag :show_detail_consort_plane_1, '　僚機を表示する', class: "act_desc"
+          = label_tag :show_detail_consort_plane_1, '　僚機を非表示にする', class: "act_desc closed"
     %tbody.closed
       %tr
         %td  
@@ -132,8 +139,9 @@
       %tr
         %td{colspan: "5"}
           = hidden_field_tag :show_detail_spec_1, @show_detail_spec_1
-          = label_tag :show_detail_spec_1, '＋　機体データその1を表示する', class: "act_desc"
-          = label_tag :show_detail_spec_1, '×　機体データその1を非表示にする', class: "act_desc closed"
+          - act_icon(false)
+          = label_tag :show_detail_spec_1, '　機体データその1を表示する', class: "act_desc"
+          = label_tag :show_detail_spec_1, '　機体データその1を非表示にする', class: "act_desc closed"
           %div.act_desc 　AP、EN、EN回復量
     %tbody.closed
       %tr
@@ -150,8 +158,9 @@
       %tr
         %td{colspan: "5"}
           = hidden_field_tag :show_detail_spec_2, @show_detail_spec_2
-          = label_tag :show_detail_spec_2, '＋　機体データその2を表示する', class: "act_desc"
-          = label_tag :show_detail_spec_2, '×　機体データその2を非表示にする', class: "act_desc closed"
+          - act_icon(false)
+          = label_tag :show_detail_spec_2, '　機体データその2を表示する', class: "act_desc"
+          = label_tag :show_detail_spec_2, '　機体データその2を非表示にする', class: "act_desc closed"
           %div.act_desc 　機動力、総重量、旋回速度、跳躍力、最大火力、索敵範囲、命中精度、貯水量、噴霧量、積載量、最大積載量
     %tbody.closed
       %tr
@@ -192,8 +201,9 @@
       %tr
         %td{colspan: "5"}
           = hidden_field_tag :show_detail_spec_3, @show_detail_spec_3
-          = label_tag :show_detail_spec_3, '＋　防御値を表示する', class: "act_desc"
-          = label_tag :show_detail_spec_3, '×　防御値を非表示にする', class: "act_desc closed"
+          - act_icon(false)
+          = label_tag :show_detail_spec_3, '　防御値を表示する', class: "act_desc"
+          = label_tag :show_detail_spec_3, '　防御値を非表示にする', class: "act_desc closed"
           %div.act_desc 　物理防御、霊障防御、粒子防御、火炎防御、電子防御
     %tbody.closed
       %tr
@@ -216,8 +226,9 @@
       %tr
         %td{colspan: "5"}
           = hidden_field_tag :show_detail_condition_1, @show_detail_condition_1
-          = label_tag :show_detail_condition_1, '＋　機体状況を表示する', class: "act_desc"
-          = label_tag :show_detail_condition_1, '×　機体状況を非表示にする', class: "act_desc closed"
+          - act_icon(false)
+          = label_tag :show_detail_condition_1, '　機体状況を表示する', class: "act_desc"
+          = label_tag :show_detail_condition_1, '　機体状況を非表示にする', class: "act_desc closed"
     %tbody.closed
       %tr
       %tr
@@ -228,7 +239,8 @@
       %tr
         %td
         %td= hidden_field_tag :is_form, 1
-        %td{colspan: "4"}= f.submit '検索する'
+        %td{colspan: "3"}
+          - search_submit_button
 
 
 = paginate(@next_battles)

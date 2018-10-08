@@ -30,6 +30,42 @@ module ApplicationHelper
         generate_text  = generate_no > 0 ? "_" + sprintf("%d", generate_no) : ""
         link_to " 過去結果", "http://mistofwar.kitunebi.com/M_o_W_5/"+result_no_text+generate_text+"/RESULT/c"+file_name+".html", :target => "_blank"
     end
+    
+    def search_submit_button()
+        haml_tag :button, class: "submit", type: "submit" do
+            haml_concat fa_icon "search", text: "検索する"
+        end
+    end
+
+    def help_icon()
+        haml_concat fa_icon "question-circle"
+    end
+
+    def act_desc(is_opened)
+        desc        = is_opened ? "（クリックで閉じます）" : "（クリックで開きます）"
+        desc_closed = is_opened ? "（クリックで開きます）" : "（クリックで閉じます）"
+
+        haml_tag :span, class: "act_desc" do
+            haml_concat desc
+        end
+
+        haml_tag :span, class: "act_desc closed" do
+            haml_concat desc_closed
+        end
+    end
+
+    def act_icon(is_opened)
+        icon        = is_opened ? "times" : "plus"
+        icon_closed = is_opened ? "plus"  : "times"
+
+        haml_tag :span, class: "act_desc" do
+            haml_concat fa_icon icon, class: "fa-lg"
+        end
+
+        haml_tag :span, class: "act_desc closed" do
+            haml_concat fa_icon icon_closed, class: "fa-lg"
+        end
+    end
 
     def all_assembly_text(assembly)
         if !assembly then
