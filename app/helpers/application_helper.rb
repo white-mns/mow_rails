@@ -15,16 +15,55 @@ module ApplicationHelper
     end
 
     def character_link(e_no)
+        if e_no <= 0 then return end
+
         file_name = sprintf("%04d",e_no)
         link_to " 結果", "http://blacktea.sakura.ne.jp/mistofwar/RESULT/c"+file_name+".html", :target => "_blank"
     end
     
     def character_old_link(last_result_no, e_no, result_no, generate_no)
-        if result_no < last_result_no
-            file_name = sprintf("%04d", e_no)
-            result_no_text = sprintf("%03d", result_no)
-            generate_text  = generate_no > 0 ? "_" + sprintf("%d", generate_no) : ""
-            link_to " 過去結果", "http://mistofwar.kitunebi.com/M_o_W_5/"+result_no_text+generate_text+"/RESULT/c"+file_name+".html", :target => "_blank"
+        if e_no <= 0 then return end
+        if result_no ==  last_result_no then return end
+
+        file_name = sprintf("%04d", e_no)
+        result_no_text = sprintf("%03d", result_no)
+        generate_text  = generate_no > 0 ? "_" + sprintf("%d", generate_no) : ""
+        link_to " 過去結果", "http://mistofwar.kitunebi.com/M_o_W_5/"+result_no_text+generate_text+"/RESULT/c"+file_name+".html", :target => "_blank"
+    end
+    
+    def search_submit_button()
+        haml_tag :button, class: "submit", type: "submit" do
+            haml_concat fa_icon "search", text: "検索する"
+        end
+    end
+
+    def help_icon()
+        haml_concat fa_icon "question-circle"
+    end
+
+    def act_desc(is_opened)
+        desc        = is_opened ? "（クリックで閉じます）" : "（クリックで開きます）"
+        desc_closed = is_opened ? "（クリックで開きます）" : "（クリックで閉じます）"
+
+        haml_tag :span, class: "act_desc" do
+            haml_concat desc
+        end
+
+        haml_tag :span, class: "act_desc closed" do
+            haml_concat desc_closed
+        end
+    end
+
+    def act_icon(is_opened)
+        icon        = is_opened ? "times" : "plus"
+        icon_closed = is_opened ? "plus"  : "times"
+
+        haml_tag :span, class: "act_desc" do
+            haml_concat fa_icon icon, class: "fa-lg"
+        end
+
+        haml_tag :span, class: "act_desc closed" do
+            haml_concat fa_icon icon_closed, class: "fa-lg"
         end
     end
 
