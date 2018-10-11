@@ -139,6 +139,9 @@
     %tr
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
+      - if false
+        %th= sort_link(@search, :block_block_no,'ブロック', default_order: :desc)
+        %th= sort_link(@search, :next_battle_block_no,'次回ブロック', default_order: :desc)
       - if @show_detail_1 == "1"
         %th= sort_link(@search, :total_income, '合計収入', default_order: :desc)
         %th= sort_link(@search, :attack, '攻撃', default_order: :desc)
@@ -168,6 +171,9 @@
       %tr
         %td= reward.result_no
         %td= p_name_text(reward.e_no, reward.p_name)
+        - if false
+          %td= blocks_text(reward.block)
+          %td= blocks_text(reward.next_battle)
         - if @show_detail_1 == "1"
           %td= reward.total_income
           %td= reward.attack
