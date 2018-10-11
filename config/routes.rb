@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "block/results", :to => "blocks#result", :as => 'block_results' 
   resources :blocks
   resources :next_battles
+  get "reward/graph", :to => "rewards#graph", :as => 'reward_graphs' 
   resources :rewards
   resources :condition_all_texts
   resources :specs

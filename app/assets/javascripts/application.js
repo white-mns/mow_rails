@@ -17,6 +17,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require "jquery.cleanQuery"
+//= require chartkick
 
 // 検索遷移時の検索フォームの閉じる処理
 function search_close() {
@@ -32,7 +33,7 @@ function search_close() {
 
 function set_triggers() {
     $(".example_toggle").on("click", function() {
-        $(this).parent().next().slideToggle();
+        $(this).parent().next().slideToggle(200);
         $(this).find(".act_desc").toggle();
     });
 

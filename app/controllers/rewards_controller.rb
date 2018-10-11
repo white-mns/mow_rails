@@ -5,10 +5,18 @@ class RewardsController < ApplicationController
   # GET /rewards
   def index
     param_set
-    @count	= Reward.notnil().includes(:p_name).search(params[:q]).result.count()
-    @search	= Reward.notnil().includes(:p_name).page(params[:page]).search(params[:q])
+    @count	= Reward.notnil().includes(:p_name, :block, :next_battle).search(params[:q]).result.count()
+    @search	= Reward.notnil().includes(:p_name, :block, :next_battle).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @rewards	= @search.result.per(50)
+  end
+  
+  # GET /reward/graph
+  def graph
+      index
+      @library_param =  {backgroundColor: "#000", 
+            vAxis: { baselineColor: "#F76161", textStyle: { color: "#eee"}, titleTextStyle: {color: "#eee"} },
+            hAxis: { baselineColor: "#F76161", textStyle: { color: "#eee"}, titleTextStyle: {color: "#eee"} }}
   end
 
   def param_set
@@ -43,6 +51,9 @@ class RewardsController < ApplicationController
     reference_number_assign(params, "union_interest", "union_interest_form")
     reference_number_assign(params, "parts_sell", "parts_sell_form")
     
+    reference_number_assign(params, "block_block_no", "block_no_form")
+    reference_number_assign(params, "next_battle_block_no", "next_block_no_form")
+    
     @p_name_form = params["p_name_form"]
     @result_no_form = params["result_no_form"]
     @generate_no_form = params["generate_no_form"]
@@ -66,6 +77,9 @@ class RewardsController < ApplicationController
     @prize_form = params["prize_form"]
     @union_interest_form = params["union_interest_form"]
     @parts_sell_form = params["parts_sell_form"]
+    
+    @block_no_form = params["block_no_form"]
+    @next_block_no_form = params["next_block_no_form"]
 
     @show_detail_1 = (!params["is_form"]) ? "1" : params["show_detail_1"]
     @show_detail_2 = params["show_detail_2"]

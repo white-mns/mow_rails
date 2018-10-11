@@ -21,6 +21,7 @@
           %li= link_to "機体データ一覧", specs_path
           %br
           %li= link_to "戦闘報酬一覧", rewards_path
+          %li= link_to "戦闘報酬グラフ", reward_graphs_path
           %br
           %li= link_to "メガアセンブル一覧", mega_assembles_path
           %li= link_to "ファイブレーダーズ", five_radars_path
@@ -36,6 +37,11 @@
 .well.well-sm
   %h2 更新履歴
   %ul
+    %li 2018/10/11
+    %ul
+      %li
+        = link_to "戦闘報酬グラフ", reward_graphs_path
+        を公開
     %li 2018/9/16
     %ul
       %li
