@@ -15,72 +15,111 @@
  */
 
 
-$navbar-default-bg: #444;
-$navbar-default-link-hover-color: #4cf;
-$link-color: #6df;
-$navbar-default-link-hover-bg: #555;
-$navbar-default-toggle-border-color: transparent;
-$table-border-color:            #888 ;
+$light:                             #444;
+$white:                             #fff;
+$gray:                              #444 ;
+$gray-darker:                       #222 ;
+$gray-dark:                         #282828 ;
+$gray-light:                        #888 ;
+
+$link-color:                        #6df;
+$nav-hover-bg-color:                #555;
+$nav-active-bg-color:               #222;
+$navbar-light-color:                $white;
+$navbar-light-hover-color:          #4cf;
+$navbar-light-active-color:         $white;
+$navbar-light-toggler-border-color: transparent;
+$dropdown-link-hover-bg:            $link-color;
+$dropdown-link-active-bg:           $link-color;
+$table-border-color:                #888 ;
+$table-hover-bg:                    $gray;
+$nav-border-color:                  MediumSeaGreen;
 
 // Cyborgテーマからページネーションのカラーリングをコピー
-$gray-darker: #222 ;
-$gray-dark:   #282828 ;
-$gray-light:  #888 ;
-$pagination-color:           #fff;
-$pagination-bg:              $gray-darker;
-$pagination-border:          #888;
+$pagination-color:                  #fff;
+$pagination-bg:                     $gray-darker;
+$pagination-border-color:           #888;
+$pagination-border-width:           0.05rem;
 
-$pagination-hover-color:     #fff;
-$pagination-hover-bg:        #2A9FD6;
-$pagination-hover-border:    transparent;
+$pagination-hover-color:            #fff;
+$pagination-hover-bg:               #2A9FD6;
+$pagination-hover-border-color:     transparent;
 
-$pagination-active-color:    #fff;
-$pagination-active-bg:       #2A9FD6;
-$pagination-active-border:   transparent;
+$pagination-active-color:           #fff;
+$pagination-active-bg:              #2A9FD6;
+$pagination-active-border-color:    transparent;
 
-$pagination-disabled-color:  $gray-light;
-$pagination-disabled-bg:     $gray-darker;
-$pagination-disabled-border: #888;
+$pagination-disabled-color:         $gray-light;
+$pagination-disabled-bg:            $gray-darker;
+$pagination-disabled-border-color:  #888;
 
-@import "bootstrap-sprockets";
 @import "bootswatch/darkly/variables";
 @import "bootstrap";
 
 
-body { padding-top: 60px; }
+body { padding-top: 5rem; }
 
 @import "bootswatch/darkly/bootswatch";
 
-.navbar-default {
-    border-color: MediumSeaGreen;
+.navbar-custom {
+    border-color: $nav-border-color;
     border-style: none none solid none;
-    border-width: 0.3em;
+    border-width: 0.3rem;
 }
 
-.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+.navbar-custom .navbar-brand,{
+    padding: .8rem .5rem;
+}
+.navbar-custom .navbar-nav .nav-link{
+    padding: 1rem .5rem;
+}
+
+.navbar-custom .navbar-brand:hover {
+    color: $navbar-light-hover-color;
+}
+
+.navbar-custom .nav-item.show .nav-link {
+    background-color: $nav-active-bg-color;
+}
+
+.navbar-custom .nav-item:hover .nav-link {
+    background-color: $nav-hover-bg-color;
+}
+
+.dropdown-menu .dropdown-item:hover, .dropdown-menu .dropdown-item:focus {
     color: #fff;
     background-color: #007fff;
 }
 
 .pagination li a {
-    padding: 10px 18px;
+    padding: .8rem 1rem;
 }
+
+.page-item.disabled {
+    cursor: not-allowed;
+}
+
 
 h2 {
-    font-size: 24px;
+    font-size: 1.7rem;
     font-weight: bold;
-    margin-top: 5px;
+    margin-top: 0.5rem;
 }
 
-.well-sm {
+.card.top {
     border-color: #aaa;
+    border-style: solid;
+    border-width: 0.05rem;
+    box-shadow: .3rem .3rem .3rem rgba(0,0,0,0.2);
+    margin-bottom: 1rem;
 }
 
-.well.desc {
+.card.desc {
     border-color: #aaa;
     border-style: solid;
     border-width: 0.05em;
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+    box-shadow: .3rem .3rem .3rem rgba(0,0,0,0.2);
+    margin-bottom: 1rem;
 }
 
 .formText {
@@ -138,18 +177,17 @@ $submit-color: $gray;
 
 button.submit {
     background-color: $submit-color;
-    border-radius: 5px;
-    border: 0.2em solid #fff;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    border: 0.2rem solid #fff;
+    box-shadow: 0 0.1rem 0.5rem rgba(0,0,0,0.2);
     color: #fff;
     font-weight: bold;
-    padding: 0.5em 0.8em;
+    padding: 0.5rem 0.8rem;
     transition: 0.2s linear;
 }
 
 button.submit:hover {
     background-color: #fff;
-    border: 0.2em solid $submit-color;
+    border: 0.2rem solid $submit-color;
     color: $submit-color;
 }
 
