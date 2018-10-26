@@ -10,39 +10,36 @@
     = javascript_include_tag "https://www.gstatic.com/charts/loader.js"
 
   %body
-    %nav.navbar.navbar-default.navbar-fixed-top
+    %nav.navbar.navbar-expand-md.fixed-top.navbar-light.bg-light.navbar-custom.p-0
       .container
-        .navbar-header
-          = link_to "霧戦争5期データ小屋", root_path, :class => "navbar-brand"
-          %button.navbar-toggle{:type => "button", data: {:toggle => "collapse", :target => "#navbar-main"}}
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-        .navbar-collapse.collapse#navbar-main
-          %ul.nav.navbar-nav
-            %li.dropdown
-              %a.dropdown-toggle#themes{ :data => {:toggle =>"dropdown"}, :href => "#"}
+        = link_to "霧戦争5期データ小屋", root_path, :class => "navbar-brand"
+        %button.navbar-toggler{type: "button", data: {toggle: "collapse", target: "#navbarResponsive"}, area: {controls: "navbarResponsive", expanded: "false", label: "Toggle navigation"}}
+          %span.navbar-toggler-icon
+        .collapse.navbar-collapse#navbarResponsive
+          %ul.navbar-nav
+            %li.nav-item.dropdown
+              %a.nav-link.dropdown-toggle#themes{ :data => {:toggle =>"dropdown"}, :href => "#"}
                 個人データ
                 %span.caret
-              %ul.dropdown-menu{:aria-labelledby => "themes"}
-                %li= link_to "アイテム一覧", items_path
-                %li= link_to "ステータス一覧", statuses_path
-                %li= link_to "機体データ一覧", specs_path
-                %li.divider
-                %li= link_to "戦闘報酬一覧", rewards_path
-                %li= link_to "戦闘報酬グラフ", reward_graphs_path
-                %li.divider
-                %li= link_to "メガアセンブル一覧", mega_assembles_path
-                %li= link_to "ファイブレーダーズ", five_radars_path
-            %li.dropdown
-              %a.dropdown-toggle#themes{ :data => {:toggle =>"dropdown"}, :href => "#"}
+              .dropdown-menu
+                = link_to "アイテム一覧", items_path, class: "dropdown-item"
+                = link_to "ステータス一覧", statuses_path, class: "dropdown-item"
+                = link_to "機体データ一覧", specs_path, class: "dropdown-item"
+                .dropdown-divider
+                = link_to "戦闘報酬一覧", rewards_path, class: "dropdown-item"
+                = link_to "戦闘報酬グラフ", reward_graphs_path, class: "dropdown-item"
+                .dropdown-divider
+                = link_to "メガアセンブル一覧", mega_assembles_path, class: "dropdown-item"
+                = link_to "ファイブレーダーズ", five_radars_path, class: "dropdown-item"
+            %li.nav-item.dropdown
+              %a.nav-link.dropdown-toggle#themes{ :data => {:toggle =>"dropdown"}, :href => "#"}
                 結果データ
                 %span.caret
-              %ul.dropdown-menu{:aria-labelledby => "themes"}
-                %li= link_to "マーケット一覧", markets_path
-                %li.divider
-                %li= link_to "戦場別戦果一覧", block_results_path
-                %li= link_to "次回組み合わせ一覧", next_battles_path
+              .dropdown-menu
+                = link_to "マーケット一覧", markets_path, class: "dropdown-item"
+                .dropdown-divider
+                = link_to "戦場別戦果一覧", block_results_path, class: "dropdown-item"
+                = link_to "次回組み合わせ一覧", next_battles_path, class: "dropdown-item"
 
     .container
       .row
