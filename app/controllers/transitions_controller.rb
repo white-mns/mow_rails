@@ -20,7 +20,7 @@ class TransitionsController < ApplicationController
     @search	= Transition.notnil().includes(:p_name).page(params[:page]).search(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @library_param = {
-        spanGaps: "true"
+        interpolateNulls: true
     }
   end
 

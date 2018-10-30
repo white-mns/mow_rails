@@ -47,11 +47,11 @@
           - search_submit_button
 
 %h3 攻撃戦果
-= line_chart Transition.data_type(1).search_result(params).to_transition_graph(params), xtitle:"ターン", ytitle:"％", height: "600px", min: nil, spanGaps: true, library: @library_param
+= line_chart Transition.data_type(1).search_result(params).to_transition_graph(params), xtitle:"ターン", ytitle:"％", height: "600px", library: @library_param
 %br
 %h3 支援戦果
-= line_chart Transition.data_type(2).search_result(params).to_transition_graph(params), xtitle:"ターン", ytitle:"％", height: "600px", min: nil, spanGaps: true
+= line_chart Transition.data_type(2).search_result(params).to_transition_graph(params), xtitle:"ターン", ytitle:"％", height: "600px", library: @library_param
 %br
 %h3 防衛戦果
-= line_chart Transition.data_type(3).search_result(params).to_transition_graph(params), xtitle:"ターン", ytitle:"％", height: "600px", min: nil, spanGaps: true
+= line_chart Transition.data_type(3).search_result(params).to_transition_graph(params), xtitle:"ターン", ytitle:"％", height: "600px", library: @library_param
 %br
