@@ -6,27 +6,8 @@ class Transition < ApplicationRecord
 
     scope :to_transition_graph, ->(params) {
         pc_name = Hash[*Name.pluck(:e_no, :nickname).flatten]
-        max_turn = Transition.search(params[:q]).result.maximum(:turn)
-        transition_hash = self.pluck(:e_no, :turn, :value).inject(Hash.new(0)){|hash, a| 
-            if !hash.has_key?(pc_name[a[0]]) then
-                hash[pc_name[a[0]]] = Array.new(0);
-            end
-            hash[pc_name[a[0]]].push([a[1], a[2]]);
-            hash}
-        transition_array = Array.new(0)
-        transition_hash.each { |key, value|
-            tmp_hash = transition_hash[key].to_h
-            (1..max_turn).each do |turn|
-                tmp_hash[turn] = tmp_hash[turn - 1 ] unless tmp_hash[turn]
-                tmp_hash.sort
-            end
-            transition_array.push({
-                name: key,
-                data: tmp_hash,
-                spanGaps: true
-            })
-        }
+        transition_hash = self.pluck(:e_no, :turn, :value).inject(Hash.new(0)){|hash, a| hash[ [pc_name[a[0]], a[1]] ] = a[2];hash}
      
-        transition_array   
+        transition_hash   
     }
 end
