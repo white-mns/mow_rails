@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :transitions
   get "five_radars", :to => "assembly_nums#five_radar", :as => 'five_radars'
   get "mega_assembles", :to => "assembly_nums#mega_assemble", :as => 'mega_assembles'
   resources :assembly_nums
