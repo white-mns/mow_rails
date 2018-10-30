@@ -34,11 +34,21 @@
             %br
             %li= link_to "戦場別戦果一覧", block_results_path
             %li= link_to "次回組み合わせ一覧", next_battles_path
+            %br
+            %li= link_to "戦果推移一覧", transitions_path
+            %li= link_to "戦果推移グラフ", transition_graphs_path
 
 .card.top
   .card-body
     %h2 更新履歴
     %ul
+      %li 2018/10/30
+      %ul
+        %li
+          = link_to "戦果推移一覧", transitions_path
+          、
+          = link_to "戦果推移グラフ", transition_graphs_path
+          を公開
       %li 2018/10/11
       %ul
         %li
