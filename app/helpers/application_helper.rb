@@ -36,7 +36,8 @@ module ApplicationHelper
         if result_no != last_result_no then return end
 
         file_name = sprintf("%d", block_no - 1)
-        id = "act" + sprintf("%d", act) + "-eno" + sprintf("%d", e_no)
+        act_no = (act == 1) ? "" : sprintf("%d", act - 1)
+        id = "act" + act_no + "-eno" + sprintf("%d", e_no)
         link_to " 戦闘機動", "http://blacktea.sakura.ne.jp/mistofwar/RESULT/battle"+file_name+".html#"+id, :target => "_blank"
     end
     
@@ -47,7 +48,8 @@ module ApplicationHelper
         result_no_text = sprintf("%03d", result_no)
         generate_text  = generate_no > 0 ? "_" + sprintf("%d", generate_no) : ""
         file_name = sprintf("%d", block_no - 1)
-        id = "act" + sprintf("%d", act) + "-eno" + sprintf("%d", e_no)
+        act_no = (act == 1) ? "" : sprintf("%d", act - 1)
+        id = "act" + act_no + "-eno" + sprintf("%d", e_no)
         link_to " 過去結果", "http://mistofwar.kitunebi.com/M_o_W_5/"+result_no_text+generate_text+"/RESULT/battle"+file_name+".html#"+id, :target => "_blank"
     end
 

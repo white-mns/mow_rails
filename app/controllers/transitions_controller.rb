@@ -10,6 +10,19 @@ class TransitionsController < ApplicationController
     @search.sorts = 'id asc' if @search.sorts.empty?
     @transitions	= @search.result.per(50)
   end
+  
+  # GET /transition/graph
+  def graph
+    if !params["is_form"] then
+        params["block_no_form"] = "1"
+    end
+    param_set
+    @search	= Transition.notnil().includes(:p_name).page(params[:page]).search(params[:q])
+    @search.sorts = 'id asc' if @search.sorts.empty?
+    @library_param = {
+        spanGaps: "true"
+    }
+  end
 
   def param_set
     @last_result = Name.maximum('result_no')
@@ -34,6 +47,8 @@ class TransitionsController < ApplicationController
     reference_number_assign(params, "act", "act_form")
     reference_number_assign(params, "data_type", "data_type_form")
     reference_number_assign(params, "value", "value_form")
+
+    reference_text_assign(params, "p_name_nickname", "nickname_form")
     
     params[:q]["data_type_eq_any"] ||= []
     if !params["is_form"] then
@@ -59,6 +74,8 @@ class TransitionsController < ApplicationController
     @type_attack = params["type_attack"]
     @type_support = params["type_support"]
     @type_defense = params["type_defense"]
+
+    @nickname_form = params["nickname_form"]
   end
   # GET /transitions/1
   #def show
