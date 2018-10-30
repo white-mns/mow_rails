@@ -23,14 +23,36 @@ module ApplicationHelper
     
     def character_old_link(last_result_no, e_no, result_no, generate_no)
         if e_no <= 0 then return end
-        if result_no ==  last_result_no then return end
+        if result_no == last_result_no then return end
 
-        file_name = sprintf("%04d", e_no)
         result_no_text = sprintf("%03d", result_no)
         generate_text  = generate_no > 0 ? "_" + sprintf("%d", generate_no) : ""
+        file_name = sprintf("%04d", e_no)
         link_to " 過去結果", "http://mistofwar.kitunebi.com/M_o_W_5/"+result_no_text+generate_text+"/RESULT/c"+file_name+".html", :target => "_blank"
     end
     
+    def act_link(last_result_no, result_no, generate_no, block_no, act, e_no)
+        if e_no <= 0 then return end
+        if result_no != last_result_no then return end
+
+        file_name = sprintf("%d", block_no - 1)
+        act_no = (act == 1) ? "" : sprintf("%d", act - 1)
+        id = "act" + act_no + "-eno" + sprintf("%d", e_no)
+        link_to " 戦闘機動", "http://blacktea.sakura.ne.jp/mistofwar/RESULT/battle"+file_name+".html#"+id, :target => "_blank"
+    end
+    
+    def act_old_link(last_result_no, result_no, generate_no, block_no, act, e_no)
+        if e_no <= 0 then return end
+        if result_no == last_result_no then return end
+
+        result_no_text = sprintf("%03d", result_no)
+        generate_text  = generate_no > 0 ? "_" + sprintf("%d", generate_no) : ""
+        file_name = sprintf("%d", block_no - 1)
+        act_no = (act == 1) ? "" : sprintf("%d", act - 1)
+        id = "act" + act_no + "-eno" + sprintf("%d", e_no)
+        link_to " 過去結果", "http://mistofwar.kitunebi.com/M_o_W_5/"+result_no_text+generate_text+"/RESULT/battle"+file_name+".html#"+id, :target => "_blank"
+    end
+
     def search_submit_button()
         haml_tag :button, class: "btn submit", type: "submit" do
             haml_concat fa_icon "search", text: "検索する"

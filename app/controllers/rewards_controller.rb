@@ -14,7 +14,7 @@ class RewardsController < ApplicationController
   # GET /reward/graph
   def graph
       index
-      @library_param =  {backgroundColor: "#000", 
+      @library_param =  {backgroundColor: "#222", 
             vAxis: { baselineColor: "#F76161", textStyle: { color: "#eee"}, titleTextStyle: {color: "#eee"} },
             hAxis: { baselineColor: "#F76161", textStyle: { color: "#eee"}, titleTextStyle: {color: "#eee"} }}
   end

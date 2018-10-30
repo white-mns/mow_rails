@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_16_040324) do
+ActiveRecord::Schema.define(version: 2018_10_30_042356) do
 
   create_table "assembly_nums", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "result_no"
@@ -379,6 +379,25 @@ ActiveRecord::Schema.define(version: 2018_09_16_040324) do
     t.index ["reaction"], name: "index_statuses_on_reaction"
     t.index ["rp"], name: "index_statuses_on_rp"
     t.index ["struggle"], name: "index_statuses_on_struggle"
+  end
+
+  create_table "transitions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "result_no"
+    t.integer "generate_no"
+    t.integer "block_no"
+    t.integer "e_no"
+    t.integer "turn"
+    t.integer "act"
+    t.integer "data_type"
+    t.float "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["act"], name: "index_transitions_on_act"
+    t.index ["block_no"], name: "index_transitions_on_block_no"
+    t.index ["data_type"], name: "index_transitions_on_data_type"
+    t.index ["e_no", "result_no", "generate_no"], name: "resultno_eno"
+    t.index ["turn"], name: "index_transitions_on_turn"
+    t.index ["value"], name: "index_transitions_on_value"
   end
 
 end
