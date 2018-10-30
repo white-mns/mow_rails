@@ -14,6 +14,12 @@ class TransitionsController < ApplicationController
   def param_set
     @last_result = Name.maximum('result_no')
 
+    @data_type = {
+        1 => "攻撃",
+        2 => "支援",
+        3 => "防衛"
+    }
+
     params[:q] ||= {}
     if !params["is_form"] then
         params["result_no_form"] ||= sprintf('%d',@last_result)
@@ -29,6 +35,17 @@ class TransitionsController < ApplicationController
     reference_number_assign(params, "data_type", "data_type_form")
     reference_number_assign(params, "value", "value_form")
     
+    params[:q]["data_type_eq_any"] ||= []
+    if !params["is_form"] then
+        params["type_attack"]  = "on"  
+        params["type_support"] = "on" 
+        params["type_defense"] = "on" 
+    end
+
+    if params["type_attack"]  == "on" then params[:q]["data_type_eq_any"].push(1) end
+    if params["type_support"] == "on" then params[:q]["data_type_eq_any"].push(2) end
+    if params["type_defense"] == "on" then params[:q]["data_type_eq_any"].push(3) end
+    
     @p_name_form = params["p_name_form"]
     @result_no_form = params["result_no_form"]
     @generate_no_form = params["generate_no_form"]
@@ -38,6 +55,10 @@ class TransitionsController < ApplicationController
     @act_form = params["act_form"]
     @data_type_form = params["data_type_form"]
     @value_form = params["value_form"]
+    
+    @type_attack = params["type_attack"]
+    @type_support = params["type_support"]
+    @type_defense = params["type_defense"]
   end
   # GET /transitions/1
   #def show
