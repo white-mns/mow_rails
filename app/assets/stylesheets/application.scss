@@ -14,7 +14,6 @@
  *
  */
 
-
 $light:                             #444;
 $white:                             #fff;
 $gray:                              #444 ;
@@ -144,8 +143,25 @@ p.formNum {
     color: #222;
     padding: 0.5em 0.8em;
 }
+
 .pointer{
     cursor:pointer;
+}
+
+.closed{
+    display:none;
+}
+
+td.sign{
+    font-size: x-large;
+}
+
+th.sep,td.sep{
+    border-left: 3px solid $table-border-color;
+}
+
+tr.sep{
+    border-top: 4px solid $table-border-color;
 }
 
 table tbody:nth-child(1) span.act_desc{
@@ -167,10 +183,6 @@ table tbody.tbody_toggle td{
 
 table tbody.tbody_toggle td:hover{
     background-color: #444;
-}
-
-.closed{
-    display:none;
 }
 
 $submit-color: $gray;

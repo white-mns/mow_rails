@@ -30,7 +30,7 @@
         %td.formNum= text_field_tag :e_no_form, @e_no_form
         %td= f.label :p_name_form, 'キャラクター名'
         %td.formText= text_field_tag :p_name_form, @p_name_form
-      %tr
+      %tr.sep
         %td
         %td= f.label :acc_reward_form, '累積報酬'
         %td.formNum{colspan: "3"}= text_field_tag :acc_reward_form, @acc_reward_form
@@ -38,7 +38,7 @@
         %td
         %td= f.label :rp_form, 'RP'
         %td.formNum{colspan: "3"}= text_field_tag :rp_form, @rp_form
-      %tr
+      %tr.sep
         %td
         %td= f.label :gunshot_form, '射撃'
         %td.formNum= text_field_tag :gunshot_form, @gunshot_form
@@ -64,7 +64,7 @@
         %td
         %td= f.label :exp_form, '経験値'
         %td.formNum{colspan: "3"}= text_field_tag :exp_form, @exp_form
-      %tr
+      %tr.sep
         %td
         %td= hidden_field_tag :is_form, 1
         %td{colspan: "3"}
@@ -81,33 +81,33 @@
     %tr
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
-      %th= sort_link(@search, :acc_reward, '累積報酬', default_order: :desc)
+      %th.sep= sort_link(@search, :acc_reward, '累積報酬', default_order: :desc)
       %th= sort_link(@search, :rp, 'RP', default_order: :desc)
-      %th= sort_link(@search, :gunshot, '射撃', default_order: :desc)
+      %th.sep= sort_link(@search, :gunshot, '射撃', default_order: :desc)
       %th= sort_link(@search, :struggle, '格闘', default_order: :desc)
       %th= sort_link(@search, :reaction, '反応', default_order: :desc)
       %th= sort_link(@search, :control, '制御', default_order: :desc)
       %th= sort_link(@search, :preparation, '整備', default_order: :desc)
       %th= sort_link(@search, :fitly, '適性', default_order: :desc)
-      %th= sort_link(@search, :funds, '所持資金', default_order: :desc)
+      %th.sep= sort_link(@search, :funds, '所持資金', default_order: :desc)
       %th= sort_link(@search, :exp, '経験値', default_order: :desc)
-      %th{colspan: "2"}
+      %th.sep{colspan: "2"}
         結果リンク
   %tbody
     - @statuses.each do |status|
       %tr
         %td= status.result_no
         %td= p_name_text(status.e_no, status.p_name)
-        %td= status.acc_reward
+        %td.sep= status.acc_reward
         %td= status.rp
-        %td= status.gunshot
+        %td.sep= status.gunshot
         %td= status.struggle
         %td= status.reaction
         %td= status.control
         %td= status.preparation
         %td= status.fitly
-        %td= status.funds
+        %td.sep= status.funds
         %td= status.exp
-        %td= character_link(status.e_no)
+        %td.sep= character_link(status.e_no)
         %td= character_old_link(@last_result, status.e_no, status.result_no, status.generate_no)
 = paginate(@statuses)

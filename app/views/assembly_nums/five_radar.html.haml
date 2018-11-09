@@ -31,10 +31,10 @@
         %td.formNum= text_field_tag :e_no_form, @e_no_form
         %td= f.label :p_name_form, 'キャラクター名'
         %td.formText= text_field_tag :p_name_form, @p_name_form
-      %tr
+      %tr.sep
         %td  
         %td= f.label :num_form, 'レーダーの数'
-        %td.formNum= text_field_tag :num_form, @num_form
+        %td.formNum{colspan: "3"}= text_field_tag :num_form, @num_form
     %tbody.tbody_toggle.pointer
       %tr
         %td{colspan: "5"}
@@ -116,39 +116,39 @@
     %tr
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
-      %th= sort_link(@search, :num, 'レーダー数', default_order: :desc)
+      %th.sep= sort_link(@search, :num, 'レーダー数', default_order: :desc)
       - if @show_detail_reward_1 == "1"
-        %th= sort_link(@search, :reward_total_income, '合計収入', default_order: :desc)
+        %th.sep= sort_link(@search, :reward_total_income, '合計収入', default_order: :desc)
         %th= sort_link(@search, :reward_attack, '攻撃', default_order: :desc)
         %th= sort_link(@search, :reward_support, '支援', default_order: :desc)
         %th= sort_link(@search, :reward_defense, '防衛', default_order: :desc)
       - if @show_detail_block_1 == "1"
-        %th= sort_link(@search, :block_block_no, '今回戦場', default_order: :desc)
+        %th.sep= sort_link(@search, :block_block_no, '今回戦場', default_order: :desc)
       - if @show_detail_next_battle_1 == "1"
-        %th= sort_link(@search, :next_battles_block_no, '次回戦場', default_order: :desc)
+        %th.sep= sort_link(@search, :next_battles_block_no, '次回戦場', default_order: :desc)
       - if @show_detail_assembly_1 == "1"
-        %th= sort_link(@search, :leg_orig_name_name_name, '脚部', default_order: :desc)
+        %th.sep= sort_link(@search, :leg_orig_name_name_name, '脚部', default_order: :desc)
         %th= sort_link(@search, :assembly_orig_name_name_name, 'アセンブル', default_order: :desc)
-      %th{colspan: "2"}
+      %th.sep{colspan: "2"}
         結果リンク
   %tbody
     - @assembly_nums.each do |assembly_num|
       %tr
         %td= assembly_num.result_no
         %td= p_name_text(assembly_num.e_no, assembly_num.p_name)
-        %td= assembly_num.num
+        %td.sep= assembly_num.num
         - if @show_detail_reward_1 == "1"
-          %td= assembly_num.reward.total_income if assembly_num.reward
+          %td.sep= assembly_num.reward.total_income if assembly_num.reward
           %td= assembly_num.reward.attack if assembly_num.reward
           %td= assembly_num.reward.support if assembly_num.reward
           %td= assembly_num.reward.defense if assembly_num.reward
         - if @show_detail_block_1 == "1"
-          %td= assembly_num.block.block_no if assembly_num.block
+          %td.sep= assembly_num.block.block_no if assembly_num.block
         - if @show_detail_next_battle_1 == "1"
-          %td= assembly_num.next_battle.block_no if assembly_num.next_battle
+          %td.sep= assembly_num.next_battle.block_no if assembly_num.next_battle
         - if @show_detail_assembly_1 == "1"
-          %td= assembly_num.leg.orig_name_name.name if assembly_num.leg
+          %td.sep= assembly_num.leg.orig_name_name.name if assembly_num.leg
           %td= all_assembly_text(assembly_num.assembly)
-        %td= character_link(assembly_num.e_no)
+        %td.sep= character_link(assembly_num.e_no)
         %td= character_old_link(@last_result, assembly_num.e_no, assembly_num.result_no, assembly_num.generate_no)
 = paginate(@assembly_nums)

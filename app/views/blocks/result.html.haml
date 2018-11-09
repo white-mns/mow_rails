@@ -31,10 +31,10 @@
         %td.formNum= text_field_tag :e_no_form, @e_no_form
         %td= f.label :p_name_form, 'キャラクター名'
         %td.formText= text_field_tag :p_name_form, @p_name_form
-      %tr
+      %tr.sep
         %td  
         %td= f.label :block_no_form, 'ブロック番号'
-        %td.formNum= text_field_tag :block_no_form, @block_no_form
+        %td.formNum{colspan: "3"}= text_field_tag :block_no_form, @block_no_form
     %tbody.tbody_toggle.pointer
       %tr
         %td{colspan: "5"}
@@ -257,29 +257,29 @@
     %tr
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
-      %th= sort_link(@search, :block_no, 'ブロック', default_order: :desc)
+      %th.sep= sort_link(@search, :block_no, 'ブロック', default_order: :desc)
       - if @show_detail_assembly_1 == "1"
-        %th= sort_link(@search, :leg_orig_name_name_name, '脚部', default_order: :desc)
+        %th.sep= sort_link(@search, :leg_orig_name_name_name, '脚部', default_order: :desc)
       - if @show_detail_status_1 == "1"
-        %th= sort_link(@search, :status_acc_reward, '累積報酬', default_order: :desc)
+        %th.sep= sort_link(@search, :status_acc_reward, '累積報酬', default_order: :desc)
         %th= sort_link(@search, :status_rp, 'RP', default_order: :desc)
       - if @show_detail_reward_1 == "1"
-        %th= sort_link(@search, :reward_total_income, '合計収入', default_order: :desc)
+        %th.sep= sort_link(@search, :reward_total_income, '合計収入', default_order: :desc)
         %th= sort_link(@search, :reward_attack, '攻撃', default_order: :desc)
         %th= sort_link(@search, :reward_support, '支援', default_order: :desc)
         %th= sort_link(@search, :reward_defense, '防衛', default_order: :desc)
       - if @show_detail_battle_system_1 == "1"
-        %th= sort_link(@search, :battle_system_battle_system, '戦闘システム', default_order: :desc)
+        %th.sep= sort_link(@search, :battle_system_battle_system, '戦闘システム', default_order: :desc)
       - if @show_detail_intention_1 == "1"
-        %th= sort_link(@search, :intention, '意思', default_order: :desc)
+        %th.sep= sort_link(@search, :intention, '意思', default_order: :desc)
       - if @show_detail_consort_plane_1 == "1"
-        %th= sort_link(@search, :consort_plane, '僚機', default_order: :desc)
+        %th.sep= sort_link(@search, :consort_plane, '僚機', default_order: :desc)
       - if @show_detail_spec_1 == "1"
-        %th= sort_link(@search, :spec_ap, 'AP', default_order: :desc)
+        %th.sep= sort_link(@search, :spec_ap, 'AP', default_order: :desc)
         %th= sort_link(@search, :spec_en, 'EN', default_order: :desc)
         %th= sort_link(@search, :spec_en_recovery, 'EN回復', default_order: :desc)
       - if @show_detail_spec_2 == "1"
-        %th= sort_link(@search, :spec_movement, '機動', default_order: :desc)
+        %th.sep= sort_link(@search, :spec_movement, '機動', default_order: :desc)
         %th= sort_link(@search, :spec_weight, '総重量', default_order: :desc)
         %th= sort_link(@search, :spec_turning_speed, '旋回', default_order: :desc)
         %th= sort_link(@search, :spec_jump, '跳躍', default_order: :desc)
@@ -291,46 +291,46 @@
         %th= sort_link(@search, :spec_loading, '積載', default_order: :desc)
         %th= sort_link(@search, :spec_max_loading, '最大積載', default_order: :desc)
       - if @show_detail_spec_3 == "1"
-        %th{style: "border-bottom: 0.3em solid #ccc;"}= sort_link(@search, :pysics, '物理', default_order: :desc)
+        %th.sep{style: "border-bottom: 0.3em solid #ccc;"}= sort_link(@search, :pysics, '物理', default_order: :desc)
         %th{style: "border-bottom: 0.3em solid #c4c;"}= sort_link(@search, :spirit, '霊障', default_order: :desc)
         %th{style: "border-bottom: 0.3em solid #4cc;"}= sort_link(@search, :particle, '粒子', default_order: :desc)
         %th{style: "border-bottom: 0.3em solid #c44;"}= sort_link(@search, :flame, '火炎', default_order: :desc)
         %th{style: "border-bottom: 0.3em solid #ee8;"}= sort_link(@search, :electric, '電子', default_order: :desc)
       - if @show_detail_condition_1 == "1"
-        %th= sort_link(@search, :condition_all_text_condition_text, '機体状況', default_order: :desc)
-      %th{colspan:"2"}
+        %th.sep= sort_link(@search, :condition_all_text_condition_text, '機体状況', default_order: :desc)
+      %th.sep{colspan:"2"}
         結果リンク
   %tbody
     - @blocks.each do |block|
       %tr
         %td{rowspan: "#{ '2' if @show_all_assembly }" }= block.result_no
         %td{rowspan: "#{ '2' if @show_all_assembly }" }= p_name_text(block.e_no, block.p_name)
-        %td{rowspan: "#{ '2' if @show_all_assembly }" }= block.block_no
+        %td.sep{rowspan: "#{ '2' if @show_all_assembly }" }= block.block_no
         - if @show_detail_assembly_1 == "1"
-          %td= block.leg.orig_name_name.name if block.leg
+          %td.sep= block.leg.orig_name_name.name if block.leg
         - if @show_detail_status_1 == "1"
-          %td= block.status.acc_reward if block.status
+          %td.sep= block.status.acc_reward if block.status
           %td= block.status.rp if block.status
         - if @show_detail_reward_1 == "1"
-          %td= block.reward.total_income if block.reward
+          %td.sep= block.reward.total_income if block.reward
           %td= block.reward.attack if block.reward
           %td= block.reward.support if block.reward
           %td= block.reward.defense if block.reward
         - if @show_detail_battle_system_1 == "1"
-          %td= block.battle_system.battle_system_name.name if block.battle_system && block.battle_system.battle_system_name
+          %td.sep= block.battle_system.battle_system_name.name if block.battle_system && block.battle_system.battle_system_name
         - if @show_detail_intention_1 == "1"
-          %td= block.intention.intention_name.name if block.intention && block.intention.intention_name
+          %td.sep= block.intention.intention_name.name if block.intention && block.intention.intention_name
         - if @show_detail_consort_plane_1 == "1"
           - if @show_consort_plane_name == "on"
-            %td= block.consort_plane.consort_plane_name.name.html_safe + "(" + sprintf("%d",block.consort_plane.consort_plane) + ")" if block.consort_plane && block.consort_plane.consort_plane_name
+            %td.sep= block.consort_plane.consort_plane_name.name.html_safe + "(" + sprintf("%d",block.consort_plane.consort_plane) + ")" if block.consort_plane && block.consort_plane.consort_plane_name
           - else
-            %td= block.consort_plane.consort_plane if block.consort_plane && block.consort_plane.consort_plane_name
+            %td.sep= block.consort_plane.consort_plane if block.consort_plane && block.consort_plane.consort_plane_name
         - if @show_detail_spec_1 == "1"
-          %td= block.spec.ap if block.spec
+          %td.sep= block.spec.ap if block.spec
           %td= block.spec.en if block.spec
           %td= block.spec.en_recovery if block.spec
         - if @show_detail_spec_2 == "1"
-          %td= block.spec.movement if block.spec
+          %td.sep= block.spec.movement if block.spec
           %td= block.spec.weight if block.spec
           %td= block.spec.turning_speed if block.spec
           %td= block.spec.jump if block.spec
@@ -342,14 +342,14 @@
           %td= block.spec.loading if block.spec
           %td= block.spec.max_loading if block.spec
         - if @show_detail_spec_3 == "1"
-          %td= block.spec.pysics if block.spec
+          %td.sep= block.spec.pysics if block.spec
           %td= block.spec.spirit if block.spec
           %td= block.spec.particle if block.spec
           %td= block.spec.flame if block.spec
           %td= block.spec.electric if block.spec
         - if @show_detail_condition_1 == "1"
-          %td= block.condition_all_text.condition_text if block.condition_all_text
-        %td= character_link(block.e_no)
+          %td.sep= block.condition_all_text.condition_text if block.condition_all_text
+        %td.sep= character_link(block.e_no)
         %td= character_old_link(@last_result, block.e_no, block.result_no, block.generate_no)
       -if @show_all_assembly
         %tr

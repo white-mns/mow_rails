@@ -35,7 +35,7 @@
         %td.formText= text_field_tag :p_name_form, @p_name_form
         %td= f.label :nickname_form, '愛称'
         %td.formText= text_field_tag :nickname_form, @nickname_form
-      %tr
+      %tr.sep
         %td  
         %td= f.label :block_no_form, 'ブロック番号'
         %td.formNum{colspan: "3"}= text_field_tag :block_no_form, @block_no_form
@@ -45,7 +45,7 @@
         %td.formNum= text_field_tag :turn_form, @turn_form
         %td= f.label :act_form, '○行動目'
         %td.formNum= text_field_tag :act_form, @act_form
-      %tr
+      %tr.sep
         %td
         %td= f.label :data_type_form, '種別'
         %td{:colspan => "3"}
@@ -79,24 +79,24 @@
     %tr
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
-      %th= sort_link(@search, :block_no, 'ブロック', default_order: :desc)
+      %th.sep= sort_link(@search, :block_no, 'ブロック', default_order: :desc)
       %th= sort_link(@search, :turn, 'ターン', default_order: :desc)
       %th= sort_link(@search, :act, '行動', default_order: :desc)
-      %th= sort_link(@search, :data_type, '種別', default_order: :desc)
+      %th.sep= sort_link(@search, :data_type, '種別', default_order: :desc)
       %th= sort_link(@search, :value, '値', default_order: :desc)
-      %th{colspan: "2"} 個人結果リンク
+      %th.sep{colspan: "2"} 個人結果リンク
       %th{colspan: "2"} 戦闘機動リンク
   %tbody
     - @transitions.each do |transition|
       %tr
         %td= transition.result_no
         %td= p_name_text(transition.e_no, transition.p_name)
-        %td= transition.block_no
+        %td.sep= transition.block_no
         %td= transition.turn
         %td= transition.act
-        %td= @data_type[transition.data_type]
+        %td.sep= @data_type[transition.data_type]
         %td= transition.value
-        %td= character_link(transition.e_no)
+        %td.sep= character_link(transition.e_no)
         %td= character_old_link(@last_result, transition.e_no, transition.result_no, transition.generate_no)
         %td= act_link(@last_result, transition.result_no, transition.generate_no, transition.block_no, transition.act, transition.e_no, )
         %td= act_old_link(@last_result, transition.result_no, transition.generate_no, transition.block_no, transition.act, transition.e_no, )

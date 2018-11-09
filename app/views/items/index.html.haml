@@ -188,14 +188,14 @@
       %th= sort_link(@search, :i_no, 'Ino', default_order: :desc)
       %th= sort_link(@search, :name, 'アイテム名', default_order: :desc)
       - if @show_detail_1 == "1"
-        %th= sort_link(@search, :kind, '種別', default_order: :desc)
+        %th.sep= sort_link(@search, :kind, '種別', default_order: :desc)
         %th= sort_link(@search, :orig_name, '詳細', default_order: :desc)
-        %th= sort_link(@search, :strength, '強度', default_order: :desc)
+        %th.sep= sort_link(@search, :strength, '強度', default_order: :desc)
         %th= sort_link(@search, :fuka_1, '付加A', default_order: :desc)
         %th= sort_link(@search, :fuka_2, '付加B', default_order: :desc)
         %th= sort_link(@search, :equip, '装備', default_order: :desc)
       - if @show_detail_2 == "1"
-        %th= sort_link(@search, :ap, 'AP', default_order: :desc)
+        %th.sep= sort_link(@search, :ap, 'AP', default_order: :desc)
         %th= sort_link(@search, :spending_en, '消費EN', default_order: :desc)
         %th= sort_link(@search, :unique_1, '特殊1', default_order: :desc)
         %th= sort_link(@search, :unique_2, '特殊2', default_order: :desc)
@@ -206,7 +206,7 @@
         %th= sort_link(@search, :ammunition_cost, '弾薬費', default_order: :desc)
         %th= sort_link(@search, :weight, '重量', default_order: :desc)
       - if @show_detail_3 == "1"
-        %th= sort_link(@search, :precision, '精度', default_order: :desc)
+        %th.sep= sort_link(@search, :precision, '精度', default_order: :desc)
         %th= sort_link(@search, :punding, '貯水', default_order: :desc)
         %th= sort_link(@search, :aerosol, '噴霧', default_order: :desc)
         %th= sort_link(@search, :bullet, '弾数', default_order: :desc)
@@ -214,13 +214,13 @@
         %th= sort_link(@search, :weapon_element, '武器属性', default_order: :desc)
         %th= sort_link(@search, :add_abnormity, '異常追加', default_order: :desc)
       - if @show_detail_4 == "1"
-        %th= sort_link(@search, :gunshot, '射撃', default_order: :desc)
+        %th.sep= sort_link(@search, :gunshot, '射撃', default_order: :desc)
         %th= sort_link(@search, :struggle, '格闘', default_order: :desc)
         %th= sort_link(@search, :reaction, '反応', default_order: :desc)
         %th= sort_link(@search, :control, '制御', default_order: :desc)
         %th= sort_link(@search, :preparation, '整備', default_order: :desc)
         %th= sort_link(@search, :fitly, '適性', default_order: :desc)
-      %th{colspan:"2"}
+      %th.sep{colspan:"2"}
         結果リンク
   %tbody
     - @items.each do |item|
@@ -230,25 +230,25 @@
         %td= item.i_no
         %td= item.name
         - if @show_detail_1 == "1"
-          %td= item.kind_name.name if item.kind
+          %td.sep= item.kind_name.name if item.kind
           %td= item.orig_name_name.name if item.orig_name_name
-          %td= item.strength
+          %td.sep= item.strength
           %td= item.fuka_1_name.name if item.fuka_1_name
           %td= item.fuka_2_name.name if item.fuka_2_name
           %td= item.equip
         - if @show_detail_2 == "1"
-          %td= item.ap
+          %td.sep= item.ap
           %td= item.spending_en
           %td= item.unique_1
           %td= item.unique_2
           %td= item.turning_speed
-          %td= item.guard_elemental_name.name if item.guard_elemental
+          %td{style: "#{ elemental_border(item.guard_elemental_name) }" }= item.guard_elemental_name.name if item.guard_elemental
           %td= item.guard_value
           %td= item.value
           %td= item.ammunition_cost
           %td= item.weight
         - if @show_detail_3 == "1"
-          %td= item.precision
+          %td.sep= item.precision
           %td= item.punding
           %td= item.aerosol
           %td= item.bullet
@@ -256,12 +256,12 @@
           %td= item.weapon_element_name.name if item.weapon_element_name
           %td= item.add_abnormity
         - if @show_detail_4 == "1"
-          %td= item.gunshot
+          %td.sep= item.gunshot
           %td= item.struggle
           %td= item.reaction
           %td= item.control
           %td= item.preparation
           %td= item.fitly
-        %td= character_link(item.e_no)
+        %td.sep= character_link(item.e_no)
         %td= character_old_link(@last_result, item.e_no, item.result_no, item.generate_no)
 = paginate(@items)

@@ -152,11 +152,11 @@
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
       - if @show_detail_1 == "1"
-        %th= sort_link(@search, :ap, 'AP', default_order: :desc)
+        %th.sep= sort_link(@search, :ap, 'AP', default_order: :desc)
         %th= sort_link(@search, :en, 'EN', default_order: :desc)
         %th= sort_link(@search, :en_recovery, 'EN回復', default_order: :desc)
       - if @show_detail_2 == "1"
-        %th= sort_link(@search, :movement, '機動', default_order: :desc)
+        %th.sep= sort_link(@search, :movement, '機動', default_order: :desc)
         %th= sort_link(@search, :weight, '総重量', default_order: :desc)
         %th= sort_link(@search, :turning_speed, '旋回', default_order: :desc)
         %th= sort_link(@search, :jump, '跳躍', default_order: :desc)
@@ -168,14 +168,14 @@
         %th= sort_link(@search, :loading, '積載', default_order: :desc)
         %th= sort_link(@search, :max_loading, '最大積載', default_order: :desc)
       - if @show_detail_3 == "1"
-        %th{style: "border-bottom: 0.3em solid #ccc;"}= sort_link(@search, :pysics, '物理', default_order: :desc)
+        %th.sep{style: "border-bottom: 0.3em solid #ccc;"}= sort_link(@search, :pysics, '物理', default_order: :desc)
         %th{style: "border-bottom: 0.3em solid #c4c;"}= sort_link(@search, :spirit, '霊障', default_order: :desc)
         %th{style: "border-bottom: 0.3em solid #4cc;"}= sort_link(@search, :particle, '粒子', default_order: :desc)
         %th{style: "border-bottom: 0.3em solid #c44;"}= sort_link(@search, :flame, '火炎', default_order: :desc)
         %th{style: "border-bottom: 0.3em solid #ee8;"}= sort_link(@search, :electric, '電子', default_order: :desc)
       - if @show_detail_5 == "1"
-        %th= sort_link(@search, :condition_all_text_condition_text, '機体状況', default_order: :desc)
-      %th{colspan: "2"}
+        %th.sep= sort_link(@search, :condition_all_text_condition_text, '機体状況', default_order: :desc)
+      %th.sep{colspan: "2"}
         結果リンク
   %tbody
     - @specs.each do |spec|
@@ -183,11 +183,11 @@
         %td= spec.result_no
         %td= p_name_text(spec.e_no, spec.p_name)
         - if @show_detail_1 == "1"
-          %td= spec.ap
+          %td.sep= spec.ap
           %td= spec.en
           %td= spec.en_recovery
         - if @show_detail_2 == "1"
-          %td= spec.movement
+          %td.sep= spec.movement
           %td= spec.weight
           %td= spec.turning_speed
           %td= spec.jump
@@ -199,13 +199,13 @@
           %td= spec.loading
           %td= spec.max_loading
         - if @show_detail_3 == "1"
-          %td= spec.pysics
+          %td.sep= spec.pysics
           %td= spec.spirit
           %td= spec.particle
           %td= spec.flame
           %td= spec.electric
         - if @show_detail_5 == "1"
-          %td= spec.condition_all_text.condition_text if spec.condition_all_text
-        %td= character_link(spec.e_no)
+          %td.sep= spec.condition_all_text.condition_text if spec.condition_all_text
+        %td.sep= character_link(spec.e_no)
         %td= character_old_link(@last_result, spec.e_no, spec.result_no, spec.generate_no)
 = paginate(@specs)
