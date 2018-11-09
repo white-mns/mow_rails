@@ -243,7 +243,7 @@
           %td= market.unique_1
           %td= market.unique_2
           %td= market.turning_speed
-          %td= market.guard_elemental_name.name if market.guard_elemental_name
+          %td{style: "#{ elemental_border(market.guard_elemental_name) }" }= market.guard_elemental_name.name if market.guard_elemental_name
           %td= market.guard_value
           %td= market.value
           %td= market.ammunition_cost

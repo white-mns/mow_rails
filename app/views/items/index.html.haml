@@ -242,7 +242,7 @@
           %td= item.unique_1
           %td= item.unique_2
           %td= item.turning_speed
-          %td= item.guard_elemental_name.name if item.guard_elemental
+          %td{style: "#{ elemental_border(item.guard_elemental_name) }" }= item.guard_elemental_name.name if item.guard_elemental
           %td= item.guard_value
           %td= item.value
           %td= item.ammunition_cost

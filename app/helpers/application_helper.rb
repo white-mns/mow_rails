@@ -102,4 +102,20 @@ module ApplicationHelper
 
         assembly_text.chop()
     end
+
+    def elemental_border(name)
+        if !name then 
+            return
+        end
+
+        border_style = ""
+        if name.name == "物理" then border_style = "0.2rem #ccc solid"
+        elsif name.name == "霊障" then border_style = "0.2rem #c4c solid"
+        elsif name.name == "粒子" then border_style = "0.2rem #4cc solid"
+        elsif name.name == "火炎" then border_style = "0.2rem #c44 solid"
+        elsif name.name == "電子" then border_style = "0.2rem #ee8 solid"
+        end
+
+        "border-left: " + border_style;
+    end
 end
