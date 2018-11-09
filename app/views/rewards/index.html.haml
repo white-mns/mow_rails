@@ -141,22 +141,22 @@
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
       - if false
-        %th= sort_link(@search, :block_block_no,'ブロック', default_order: :desc)
+        %th.sep= sort_link(@search, :block_block_no,'ブロック', default_order: :desc)
         %th= sort_link(@search, :next_battle_block_no,'次回ブロック', default_order: :desc)
       - if @show_detail_1 == "1"
-        %th= sort_link(@search, :total_income, '合計収入', default_order: :desc)
-        %th= sort_link(@search, :attack, '攻撃', default_order: :desc)
+        %th.sep= sort_link(@search, :total_income, '合計収入', default_order: :desc)
+        %th.sep= sort_link(@search, :attack, '攻撃', default_order: :desc)
         %th= sort_link(@search, :support, '支援', default_order: :desc)
         %th= sort_link(@search, :defense, '防衛', default_order: :desc)
       - if @show_detail_2 == "1"
-        %th= sort_link(@search, :defeat, '撃墜', default_order: :desc)
+        %th.sep= sort_link(@search, :defeat, '撃墜', default_order: :desc)
         %th= sort_link(@search, :selling, '販売', default_order: :desc)
         %th= sort_link(@search, :sub_quest, 'サブ', default_order: :desc)
         %th= sort_link(@search, :enemy_caution, '敵警戒', default_order: :desc)
         %th= sort_link(@search, :colosseum_win, 'コロシアム勝利', default_order: :desc)
         %th= sort_link(@search, :fight_money, 'ファイトマネー', default_order: :desc)
       - if @show_detail_3 == "1"
-        %th= sort_link(@search, :battle_income, '戦闘', default_order: :desc)
+        %th.sep= sort_link(@search, :battle_income, '戦闘', default_order: :desc)
         %th= sort_link(@search, :add_income, '追加', default_order: :desc)
         %th= sort_link(@search, :ammunition_cost, '弾薬', default_order: :desc)
         %th= sort_link(@search, :preparation_deduction, '整備控除', default_order: :desc)
@@ -165,7 +165,7 @@
         %th= sort_link(@search, :prize, '賞金', default_order: :desc)
         %th= sort_link(@search, :union_interest, 'ユニオン利子', default_order: :desc)
         %th= sort_link(@search, :parts_sell, '販売数', default_order: :desc)
-      %th{colspan:"2"}
+      %th.sep{colspan:"2"}
         結果リンク
   %tbody
     - @rewards.each do |reward|
@@ -173,22 +173,22 @@
         %td= reward.result_no
         %td= p_name_text(reward.e_no, reward.p_name)
         - if false
-          %td= blocks_text(reward.block)
+          %td.sep= blocks_text(reward.block)
           %td= blocks_text(reward.next_battle)
         - if @show_detail_1 == "1"
-          %td= reward.total_income
-          %td= reward.attack
+          %td.sep= reward.total_income
+          %td.sep= reward.attack
           %td= reward.support
           %td= reward.defense
         - if @show_detail_2 == "1"
-          %td= reward.defeat
+          %td.sep= reward.defeat
           %td= reward.selling
           %td= reward.sub_quest
           %td= reward.enemy_caution
           %td= reward.colosseum_win
           %td= reward.fight_money
         - if @show_detail_3 == "1"
-          %td= reward.battle_income
+          %td.sep= reward.battle_income
           %td= reward.add_income
           %td= reward.ammunition_cost
           %td= reward.preparation_deduction
@@ -197,6 +197,6 @@
           %td= reward.prize
           %td= reward.union_interest
           %td= reward.parts_sell
-        %td= character_link(reward.e_no)
+        %td.sep= character_link(reward.e_no)
         %td= character_old_link(@last_result, reward.e_no, reward.result_no, reward.generate_no)
 = paginate(@rewards)

@@ -187,16 +187,16 @@
     %tr
       %th= sort_link(@search, :result_no,'更新回', default_order: :desc)
       %th= sort_link(@search, :e_no,'キャラクター(Eno)', default_order: :desc)
-      %th= sort_link(@search, :market_no, 'No', default_order: :desc)
+      %th.sep= sort_link(@search, :market_no, 'No', default_order: :desc)
       %th= sort_link(@search, :name, 'パーツ名', default_order: :desc)
       - if @show_detail_1 == "1"
-        %th= sort_link(@search, :kind, '種別', default_order: :desc)
+        %th.sep= sort_link(@search, :kind, '種別', default_order: :desc)
         %th= sort_link(@search, :orig_name, '詳細', default_order: :desc)
-        %th= sort_link(@search, :fuka_1, '付加A', default_order: :desc)
+        %th.sep= sort_link(@search, :fuka_1, '付加A', default_order: :desc)
         %th= sort_link(@search, :fuka_2, '付加B', default_order: :desc)
         %th= sort_link(@search, :strength, '強度', default_order: :desc)
       - if @show_detail_2 == "1"
-        %th= sort_link(@search, :ap, 'AP', default_order: :desc)
+        %th.sep= sort_link(@search, :ap, 'AP', default_order: :desc)
         %th= sort_link(@search, :spending_en, '消費EN', default_order: :desc)
         %th= sort_link(@search, :unique_1, '特殊1', default_order: :desc)
         %th= sort_link(@search, :unique_2, '特殊2', default_order: :desc)
@@ -207,7 +207,7 @@
         %th= sort_link(@search, :ammunition_cost, '弾薬費', default_order: :desc)
         %th= sort_link(@search, :weight, '重量', default_order: :desc)
       - if @show_detail_3 == "1"
-        %th= sort_link(@search, :precision, '精度', default_order: :desc)
+        %th.sep= sort_link(@search, :precision, '精度', default_order: :desc)
         %th= sort_link(@search, :punding, '貯水', default_order: :desc)
         %th= sort_link(@search, :aerosol, '噴霧', default_order: :desc)
         %th= sort_link(@search, :bullet, '弾数', default_order: :desc)
@@ -216,29 +216,29 @@
         %th= sort_link(@search, :add_abnormity, '異常追加', default_order: :desc)
         %th= sort_link(@search, :charge, '資産投入', default_order: :desc)
       - if @show_detail_4 == "1"
-        %th= sort_link(@search, :gunshot, '射撃', default_order: :desc)
+        %th.sep= sort_link(@search, :gunshot, '射撃', default_order: :desc)
         %th= sort_link(@search, :struggle, '格闘', default_order: :desc)
         %th= sort_link(@search, :reaction, '反応', default_order: :desc)
         %th= sort_link(@search, :control, '制御', default_order: :desc)
         %th= sort_link(@search, :preparation, '整備', default_order: :desc)
         %th= sort_link(@search, :fitly, '適性', default_order: :desc)
-      %th{colspan:"2"}
+      %th.sep{colspan:"2"}
         結果リンク
   %tbody
     - @markets.each do |market|
       %tr
         %td= market.result_no
         %td= p_name_text(market.e_no, market.p_name)
-        %td= market.market_no
+        %td.sep= market.market_no
         %td= market.name
         - if @show_detail_1 == "1"
-          %td= market.kind_name.name if market.kind
+          %td.sep= market.kind_name.name if market.kind
           %td= market.orig_name_name.name if market.orig_name_name
-          %td= market.fuka_1_name.name if market.fuka_1_name
+          %td.sep= market.fuka_1_name.name if market.fuka_1_name
           %td= market.fuka_2_name.name if market.fuka_2_name
           %td= market.strength
         - if @show_detail_2 == "1"
-          %td= market.ap
+          %td.sep= market.ap
           %td= market.spending_en
           %td= market.unique_1
           %td= market.unique_2
@@ -249,7 +249,7 @@
           %td= market.ammunition_cost
           %td= market.weight
         - if @show_detail_3 == "1"
-          %td= market.precision
+          %td.sep= market.precision
           %td= market.punding
           %td= market.aerosol
           %td= market.bullet
@@ -258,12 +258,12 @@
           %td= market.add_abnormity
           %td= market.charge
         - if @show_detail_4 == "1"
-          %td= market.gunshot
+          %td.sep= market.gunshot
           %td= market.struggle
           %td= market.reaction
           %td= market.control
           %td= market.preparation
           %td= market.fitly
-        %td= character_link(market.e_no) if market.e_no > 0
+        %td.sep= character_link(market.e_no) if market.e_no > 0
         %td= character_old_link(@last_result, market.e_no, market.result_no, market.generate_no) if market.e_no > 0
 = paginate(@markets)
