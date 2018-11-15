@@ -17,8 +17,6 @@ class AssemblyNumsController < ApplicationController
 
   # GET /five_radars
   def five_radar
-    params["is_division_0"] = "on"
-    params["parts_name_form"] ||= "\"レーダー\""
     param_set
     params[:q]["num_gteq_any"] ||= [5]
 
@@ -30,10 +28,15 @@ class AssemblyNumsController < ApplicationController
   def param_set
     @last_result = Name.maximum('result_no')
 
-    params[:q] ||= {}
+    params[:q] = {}
     if !params["is_form"] then
         params["result_no_form"] ||= sprintf('%d',@last_result)
         params["is_division_0"] ||= "on"
+    end
+
+    if action_name == "five_radar" then
+        params["is_division_0"] = "on"
+        params["parts_name_form"] = "\"レーダー\""
     end
     params[:q]["e_no_not_eq_any"] ||= [0]
     
