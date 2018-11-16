@@ -84,6 +84,18 @@ module MyUtility
       param_push(param_adr, data_name + "_" + match_suffix + "_any", text)
   end
  
+  def params_clean(params)
+    if params[:q] && params[:q][:s] then
+        sort = params[:q][:s]
+    end
+
+    params[:q] = {}
+
+    if sort then
+        params[:q][:s] = sort
+    end
+  end
+
   # Ransackの検索用パラメータに追加。配列がない場合は作成する 
   def param_push(param_adr, ransack_param, text)
       if !param_adr[:q][ransack_param].is_a?(Array) then
