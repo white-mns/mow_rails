@@ -2,6 +2,10 @@
 %h1= @page_title
 
 .card.desc
+  .card-header
+    - act_icon(true)
+    検索仕様
+    - act_desc(true)
   .card-body
     = render "layouts/base_desc"
     %p
@@ -22,17 +26,17 @@
     %tbody
       %tr
       %tr
-        %td  
+        %td.indent
         %td= f.label :result_no_form, '更新回'
         %td.formNum{colspan: "3"}= text_field_tag :result_no_form, @result_no_form
       %tr
-        %td  
+        %td.indent
         %td= f.label :e_no_form, 'Eno'
         %td.formNum= text_field_tag :e_no_form, @e_no_form
         %td= f.label :p_name_form, 'キャラクター名'
         %td.formText= text_field_tag :p_name_form, @p_name_form
       %tr.sep
-        %td  
+        %td.indent
         %td= f.label :num_form, 'レーダーの数'
         %td.formNum{colspan: "3"}= text_field_tag :num_form, @num_form
     %tbody.tbody_toggle.pointer
@@ -45,17 +49,17 @@
           %div.act_desc 　合計現金収入、攻撃戦果補正、支援戦果補正、防衛戦果補正
     %tbody.closed
       %tr
-        %td  
+        %td.indent
         %td= f.label :total_income_form, '合計現金収入'
         %td.formNum{colspan: "3"}= text_field_tag :total_income_form, @total_income_form
       %tr
-        %td  
+        %td.indent
         %td= f.label :attack_form, '攻撃戦果補正'
         %td.formNum= text_field_tag :attack_form, @attack_form
         %td= f.label :support_form, '支援戦果補正'
         %td.formNum= text_field_tag :support_form, @support_form
       %tr
-        %td  
+        %td.indent
         %td= f.label :defense_form, '防衛戦果補正'
         %td.formNum{colspan: "3"}= text_field_tag :defense_form, @defense_form
     %tbody.tbody_toggle.pointer
@@ -67,7 +71,7 @@
           = label_tag :show_detail_block_1, '　今回のブロックを非表示にする', class: "act_desc closed"
     %tbody.closed
       %tr
-        %td  
+        %td.indent
         %td= f.label :block_no_form, 'ブロック番号'
         %td.formNum{colspan: "3"}= text_field_tag :block_no_form, @block_no_form
     %tbody.tbody_toggle.pointer
@@ -79,7 +83,7 @@
           = label_tag :show_detail_next_battle_1, '　次回のブロックを非表示にする', class: "act_desc closed"
     %tbody.closed
       %tr
-        %td  
+        %td.indent
         %td= f.label :next_block_no_form, 'ブロック番号'
         %td.formNum{colspan: "3"}= text_field_tag :next_block_no_form, @next_block_no_form
     %tbody.tbody_toggle.pointer
@@ -92,15 +96,15 @@
           %div.act_desc 　脚部、全アセンブル
     %tbody.closed
       %tr
-        %td  
+        %td.indent
         %td= f.label :leg_form, '脚部'
         %td.formText= text_field_tag :leg_form, @leg_form
         %td= f.label :assembly_form, '全アセンブル (ORのみ)'
         %td.formText= text_field_tag :assembly_form, @assembly_form
     %tbody
       %tr
-        %td  
-        %td= hidden_field_tag :is_form, 1
+        %td.indent
+        %td.indent= hidden_field_tag :is_form, 1
         %td{colspan: "3"}
           - search_submit_button
 

@@ -2,6 +2,10 @@
 %h1= @page_title
 
 .card.desc
+  .card-header
+    - act_icon(true)
+    検索仕様
+    - act_desc(true)
   .card-body
     = render "layouts/base_desc"
     %p
@@ -22,17 +26,17 @@
     %tbody
       %tr
       %tr
-        %td
+        %td.indent
         %td= f.label :result_no_form, '更新回'
         %td.formNum{colspan: "3"}= text_field_tag :result_no_form, @result_no_form
       %tr
-        %td
+        %td.indent
         %td= f.label :e_no_form, 'Eno'
         %td.formNum= text_field_tag :e_no_form, @e_no_form
         %td= f.label :p_name_form, 'キャラクター名'
         %td.formText= text_field_tag :p_name_form, @p_name_form
       %tr
-        %td
+        %td.indent
         %td= f.label :market_no_form, 'マーケット番号'
         %td.formNum= text_field_tag :market_no_form, @market_no_form
         %td= f.label :name_form, 'パーツ名'
@@ -48,19 +52,19 @@
           %div.act_desc 　種別、パーツ種別詳細、付加A、付加B、強度
     %tbody
       %tr
-        %td
+        %td.indent
         %td= f.label :kind_form, '種別'
         %td.formNum= text_field_tag :kind_form, @kind_form
         %td= f.label :orig_name_form, 'パーツ種別詳細'
         %td.formNum= text_field_tag :orig_name_form, @orig_name_form
       %tr
-        %td
+        %td.indent
         %td= f.label :fuka_1_form, '付加A'
         %td.formText= text_field_tag :fuka_1_form, @fuka_1_form
         %td= f.label :fuka_2_form, '付加B'
         %td.formText= text_field_tag :fuka_2_form, @fuka_2_form
       %tr
-        %td
+        %td.indent
         %td= f.label :strength_form, '強度'
         %td.formNum{colspan: "3"}= text_field_tag :strength_form, @strength_form
     %tbody.tbody_toggle.pointer
@@ -73,35 +77,35 @@
           %div.act_desc 　AP、消費EN、特殊1、特殊2、旋回速度、防御属性、防御値、金額、弾薬費、重量
     %tbody.closed
       %tr
-        %td
+        %td.indent
         %td= f.label :ap_form, 'AP'
         %td.formNum= text_field_tag :ap_form, @ap_form
         %td= f.label :spending_en_form, '消費EN'
         %td.formNum= text_field_tag :spending_en_form, @spending_en_form
       %tr
-        %td
+        %td.indent
         %td= f.label :unique_1_form, '特殊1'
         %td.formNum= text_field_tag :unique_1_form, @unique_1_form
         %td= f.label :unique_1_form, '特殊2'
         %td.formNum= text_field_tag :unique_2_form, @unique_2_form
       %tr
-        %td
+        %td.indent
         %td= f.label :turning_speed_form, '旋回速度'
         %td.formNum{colspan: "3"}= text_field_tag :turning_speed_form, @turning_speed_form
       %tr
-        %td
+        %td.indent
         %td= f.label :guard_elemental_form, '防御属性'
         %td.formText= text_field_tag :guard_elemental_form, @guard_elemental_form
         %td= f.label :guard_value_form, '防御値'
         %td.formNum= text_field_tag :guard_value_form, @guard_value_form
       %tr
-        %td
+        %td.indent
         %td= f.label :value_form, '金額'
         %td.formNum= text_field_tag :value_form, @value_form
         %td= f.label :ammunition_cost_form, '弾薬費'
         %td.formNum= text_field_tag :ammunition_cost_form, @ammunition_cost_form
       %tr
-        %td
+        %td.indent
         %td= f.label :weight_form, '重量'
         %td.formNum{colspan: "3"}= text_field_tag :weight_form, @weight_form
     %tbody.tbody_toggle.pointer
@@ -114,31 +118,31 @@
           %div.act_desc 　精度、貯水量、噴霧量、弾数、積載量、武器属性、異常追加
     %tbody.closed
       %tr
-        %td
+        %td.indent
         %td= f.label :precision_form, '精度'
         %td.formNum{colspan: "3"}= text_field_tag :precision_form, @precision_form
       %tr
-        %td
+        %td.indent
         %td= f.label :punding_form, '貯水量'
         %td.formNum= text_field_tag :punding_form, @punding_form
         %td= f.label :aerosol_form, '噴霧量'
         %td.formNum= text_field_tag :aerosol_form, @aerosol_form
       %tr
-        %td
+        %td.indent
         %td= f.label :bullet_form, '弾数'
         %td.formNum{colspan: "3"}= text_field_tag :bullet_form, @bullet_form
       %tr
-        %td
+        %td.indent
         %td= f.label :loading_form, '積載量'
         %td.formNum{colspan: "3"}= text_field_tag :loading_form, @loading_form
       %tr
-        %td
+        %td.indent
         %td= f.label :weapon_element_form, '武器属性'
         %td.formText= text_field_tag :weapon_element_form, @weapon_element_form
         %td= f.label :add_abnormity_form, '異常追加'
         %td.formNum= text_field_tag :add_abnormity_form, @add_abnormity_form
       %tr
-        %td
+        %td.indent
         %td= f.label :charge_form, '資金投入'
         %td.formNum{colspan: "3"}= text_field_tag :charge_form, @charge_form
     %tbody.tbody_toggle.pointer
@@ -151,27 +155,27 @@
           %div.act_desc 　射撃、格闘、反応、制御、整備、適性
     %tbody.closed
       %tr
-        %td
+        %td.indent
         %td= f.label :gunshot_form, '射撃'
         %td.formNum= text_field_tag :gunshot_form, @gunshot_form
         %td= f.label :struggle_form, '格闘'
         %td.formNum= text_field_tag :struggle_form, @struggle_form
       %tr
-        %td
+        %td.indent
         %td= f.label :reaction_form, '反応'
         %td.formNum= text_field_tag :reaction_form, @reaction_form
         %td= f.label :control_form, '制御'
         %td.formNum= text_field_tag :control_form, @control_form
       %tr
-        %td
+        %td.indent
         %td= f.label :preparation_form, '整備'
         %td.formNum= text_field_tag :preparation_form, @preparation_form
         %td= f.label :fitly_form, '適性'
         %td.formNum= text_field_tag :fitly_form, @fitly_form
     %tbody
       %tr
-        %td
-        %td= hidden_field_tag :is_form, 1
+        %td.indent
+        %td.indent= hidden_field_tag :is_form, 1
         %td{colspan: "3"}
           - search_submit_button
 

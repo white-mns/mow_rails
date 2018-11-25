@@ -1,15 +1,20 @@
 - @page_title = "メガアセンブル一覧"
 %h1= @page_title
 
-%div.well.desc
-  = render "layouts/base_desc"
-  %p
-    %span.example_select.example_toggle.pointer
-      - help_icon
-      入力例
-      - act_desc(false)
-  #example.closed
-    = render "layouts/input_desc"
+.card.desc
+  .card-header
+    - act_icon(true)
+    検索仕様
+    - act_desc(true)
+  .card-body
+    = render "layouts/base_desc"
+    %p
+      %span.example_select.example_toggle.pointer
+        - help_icon
+        入力例
+        - act_desc(false)
+    #example.closed
+      = render "layouts/input_desc"
 = search_form_for @search, url: mega_assembles_path do |f|
   %table.search_toggle.table.table-striped.table-bordered.table-hover
     %tbody.pointer
@@ -21,33 +26,34 @@
     %tbody
       %tr
       %tr
-        %td  
+        %td.indent
         %td= f.label :result_no_form, '更新回'
         %td.formNum{colspan: "3"}= text_field_tag :result_no_form, @result_no_form
       %tr
-        %td  
+        %td.indent
         %td= f.label :e_no_form, 'Eno'
         %td.formNum= text_field_tag :e_no_form, @e_no_form
         %td= f.label :p_name_form, 'キャラクター名'
         %td.formText= text_field_tag :p_name_form, @p_name_form
       %tr
-        %td  
+        %td.indent
         %td= f.label :parts_name_form, 'パーツ名'
         %td.formText= text_field_tag :parts_name_form, @parts_name_form
         %td= f.label :num_form, 'アセンブル数'
         %td.formNum= text_field_tag :num_form, @num_form
       %tr
-        %td
+        %td.indent
         %td= f.label :division_type_form, 'パーツ分類'
         %td{:colspan => "3"}
-          = check_box_tag :is_division_0, @is_division_0, @is_division_0
-          = label_tag :is_division_0, 'パーツ大分類を表示'
-          　　
-          = check_box_tag :is_division_1, @is_division_1, @is_division_1
-          = label_tag :is_division_1, 'パーツ小分類(A,B,C)を分類'
+          %span.input
+            = check_box_tag :is_division_0, @is_division_0, @is_division_0
+            = label_tag :is_division_0, 'パーツ大分類を表示'
+          %span.input
+            = check_box_tag :is_division_1, @is_division_1, @is_division_1
+            = label_tag :is_division_1, 'パーツ小分類(A,B,C)を分類'
       %tr
-        %td
-        %td= hidden_field_tag :is_form, 1
+        %td.indent
+        %td.indent= hidden_field_tag :is_form, 1
         %td{colspan: "3"}
           - search_submit_button
 
