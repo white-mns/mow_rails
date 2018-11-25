@@ -2,6 +2,10 @@
 %h1= @page_title
 
 .card.desc
+  .card-header
+    - act_icon(true)
+    検索仕様
+    - act_desc(true)
   .card-body
     = render "layouts/base_desc"
     %p
@@ -21,11 +25,11 @@
           - act_desc(true)
     %tbody
       %tr
-        %td
+        %td.indent
         %td= f.label :result_no_form, '更新回'
         %td.formNum{colspan: "3"}= text_field_tag :result_no_form, @result_no_form
       %tr
-        %td
+        %td.indent
         %td= f.label :e_no_form, 'Eno'
         %td.formNum= text_field_tag :e_no_form, @e_no_form
         %td= f.label :p_name_form, 'キャラクター名'
@@ -41,11 +45,11 @@
           %div.act_desc 　AP、EN、EN回復量
     %tbody
       %tr
-        %td
+        %td.indent
         %td= f.label :ap_form, 'AP'
         %td.formNum{colspan: "3"}= text_field_tag :ap_form, @ap_form
       %tr
-        %td
+        %td.indent
         %td= f.label :en_form, 'EN'
         %td.formNum= text_field_tag :en_form, @en_form
         %td= f.label :en_recovery_form, 'EN回復量'
@@ -61,35 +65,35 @@
           %div.act_desc 　機動力、総重量、旋回速度、跳躍力、最大火力、索敵範囲、命中精度、貯水量、噴霧量、積載量、最大積載量
     %tbody
       %tr
-        %td
+        %td.indent
         %td= f.label :movement_form, '機動力'
         %td.formNum= text_field_tag :movement_form, @movement_form
         %td= f.label :weight_form, '総重量'
         %td.formNum= text_field_tag :weight_form, @weight_form
       %tr
-        %td
+        %td.indent
         %td= f.label :turning_speed_form, '旋回速度'
         %td.formNum= text_field_tag :turning_speed_form, @turning_speed_form
         %td= f.label :jump_form, '跳躍力'
         %td.formNum= text_field_tag :jump_form, @jump_form
       %tr
-        %td
+        %td.indent
         %td= f.label :max_power_form, '最大火力'
         %td.formNum{colspan: "3"}= text_field_tag :max_power_form, @max_power_form
       %tr
-        %td
+        %td.indent
         %td= f.label :search_form, '索敵範囲'
         %td.formNum= text_field_tag :search_form, @search_form
         %td= f.label :precision_form, '命中精度'
         %td.formNum= text_field_tag :precision_form, @precision_form
       %tr
-        %td
+        %td.indent
         %td= f.label :punding_form, '貯水量'
         %td.formNum= text_field_tag :punding_form, @punding_form
         %td= f.label :aerosol_form, '噴霧量'
         %td.formNum= text_field_tag :aerosol_form, @aerosol_form
       %tr
-        %td
+        %td.indent
         %td= f.label :loading_form, '積載量'
         %td.formNum= text_field_tag :loading_form, @loading_form
         %td= f.label :max_loading_form, '最大積載量'
@@ -104,19 +108,19 @@
           %div.act_desc 　物理防御、霊障防御、粒子防御、火炎防御、電子防御
     %tbody.closed
       %tr
-        %td
+        %td.indent
         %td= f.label :pysics_form, '物理防御'
         %td.formNum= text_field_tag :pysics_form, @pysics_form
         %td= f.label :spirit_form, '霊障防御'
         %td.formNum= text_field_tag :spirit_form, @spirit_form
       %tr
-        %td
+        %td.indent
         %td= f.label :particle_form, '粒子防御'
         %td.formNum= text_field_tag :particle_form, @particle_form
         %td= f.label :flame_form, '火炎防御'
         %td.formNum= text_field_tag :flame_form, @flame_form
       %tr
-        %td
+        %td.indent
         %td= f.label :electric_form, '電子防御'
         %td.formNum{colspan: "3"}= text_field_tag :electric_form, @electric_form
     %tbody.tbody_toggle.pointer
@@ -129,13 +133,13 @@
     %tbody.closed
       %tr
       %tr
-        %td
+        %td.indent
         %td= f.label :condition_text_form, '機体状況'
         %td.formText{colspan: "3"}= text_field_tag :condition_text_form, @condition_text_form
     %tbody
       %tr
-        %td
-        %td= hidden_field_tag :is_form, 1
+        %td.indent
+        %td.indent= hidden_field_tag :is_form, 1
         %td{colspan: "3"}
           - search_submit_button
 

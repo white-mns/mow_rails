@@ -2,6 +2,10 @@
 %h1= @page_title
 
 .card.desc
+  .card-header
+    - act_icon(true)
+    検索仕様
+    - act_desc(true)
   .card-body
     = render "layouts/base_desc"
     %p
@@ -22,11 +26,11 @@
     %tbody
       %tr
       %tr
-        %td
+        %td.indent
         %td= f.label :result_no_form, '更新回'
         %td.formNum{colspan: "3"}= text_field_tag :result_no_form, @result_no_form
       %tr
-        %td
+        %td.indent
         %td= f.label :e_no_form, 'Eno'
         %td.formNum= text_field_tag :e_no_form, @e_no_form
         %td= f.label :p_name_form, 'キャラクター名'
@@ -42,17 +46,17 @@
           %div.act_desc 　合計現金収入、攻撃戦果補正、支援戦果補正、防衛戦果補正
     %tbody
       %tr
-        %td
+        %td.indent
         %td= f.label :total_income_form, '合計現金収入'
         %td.formNum{colspan: "3"}= text_field_tag :total_income_form, @total_income_form
       %tr
-        %td
+        %td.indent
         %td= f.label :attack_form, '攻撃戦果補正'
         %td.formNum= text_field_tag :attack_form, @attack_form
         %td= f.label :support_form, '支援戦果補正'
         %td.formNum= text_field_tag :support_form, @support_form
       %tr
-        %td
+        %td.indent
         %td= f.label :defense_form, '防衛戦果補正'
         %td.formNum{colspan: "3"}= text_field_tag :defense_form, @defense_form
     %tbody.tbody_toggle.pointer
@@ -65,21 +69,21 @@
           %div.act_desc 　撃墜補正、販売数補正、サブクエスト、敵警戒補正、コロッセオ勝利補正、ファイトマネー補正
     %tbody.closed
       %tr
-        %td
+        %td.indent
         %td= f.label :defeat_form, '撃墜補正'
         %td.formNum{colspan: "3"}= text_field_tag :defeat_form, @defeat_form
       %tr
-        %td
+        %td.indent
         %td= f.label :selling_form, '販売数補正'
         %td.formNum= text_field_tag :selling_form, @selling_form
         %td= f.label :sub_quest_form, 'サブクエスト'
         %td.formNum= text_field_tag :sub_quest_form, @sub_quest_form
       %tr
-        %td
+        %td.indent
         %td= f.label :enemy_caution_form, '敵警戒補正'
         %td.formNum{colspan: "3"}= text_field_tag :enemy_caution_form, @enemy_caution_form
       %tr
-        %td
+        %td.indent
         %td= f.label :colosseum_win_form, 'コロッセオ勝利補正'
         %td.formNum= text_field_tag :colosseum_win_form, @colosseum_win_form
         %td= f.label :fight_money_form, 'ファイトマネー補正'
@@ -94,37 +98,37 @@
           %div.act_desc 　戦闘収入、追加収入、弾薬費請求、整備控除修正額、整備請求費、ユニオン費、賞金、ユニオン利子、パーツ販売数
     %tbody.closed
       %tr
-        %td
+        %td.indent
         %td= f.label :battle_income_form, '戦闘収入'
         %td.formNum= text_field_tag :battle_income_form, @battle_income_form
         %td= f.label :add_income_form, '追加収入'
         %td.formNum= text_field_tag :add_income_form, @add_income_form
       %tr
-        %td
+        %td.indent
         %td= f.label :ammunition_cost_form, '弾薬費請求'
         %td.formNum= text_field_tag :ammunition_cost_form, @ammunition_cost_form
         %td= f.label :preparation_deduction_form, '整備控除修正額'
         %td.formNum= text_field_tag :preparation_deduction_form, @preparation_deduction_form
       %tr
-        %td
+        %td.indent
         %td= f.label :preparation_cost_form, '整備請求費'
         %td.formNum= text_field_tag :preparation_cost_form, @preparation_cost_form
         %td= f.label :union_cost_form, 'ユニオン費'
         %td.formNum= text_field_tag :union_cost_form, @union_cost_form
       %tr
-        %td
+        %td.indent
         %td= f.label :prize_form, '賞金'
         %td.formNum= text_field_tag :prize_form, @prize_form
         %td= f.label :union_interest_form, 'ユニオン利子'
         %td.formNum= text_field_tag :union_interest_form, @union_interest_form
       %tr
-        %td
+        %td.indent
         %td= f.label :parts_sell_form, 'パーツ販売数'
         %td.formNum{colspan: "3"}= text_field_tag :parts_sell_form, @parts_sell_form
     %tbody
       %tr
-        %td
-        %td= hidden_field_tag :is_form, 1
+        %td.indent
+        %td.indent= hidden_field_tag :is_form, 1
         %td{colspan: "3"}
           - search_submit_button
 
