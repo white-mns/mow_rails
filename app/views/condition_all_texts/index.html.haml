@@ -69,5 +69,5 @@
         %td= p_name_text(condition_all_text.e_no, condition_all_text.p_name)
         %td= condition_all_text.condition_text
         %td= character_link(condition_all_text.e_no)
-        %td= character_old_link(@last_result, condition_all_text.e_no, condition_all_text.result_no, condition_all_text.generate_no)
+        %td= character_old_link(@latest_result, condition_all_text.e_no, condition_all_text.result_no, condition_all_text.generate_no)
 = paginate(@condition_all_texts)

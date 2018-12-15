@@ -69,5 +69,5 @@
         %td= p_name_text(consort_plane.e_no, consort_plane.p_name)
         %td= consort_plane.consort_plane_name.name.html_safe + "(" + sprintf("%d",consort_plane.consort_plane) + ")" if consort_plane.consort_plane_name
         %td= character_link(consort_plane.e_no)
-        %td= character_old_link(@last_result, consort_plane.e_no, consort_plane.result_no, consort_plane.generate_no)
+        %td= character_old_link(@latest_result, consort_plane.e_no, consort_plane.result_no, consort_plane.generate_no)
 = paginate(@consort_planes)
