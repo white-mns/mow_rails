@@ -68,5 +68,5 @@
         %td= p_name_text(block.e_no, block.p_name)
         %td= block.block_no
         %td= character_link(block.e_no)
-        %td= character_old_link(@last_result, block.e_no, block.result_no, block.generate_no)
+        %td= character_old_link(@latest_result, block.e_no, block.result_no, block.generate_no)
 = paginate(@blocks)

@@ -355,7 +355,7 @@
         - if @show_detail_condition_1 == "1"
           %td.sep= block.condition_all_text.condition_text if block.condition_all_text
         %td.sep= character_link(block.e_no)
-        %td= character_old_link(@last_result, block.e_no, block.result_no, block.generate_no)
+        %td= character_old_link(@latest_result, block.e_no, block.result_no, block.generate_no)
       -if @show_all_assembly
         %tr
           %td{colspan: 100}= all_assembly_text(block.assembly)

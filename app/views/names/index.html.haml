@@ -72,7 +72,7 @@
           - file_name = sprintf("%04d",name.e_no)
           = link_to " 結果", "http://blacktea.sakura.ne.jp/mistofwar/RESULT/c"+file_name+".html", :target => "_blank"
         %td
-          - if name.result_no < @last_result
+          - if name.result_no < @latest_result
             - result_no_text = sprintf("%03d",name.result_no)
             - generate_text = name.generate_no > 0 ? "_"+sprintf("%d",name.generate_no) : "";
             = link_to " 過去結果", "http://mistofwar.kitunebi.com/M_o_W_5/"+result_no_text+generate_text+"/RESULT/c"+file_name+".html", :target => "_blank"

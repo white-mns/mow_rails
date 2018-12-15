@@ -113,5 +113,5 @@
         %td.sep= status.funds
         %td= status.exp
         %td.sep= character_link(status.e_no)
-        %td= character_old_link(@last_result, status.e_no, status.result_no, status.generate_no)
+        %td= character_old_link(@latest_result, status.e_no, status.result_no, status.generate_no)
 = paginate(@statuses)

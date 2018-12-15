@@ -202,5 +202,5 @@
           %td= reward.union_interest
           %td= reward.parts_sell
         %td.sep= character_link(reward.e_no)
-        %td= character_old_link(@last_result, reward.e_no, reward.result_no, reward.generate_no)
+        %td= character_old_link(@latest_result, reward.e_no, reward.result_no, reward.generate_no)
 = paginate(@rewards)

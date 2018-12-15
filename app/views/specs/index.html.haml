@@ -211,5 +211,5 @@
         - if @show_detail_5 == "1"
           %td.sep= spec.condition_all_text.condition_text if spec.condition_all_text
         %td.sep= character_link(spec.e_no)
-        %td= character_old_link(@last_result, spec.e_no, spec.result_no, spec.generate_no)
+        %td= character_old_link(@latest_result, spec.e_no, spec.result_no, spec.generate_no)
 = paginate(@specs)
