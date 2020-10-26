@@ -1,4 +1,4 @@
-!!! s
+!!!
 %html
   %head
     %meta{charset: "utf-8"}
@@ -8,6 +8,7 @@
     = csrf_meta_tags
     = csp_meta_tag
 
+    = favicon_link_tag('favicon.ico')
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag "https://www.gstatic.com/charts/loader.js"
@@ -54,9 +55,14 @@
       
       %footer
         %p
-          制作#{link_to "@white_mns", "http://twitter.com/white_mns"}
+          Twitter：#{link_to "@data_teiki", "http://twitter.com/data_teiki"}
+          %br
+          制作：#{link_to "@white_mns", "http://twitter.com/white_mns"}
           %br
           = link_to "プライバシーポリシー", top_page_privacy_path
           %br
+          %br
           ソースコード [#{link_to "解析部分", "https://github.com/white-mns/mow_parse"}] [#{link_to "表示部分", "https://github.com/white-mns/mow_rails"}]
+          %br
+          #{link_to "その他ゲームのデータ小屋", "https://data.teiki.org/"}
       = render 'layouts/analytics'
