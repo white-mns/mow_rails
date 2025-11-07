@@ -5,8 +5,8 @@ class AssemblyNumsController < ApplicationController
   # GET /assembly_nums
   def index
     param_set
-    @count	= AssemblyNum.notnil().includes(:p_name, :parts_name).search(params[:q]).result.count()
-    @search	= AssemblyNum.notnil().includes(:p_name, :parts_name).page(params[:page]).search(params[:q])
+    @count	= AssemblyNum.notnil().includes(:p_name, :parts_name).ransack(params[:q]).result.count()
+    @search	= AssemblyNum.notnil().includes(:p_name, :parts_name).page(params[:page]).ransack(params[:q])
     @search.sorts = 'num desc' if @search.sorts.empty?
     @assembly_nums	= @search.result.per(50)
   end
@@ -20,8 +20,8 @@ class AssemblyNumsController < ApplicationController
     param_set
     params[:q]["num_gteq_any"] ||= [5]
 
-    @count	= AssemblyNum.notnil().includes(:p_name, :parts_name, :reward, :block, :next_battle, [leg: :orig_name_name], [assembly: :orig_name_name]).search(params[:q]).result.count()
-    @search	= AssemblyNum.notnil().includes(:p_name, :parts_name, :reward, :block, :next_battle, [leg: :orig_name_name], [assembly: :orig_name_name]).page(params[:page]).search(params[:q])
+    @count	= AssemblyNum.notnil().includes(:p_name, :parts_name, :reward, :block, :next_battle, [leg: :orig_name_name], [assembly: :orig_name_name]).ransack(params[:q]).result.count()
+    @search	= AssemblyNum.notnil().includes(:p_name, :parts_name, :reward, :block, :next_battle, [leg: :orig_name_name], [assembly: :orig_name_name]).page(params[:page]).ransack(params[:q])
     @assembly_nums	= @search.result.per(50)
   end
 

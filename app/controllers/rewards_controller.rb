@@ -5,8 +5,8 @@ class RewardsController < ApplicationController
   # GET /rewards
   def index
     param_set
-    @count	= Reward.notnil().includes(:p_name, :block, :next_battle).search(params[:q]).result.count()
-    @search	= Reward.notnil().includes(:p_name, :block, :next_battle).page(params[:page]).search(params[:q])
+    @count	= Reward.notnil().includes(:p_name, :block, :next_battle).ransack(params[:q]).result.count()
+    @search	= Reward.notnil().includes(:p_name, :block, :next_battle).page(params[:page]).ransack(params[:q])
     @search.sorts = 'id asc' if @search.sorts.empty?
     @rewards	= @search.result.per(50)
   end
